@@ -1,0 +1,8 @@
+id = "nextzip"
+name = "NextZip"
+
+[pc]
+kind = "script"
+steps = [
+  ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "packaging/install-local.ps1"],
+]
