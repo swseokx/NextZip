@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NextZip</title>
+<meta name="description" content="NextZip - 빠르고, 거의 모든 압축 파일을 열고, 손상에도 강한 Windows용 압축 프로그램. A fast, safe archiver for Windows.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script>
+  (function () {
+    var root = document.documentElement;
+    try {
+      var lang = localStorage.getItem("nz-lang");
+      if (!lang) { lang = /^ko\b/i.test(navigator.language || "ko") ? "ko" : "en"; }
+      if (lang === "en" || lang === "ko") { root.setAttribute("data-lang", lang); root.lang = lang; }
+      var theme = localStorage.getItem("nz-theme");
+      if (theme === "light" || theme === "dark") { root.setAttribute("data-theme", theme); }
+    } catch (e) { /* storage unavailable: keep defaults */ }
+  })();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-logo" viewBox="0 0 32 32"><rect x="2" y="2" width="28" height="28" rx="7" fill="currentColor"/><path d="M10 9h12l-9 14h9" fill="none" stroke="var(--on-primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 20 20"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-code" viewBox="0 0 20 20"><path d="m7 6-4 4 4 4m6-8 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 20 20"><path d="M10 3 2.5 16.5h15L10 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 8v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14.4" r="0.9" fill="currentColor"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z M4 7.5 12 12l8-4.5M12 12v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 3 8 7 9.5 4-1.5 7-5.2 7-9.5V6l-7-3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 15.5 4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5Z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m12 16 4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 19h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-path" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m15 9-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 2v2m0 12v2M2 10h2m12 0h2M4.3 4.3l1.4 1.4m8.6 8.6 1.4 1.4m0-11.4-1.4 1.4m-8.6 8.6-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main"><span lang="ko">본문으로 건너뛰기</span><span lang="en">Skip to content</span></a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>NextZip</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#speed"><span lang="ko">성능</span><span lang="en">Speed</span></a>
+      <a href="#formats"><span lang="ko">형식</span><span lang="en">Formats</span></a>
+      <a href="#safety"><span lang="ko">보안</span><span lang="en">Safety</span></a>
+      <a href="#cli"><span lang="ko">명령줄</span><span lang="en">CLI</span></a>
+    </nav>
+    <div class="tools">
+      <button class="tool" type="button" id="lang-toggle" aria-label="Switch language / 언어 전환"><span lang="ko">EN</span><span lang="en">한국어</span></button>
+      <button class="tool" type="button" id="theme-toggle" aria-label="Toggle light or dark theme / 밝은·어두운 테마 전환" title="Theme"><svg aria-hidden="true"><use href="#i-sun"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero wrap" id="top">
+    <h1>
+      <span lang="ko">빠르고, 거의 모든 압축 파일을 열고,<br>손상에도 강한 압축 프로그램</span>
+      <span lang="en">A fast Windows archiver that opens almost anything and survives damage</span>
+    </h1>
+    <p class="lead">
+      <span lang="ko">NextZip은 엔진부터 GUI까지 Rust로 새로 만든 Windows용 압축 프로그램입니다. 모든 CPU 코어를 끝까지 쓰고, 받은 압축 파일은 격리된 프로세스에서 안전하게 엽니다. 광고도 텔레메트리도 없습니다.</span>
+      <span lang="en">NextZip is a Windows archiver written from scratch in Rust, from the engine to the GUI. It uses every CPU core, opens downloaded archives in an isolated process, and has no ads and no telemetry.</span>
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/swseokx/NextZip/releases/latest"><svg aria-hidden="true"><use href="#i-download"/></svg><span lang="ko">다운로드</span><span lang="en">Download</span></a>
+      <a class="btn" href="https://github.com/swseokx/NextZip"><svg aria-hidden="true"><use href="#i-code"/></svg><span lang="ko">소스 코드</span><span lang="en">Source code</span></a>
+    </div>
+    <p class="meta">
+      <span lang="ko">Windows 10 / 11 (x64, ARM64) · 사용자 단위 설치, 관리자 권한 불필요 · MIT OR Apache-2.0</span>
+      <span lang="en">Windows 10 / 11 (x64, ARM64) · Per-user install, no admin rights needed · MIT OR Apache-2.0</span>
+    </p>
+    <div class="notice" role="note">
+      <svg aria-hidden="true"><use href="#i-warn"/></svg>
+      <p lang="ko">현재 설치 파일은 <b>테스트 인증서로 서명</b>되어 있어, 실행할 때 Windows SmartScreen이 “Windows의 PC 보호” 경고를 띄울 수 있습니다. <b>추가 정보 → 실행</b>을 누르면 설치됩니다. 정식 코드 서명은 준비 중입니다.</p>
+      <p lang="en">The installer is currently <b>test-signed</b>, so Windows SmartScreen may show a “Windows protected your PC” warning. Choose <b>More info → Run anyway</b> to install. A production code-signing certificate is on the way.</p>
+    </div>
+  </div>
+
+  <section id="speed">
+    <div class="wrap">
+      <h2><span lang="ko">모든 코어를 끝까지</span><span lang="en">Every core, all the way</span></h2>
+      <p class="sub">
+        <span lang="ko">병렬 엔진이 압축·해제·파일 쓰기를 겹쳐서 돌립니다. 스레드 수와 상관없이 결과 아카이브는 바이트까지 같습니다.</span>
+        <span lang="en">The parallel engine overlaps reading, compressing and writing. Archives are byte-identical no matter how many threads made them.</span>
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <div class="num">~740 MB/s</div>
+          <div class="label"><span lang="ko">ZIP 압축</span><span lang="en">ZIP compression</span></div>
+          <div class="detail"><span lang="ko">혼합 세트 100 MiB, 0.136초</span><span lang="en">100 MiB mixed set in 0.136 s</span></div>
+        </div>
+        <div class="stat">
+          <div class="num">3.79 GB/s</div>
+          <div class="label"><span lang="ko">TAR.ZST 해제</span><span lang="en">TAR.ZST extraction</span></div>
+          <div class="detail"><span lang="ko">2.1 GB 단일 파일, 0.554초</span><span lang="en">2.1 GB single file in 0.554 s</span></div>
+        </div>
+        <div class="stat">
+          <div class="num">45.25%</div>
+          <div class="label"><span lang="ko">7Z 압축률 (텍스트)</span><span lang="en">7Z ratio (text)</span></div>
+          <div class="detail"><span lang="ko">27 MiB 소스·문서를 0.6초에</span><span lang="en">27 MiB of source and docs in 0.6 s</span></div>
+        </div>
+        <div class="stat">
+          <div class="num">~107 ms</div>
+          <div class="label"><span lang="ko">GUI 콜드 스타트</span><span lang="en">GUI cold start</span></div>
+          <div class="detail"><span lang="ko">네이티브 Win32 + Direct2D, 웹뷰 없음</span><span lang="en">Native Win32 + Direct2D, no web view</span></div>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th><span lang="ko">작업</span><span lang="en">Task</span></th>
+              <th class="n"><span lang="ko">텍스트 세트</span><span lang="en">Text set</span></th>
+              <th class="n"><span lang="ko">혼합 세트</span><span lang="en">Mixed set</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span lang="ko">ZIP 압축 (기본 레벨 5)</span><span lang="en">ZIP compress (default level 5)</span></td><td class="n">0.052 s · 50.98%</td><td class="n">0.136 s · 68.87%</td></tr>
+            <tr><td><span lang="ko">7Z 압축 (레벨 6)</span><span lang="en">7Z compress (level 6)</span></td><td class="n">0.605 s · 45.25%</td><td class="n">1.70 s · 62.32%</td></tr>
+            <tr><td><span lang="ko">ZIP 해제 (Defender 켜짐)</span><span lang="en">ZIP extract (Defender on)</span></td><td class="n">0.18 s</td><td class="n">0.38 s</td></tr>
+            <tr><td><span lang="ko">7Z 해제</span><span lang="en">7Z extract</span></td><td class="n">0.24 s</td><td class="n">0.43 s</td></tr>
+            <tr><td><span lang="ko">1 → 12스레드 확장 (물리 6코어)</span><span lang="en">1 → 12 thread scaling (6 physical cores)</span></td><td class="n">4.1–4.8×</td><td class="n">4.6–4.8×</td></tr>
+            <tr><td><span lang="ko">최대 메모리 (commit)</span><span lang="en">Peak memory (commit)</span></td><td class="n" colspan="2"><span lang="ko">1 GB 미만 (최대 806 MiB)</span><span lang="en">Under 1 GB (806 MiB max)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="foot">
+        <span lang="ko">Ryzen 5 9600X (물리 6코어 / 논리 12), Windows 11, Defender 실시간 보호 켜짐, 12스레드. <code>nz bench</code>로 워밍업 1회 + 7회 측정 중앙값, 프로세스 시작 비용 포함, 해제 결과는 원본과 대조. 텍스트 세트: 파일 1,211개 27.38 MiB, 혼합 세트: 실행 파일 등을 더한 1,444개 100.25 MiB. 압축률은 “압축 크기 ÷ 원본 크기”(작을수록 좋음). 원자료: <a href="https://github.com/swseokx/NextZip/tree/main/bench/results">bench/results</a></span>
+        <span lang="en">Ryzen 5 9600X (6 physical / 12 logical cores), Windows 11, Defender real-time protection on, 12 threads. Median of 7 runs after 1 warm-up with <code>nz bench</code>, process start-up included, extracted output verified against the source. Text set: 1,211 files, 27.38 MiB; mixed set: 1,444 files including executables, 100.25 MiB. Ratio is compressed size ÷ original size (lower is better). Raw data: <a href="https://github.com/swseokx/NextZip/tree/main/bench/results">bench/results</a></span>
+      </p>
+    </div>
+  </section>
+
+  <section id="formats">
+    <div class="wrap">
+      <h2><span lang="ko">거의 모든 압축 파일</span><span lang="en">Almost every archive</span></h2>
+      <p class="sub">
+        <span lang="ko">옛 한국어·일본어·중국어 압축 파일의 깨진 이름은 코드페이지 자동 판별(CP949, Shift_JIS, GBK, Big5 등)로 바로잡습니다.</span>
+        <span lang="en">Garbled names in older Korean, Japanese and Chinese archives are fixed by automatic code-page detection (CP949, Shift_JIS, GBK, Big5 and more).</span>
+      </p>
+      <div class="formats">
+        <div class="card">
+          <div class="count">64</div>
+          <h3><span lang="ko">풀기</span><span lang="en">Extract</span></h3>
+          <ul class="fmt-list">
+            <li><b><span lang="ko">주요 아카이브</span><span lang="en">Major archives</span></b>ZIP · ZIPX · 7Z · RAR 4/5 · ALZ · EGG</li>
+            <li><b><span lang="ko">TAR 계열·단일 스트림</span><span lang="en">TAR family, single streams</span></b>TAR · TAR.GZ/XZ/BZ2/LZ4/ZST · GZ · BZ2 · XZ · LZMA · LZIP · ZST · LZ4 · BR · Z</li>
+            <li><b><span lang="ko">패키지·설치 파일</span><span lang="en">Packages, installers</span></b>CPIO · AR · DEB · RPM · ASAR · XAR · MSI · CAB</li>
+            <li><b><span lang="ko">디스크 이미지</span><span lang="en">Disk images</span></b>ISO 9660 + Joliet · VHD · VHDX · VMDK · QCOW2</li>
+            <li><b><span lang="ko">고전·레트로</span><span lang="en">Classic, retro</span></b>ACE · ARC · ARJ · ZOO · LHA/LZH · HA · UC2 · Amiga LZX · DMS · ADF · D64 · ATR …</li>
+            <li><b><span lang="ko">변형</span><span lang="en">Variants</span></b><span lang="ko">자동 풀림(SFX) EXE · 분할 세트(.001) · UUE/XXE</span><span lang="en">Self-extracting EXE · split sets (.001) · UUE/XXE</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="count">16 + .nz</div>
+          <h3><span lang="ko">만들기</span><span lang="en">Create</span></h3>
+          <ul class="fmt-list">
+            <li><b>ZIP</b><span lang="ko">블록 병렬 Deflate, 어디서나 열리는 표준 ZIP</span><span lang="en">Block-parallel Deflate, standard ZIP that opens anywhere</span></li>
+            <li><b>7Z</b><span lang="ko">파일 유형별 코덱 라우팅, 유형별 솔리드 블록 병렬 압축</span><span lang="en">Per-file-type codec routing, parallel solid blocks</span></li>
+            <li><b>TAR · TAR.GZ/XZ/BZ2/LZ4/ZST · ZIPX · ISO</b><span lang="ko">청크 병렬 압축, PAX 긴 이름, 4 GiB 넘는 ISO 파일</span><span lang="en">Chunk-parallel compression, PAX long names, ISO files over 4 GiB</span></li>
+            <li><b>GZ · XZ · BZ2 · ZST · LZ4 · EXE SFX</b><span lang="ko">단일 파일 압축, x64·ARM64 자동 풀림 실행 파일</span><span lang="en">Single-file streams, x64 and ARM64 self-extractors</span></li>
+            <li><b><span lang="ko">.nz 네이티브 포맷</span><span lang="en">.nz native format</span></b><span lang="ko">Reed-Solomon 복구 기록, 중복 제거 증분 백업, 파일 이름까지 숨기는 AEAD 암호화, 공개 사양</span><span lang="en">Reed-Solomon recovery records, deduplicated incremental backups, AEAD encryption that hides file names too, open spec</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="safety">
+    <div class="wrap">
+      <h2><span lang="ko">받은 압축 파일을 안전하게</span><span lang="en">Safe with downloaded archives</span></h2>
+      <p class="sub">
+        <span lang="ko">압축 파일은 누가 만들었는지 모른다는 전제로 설계했습니다.</span>
+        <span lang="en">Designed on the assumption that you don’t know who made the archive.</span>
+      </p>
+      <div class="grid">
+        <div class="card">
+          <svg class="icon" aria-hidden="true"><use href="#i-box"/></svg>
+          <h3><span lang="ko">격리 디코더</span><span lang="en">Isolated decoder</span></h3>
+          <p lang="ko">RAR과 오래된·희귀한 형식은 별도 프로세스에서 읽습니다. Low integrity, 권한 제거, Job 개체, 메모리·시간 상한으로 파일을 쓰거나 다른 프로그램을 실행할 수 없습니다.</p>
+          <p lang="en">RAR and old or rare formats are parsed in a separate process with low integrity, stripped privileges, a job object and memory and time limits. It cannot write files or start programs.</p>
+        </div>
+        <div class="card">
+          <svg class="icon" aria-hidden="true"><use href="#i-scan"/></svg>
+          <h3><span lang="ko">AMSI 악성코드 검사</span><span lang="en">AMSI malware scan</span></h3>
+          <p lang="ko">압축 파일 안의 내용을 디스크에 쓰기 전에 Windows 보안(또는 AMSI 지원 백신)으로 검사하고, 걸린 파일은 쓰지 않습니다.</p>
+          <p lang="en">Contents are scanned with Windows Security (or any AMSI-aware antivirus) before they touch the disk. Flagged files are never written.</p>
+        </div>
+        <div class="card">
+          <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>
+          <h3>Mark-of-the-Web</h3>
+          <p lang="ko">인터넷에서 받은 압축 파일을 풀면 푼 파일에도 “인터넷에서 받음” 표시를 붙여 Windows·Office 경고가 그대로 동작합니다.</p>
+          <p lang="en">Files extracted from a downloaded archive keep the “downloaded from the internet” mark, so Windows and Office warnings still work.</p>
+        </div>
+        <div class="card">
+          <svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg>
+          <h3><span lang="ko">압축 폭탄 차단</span><span lang="en">Bomb protection</span></h3>
+          <p lang="ko">풀린 크기, 항목 수, 겹치는 ZIP 항목을 검사해 압축 폭탄을 멈춥니다.</p>
+          <p lang="en">Expanded size, entry count and overlapping ZIP entries are checked to stop decompression bombs.</p>
+        </div>
+        <div class="card">
+          <svg class="icon" aria-hidden="true"><use href="#i-path"/></svg>
+          <h3><span lang="ko">경로 탈출 차단</span><span lang="en">Path traversal blocked</span></h3>
+          <p lang="ko"><code>..</code>·절대 경로·드라이브 문자가 든 아카이브는 거부하고, 출력 폴더 밖을 가리키는 링크는 만들지 않습니다.</p>
+          <p lang="en">Archives with <code>..</code>, absolute paths or drive letters are rejected, and links pointing outside the output folder are never created.</p>
+        </div>
+        <div class="card">
+          <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+          <h3><span lang="ko">메모리 안전성</span><span lang="en">Memory safety</span></h3>
+          <p lang="ko">엔진과 CLI는 <code>unsafe_code = forbid</code>. 리더마다 퍼징 타깃이 있고, 찾은 입력은 회귀 테스트로 남깁니다.</p>
+          <p lang="en">The engine and CLI use <code>unsafe_code = forbid</code>. Every reader has a fuzz target, and every finding becomes a regression test.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cli">
+    <div class="wrap">
+      <h2><span lang="ko">명령줄 빠른 시작</span><span lang="en">CLI quick start</span></h2>
+      <p class="sub">
+        <span lang="ko">설치하면 <code>nz</code> 명령줄 도구가 함께 들어 있습니다. 형식은 확장자로 정해지고, 풀 때는 자동으로 판별합니다.</span>
+        <span lang="en">The installer includes the <code>nz</code> command-line tool. The output format follows the file extension; input formats are detected automatically.</span>
+      </p>
+<pre><code>nz c archive.7z .\project            <span class="c"># compress (format from extension)</span>
+nz c -fmt:zip -l:9 out.zip .\docs    <span class="c"># choose format and level</span>
+nz x -o:.\out archive.rar            <span class="c"># extract (format auto-detected)</span>
+nz l archive.zip                     <span class="c"># list contents</span>
+nz t archive.nz                      <span class="c"># test .nz (recovery record + all blocks)</span>
+nz backup daily.nz .\work            <span class="c"># incremental .nz backup</span>
+nz bench .\data -cases:zip:5,7z:6    <span class="c"># benchmark</span></code></pre>
+      <p class="foot">
+        <span lang="ko">전체 옵션: <a href="https://github.com/swseokx/NextZip/blob/main/docs/user/cli.md">docs/user/cli.md</a> · 사용 설명서: <a href="https://github.com/swseokx/NextZip/blob/main/docs/user/README.md">docs/user/README.md</a></span>
+        <span lang="en">All options: <a href="https://github.com/swseokx/NextZip/blob/main/docs/user/cli.md">docs/user/cli.md</a> · User guide: <a href="https://github.com/swseokx/NextZip/blob/main/docs/user/README.md">docs/user/README.md</a></span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>NextZip 1.0 · MIT OR Apache-2.0</span>
+    <span>
+      <a href="https://github.com/swseokx/NextZip">GitHub</a> ·
+      <a href="https://github.com/swseokx/NextZip/releases/latest"><span lang="ko">릴리스</span><span lang="en">Releases</span></a> ·
+      <a href="https://github.com/swseokx/NextZip/blob/main/docs/nz-format-v1.md"><span lang="ko">.nz 사양</span><span lang="en">.nz spec</span></a>
+    </span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
