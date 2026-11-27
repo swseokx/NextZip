@@ -291,6 +291,21 @@ pub fn deflate_container(data: &[u8], level: i32, chunk: usize, par: bool) -> Re
 
 /// Inflate a raw Deflate stream whose decompressed size is known.
 pub fn inflate_exact(data: &[u8], size: usize) -> Result<Vec<u8>> {
+    let mut out = Vec::new();
+    inflate_into(data, size, &mut out)?;
+    out.truncate(size);
+    Ok(out)
+}
+
+thread_local! {
+    static DECOMPRESSOR: RefCell<Option<Decompressor>> = const { RefCell::new(None) };
+}
+
+/// [`inflate_exact`] into `out[..size]`, reusing `out`'s memory: `out` grows
+/// to at least `size` bytes and only its first `size` bytes are meaningful
+/// afterwards. Extraction threads keep one buffer each, so decoding a member
+/// does not fault in fresh pages for every file.
+pub fn inflate_into(data: &[u8], size: usize, out: &mut Vec<u8>) -> Result<()> {
     // Deflate expands at most ~1032:1 (258-byte matches in 2-bit codes), so
     // a larger claimed size is corrupt; refusing it here keeps a forged
     // header from allocating gigabytes.
@@ -300,15 +315,19 @@ pub fn inflate_exact(data: &[u8], size: usize) -> Result<Vec<u8>> {
             data.len()
         );
     }
-    let mut out = vec![0u8; size];
-    let mut d = Decompressor::new();
-    let n = d
-        .deflate_decompress(data, &mut out)
-        .map_err(|e| anyhow!("inflate failed: {e:?}"))?;
+    if out.len() < size {
+        out.resize(size, 0);
+    }
+    let n = DECOMPRESSOR.with(|cell| {
+        cell.borrow_mut()
+            .get_or_insert_with(Decompressor::new)
+            .deflate_decompress(data, &mut out[..size])
+            .map_err(|e| anyhow!("inflate failed: {e:?}"))
+    })?;
     if n != size {
         bail!("inflate size mismatch: got {n}, expected {size}");
     }
-    Ok(out)
+    Ok(())
 }
 
 /// Turn a complete Deflate stream into a non-final, byte-aligned fragment.

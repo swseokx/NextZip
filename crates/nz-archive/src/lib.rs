@@ -649,10 +649,6 @@ fn write_member(dirs: &Dirs, rel: &Path, data: &[u8], mtime: Option<SystemTime>)
     Ok(())
 }
 
-fn sanitized(name: &str) -> Result<PathBuf> {
-    safepath::sanitize(name).with_context(|| format!("unsafe member name rejected: {name:?}"))
-}
-
 fn pool(threads: usize) -> Result<rayon::ThreadPool> {
     let n = if threads == 0 {
         nz_core::default_threads()
@@ -723,26 +719,36 @@ fn extract_kind(
                 entries.iter().fold(0u64, |a, e| a.saturating_add(e.usize)),
                 Ordering::Relaxed,
             );
-            let (jobs, dirs) = plan(
-                &names,
-                entries.iter().map(|e| e.is_dir),
-                &mut stats,
-                out_dir,
-                prog,
-            )?;
-            let bytes: Vec<Option<u64>> = pool(opt.threads)?.install(|| {
+            let pl = pool(opt.threads)?;
+            let (jobs, dirs) = pl.install(|| {
+                plan(
+                    &names,
+                    entries.iter().map(|e| e.is_dir),
+                    &mut stats,
+                    out_dir,
+                    prog,
+                )
+            })?;
+            let bytes: Vec<Option<u64>> = pl.install(|| {
                 jobs.par_iter()
                     .map(|(i, rel)| -> Result<Option<u64>> {
                         prog.check()?;
                         let e = &entries[*i];
                         let _mem = budget.take(e.usize);
-                        let data = read_zip_member(&f, e, pw).with_context(|| names[*i].clone())?;
-                        if !guard.clean(&names[*i], &data)? {
-                            return Ok(None);
-                        }
-                        write_member(&dirs, rel, &data, e.mtime)?;
-                        prog.file_done(&names[*i], data.len() as u64);
-                        Ok(Some(data.len() as u64))
+                        ZIP_BUFFERS.with(|cell| {
+                            let mut bufs = cell.borrow_mut();
+                            let r = extract_zip_member(&f, e, pw, &mut bufs, |data| {
+                                if !guard.clean(&names[*i], data)? {
+                                    return Ok(None);
+                                }
+                                write_member(&dirs, rel, data, e.mtime)?;
+                                prog.file_done(&names[*i], data.len() as u64);
+                                Ok(Some(data.len() as u64))
+                            })
+                            .with_context(|| names[*i].clone());
+                            bufs.trim();
+                            r
+                        })
                     })
                     .collect::<Result<_>>()
             })?;
@@ -761,14 +767,17 @@ fn extract_kind(
             );
             prog.total
                 .store(a.members.iter().map(|m| m.usize).sum(), Ordering::Relaxed);
-            let (jobs, dirs) = plan(
-                &names,
-                a.members.iter().map(|m| m.is_dir()),
-                &mut stats,
-                out_dir,
-                prog,
-            )?;
-            let bytes: Vec<Option<u64>> = pool(opt.threads)?.install(|| {
+            let pl = pool(opt.threads)?;
+            let (jobs, dirs) = pl.install(|| {
+                plan(
+                    &names,
+                    a.members.iter().map(|m| m.is_dir()),
+                    &mut stats,
+                    out_dir,
+                    prog,
+                )
+            })?;
+            let bytes: Vec<Option<u64>> = pl.install(|| {
                 jobs.par_iter()
                     .map(|(i, rel)| -> Result<Option<u64>> {
                         prog.check()?;
@@ -795,13 +804,16 @@ fn extract_kind(
             let names: Vec<String> = e.members.iter().map(|m| m.name.clone()).collect();
             prog.total
                 .store(e.members.iter().map(|m| m.size).sum(), Ordering::Relaxed);
-            let (jobs, dirs) = plan(
-                &names,
-                e.members.iter().map(|m| m.is_dir),
-                &mut stats,
-                out_dir,
-                prog,
-            )?;
+            let pl = pool(opt.threads)?;
+            let (jobs, dirs) = pl.install(|| {
+                plan(
+                    &names,
+                    e.members.iter().map(|m| m.is_dir),
+                    &mut stats,
+                    out_dir,
+                    prog,
+                )
+            })?;
             if e.solid {
                 let want: std::collections::HashMap<usize, &PathBuf> =
                     jobs.iter().map(|(i, p)| (*i, p)).collect();
@@ -818,7 +830,7 @@ fn extract_kind(
                     Ok(())
                 })?;
             } else {
-                let bytes: Vec<Option<u64>> = pool(opt.threads)?.install(|| {
+                let bytes: Vec<Option<u64>> = pl.install(|| {
                     jobs.par_iter()
                         .map(|(i, rel)| -> Result<Option<u64>> {
                             prog.check()?;
@@ -1124,9 +1136,18 @@ impl Dirs {
         self.finish()
     }
 
-    /// Create the folders that the archive lists as entries.
+    /// Create the folders that the archive lists as entries (those that a
+    /// member already created as its parent are skipped).
     fn finish(&self) -> Result<()> {
         self.explicit.par_iter().try_for_each(|d| -> Result<()> {
+            if self
+                .parents
+                .get(d)
+                .and_then(std::sync::OnceLock::get)
+                .is_some_and(Result::is_ok)
+            {
+                return Ok(());
+            }
             let p = self.out_dir.join(d);
             std::fs::create_dir_all(&p).with_context(|| format!("cannot create {}", p.display()))
         })
@@ -1142,8 +1163,23 @@ fn plan(
     out_dir: &Path,
     prog: &Progress,
 ) -> Result<(Vec<(usize, PathBuf)>, Dirs)> {
-    if let Some(n) = safepath::rename_notice(names.iter().map(String::as_str)) {
-        prog.note(n);
+    // Each name is sanitised once, on the current pool (sanitising every name
+    // twice on one thread, the second time for the rename notice, took ~5 ms
+    // of a ~200 ms extraction of the 1,444-member benchmark set).
+    let mut rels: Vec<(Option<PathBuf>, Option<String>)> = names
+        .par_iter()
+        .map(|n| {
+            let rel = safepath::sanitize(n);
+            let renamed = rel.as_deref().and_then(|r| safepath::changed(n, r));
+            (rel, renamed)
+        })
+        .collect();
+    let mut renamed = rels
+        .iter()
+        .zip(names)
+        .filter_map(|((_, new), old)| new.as_ref().map(|new| (old, new)));
+    if let Some((old, new)) = renamed.next() {
+        prog.note(safepath::notice(1 + renamed.count(), old, new));
     }
     let mut jobs = Vec::new();
     let mut dirs = Dirs {
@@ -1152,7 +1188,11 @@ fn plan(
         explicit: Vec::new(),
     };
     for (i, d) in is_dir.enumerate() {
-        let rel = sanitized(&names[i])?;
+        let name = &names[i];
+        let rel = rels[i]
+            .0
+            .take()
+            .with_context(|| format!("unsafe member name rejected: {name:?}"))?;
         if d {
             dirs.explicit.push(rel);
             stats.dirs += 1;
@@ -1164,6 +1204,28 @@ fn plan(
         }
     }
     Ok((jobs, dirs))
+}
+
+thread_local! {
+    /// Per-thread read and inflate buffers of ZIP extraction. Fresh buffers
+    /// per member faulted in ~180 MB of new pages on the 100 MB benchmark set.
+    static ZIP_BUFFERS: std::cell::RefCell<nz_core::zip::EntryBuffers> =
+        std::cell::RefCell::new(nz_core::zip::EntryBuffers::default());
+}
+
+/// Read ZIP member `e` (into `bufs` unless it is encrypted) and pass its
+/// bytes to `f`.
+fn extract_zip_member<T>(
+    file: &File,
+    e: &nz_core::zip::ZipEntry,
+    password: Option<&[u8]>,
+    bufs: &mut nz_core::zip::EntryBuffers,
+    f: impl FnOnce(&[u8]) -> Result<T>,
+) -> Result<T> {
+    if e.flags & 1 == 0 {
+        return f(nz_core::zip::read_entry_into(file, e, bufs)?);
+    }
+    f(&read_zip_member(file, e, password)?)
 }
 
 /// Read a ZIP member, decrypting traditional PKWARE encryption if needed.

@@ -1054,20 +1054,64 @@ fn cp437(b: u8) -> char {
 
 /// Read and decompress one member's bytes, verifying the CRC.
 pub fn read_entry(f: &File, e: &ZipEntry) -> Result<Vec<u8>> {
+    let mut bufs = EntryBuffers::default();
+    let n = read_entry_into(f, e, &mut bufs)?.len();
+    let mut data = std::mem::take(&mut bufs.data);
+    data.truncate(n);
+    Ok(data)
+}
+
+/// Reusable buffers for [`read_entry_into`].
+#[derive(Default)]
+pub struct EntryBuffers {
+    comp: Vec<u8>,
+    data: Vec<u8>,
+}
+
+impl EntryBuffers {
+    /// Buffers above this size are released after use, so one huge member
+    /// does not stay allocated for the rest of an extraction.
+    const KEEP: usize = 64 << 20;
+
+    /// Release buffers that grew past [`Self::KEEP`].
+    pub fn trim(&mut self) {
+        for b in [&mut self.comp, &mut self.data] {
+            if b.capacity() > Self::KEEP {
+                *b = Vec::new();
+            }
+        }
+    }
+}
+
+/// [`read_entry`] into reusable buffers; returns the member's bytes.
+pub fn read_entry_into<'a>(f: &File, e: &ZipEntry, bufs: &'a mut EntryBuffers) -> Result<&'a [u8]> {
     let mut lh = [0u8; 30];
     read_at(f, &mut lh, e.local_offset)?;
     if le32(&lh, 0) != SIG_LOCAL {
         bail!("{}: bad local header", e.name);
     }
     let data_off = e.local_offset + 30 + u64::from(le16(&lh, 26)) + u64::from(le16(&lh, 28));
-    let mut comp = vec![0u8; e.csize as usize];
-    read_at(f, &mut comp, data_off)?;
-    let data = match e.method {
-        0 => comp,
-        8 => deflate::inflate_exact(&comp, e.usize as usize)?,
+    let csize = usize::try_from(e.csize).context("member too large")?;
+    let usize = usize::try_from(e.usize).context("member too large")?;
+    let data: &[u8] = match e.method {
+        0 => {
+            if bufs.data.len() < csize {
+                bufs.data.resize(csize, 0);
+            }
+            read_at(f, &mut bufs.data[..csize], data_off)?;
+            &bufs.data[..csize]
+        }
+        8 => {
+            if bufs.comp.len() < csize {
+                bufs.comp.resize(csize, 0);
+            }
+            read_at(f, &mut bufs.comp[..csize], data_off)?;
+            deflate::inflate_into(&bufs.comp[..csize], usize, &mut bufs.data)?;
+            &bufs.data[..usize]
+        }
         m => bail!("{}: unsupported compression method {m}", e.name),
     };
-    if crc32fast::hash(&data) != e.crc {
+    if crc32fast::hash(data) != e.crc {
         bail!("{}: CRC mismatch", e.name);
     }
     Ok(data)
@@ -1247,6 +1291,20 @@ mod tests {
         assert_eq!(std::fs::read(out.join("a.txt")).unwrap(), text);
         assert_eq!(std::fs::read(out.join("sub/noise.bin")).unwrap(), noise);
         assert!(out.join("empty").is_dir());
+
+        // Reused buffers: a large member first leaves stale bytes behind;
+        // later, smaller members must still come back exactly.
+        let f = File::open(&p).unwrap();
+        let central = read_central(&f).unwrap();
+        let mut order: Vec<&ZipEntry> = central.iter().filter(|e| !e.is_dir).collect();
+        order.sort_by_key(|e| std::cmp::Reverse(e.usize));
+        assert!(order.iter().any(|e| e.method == 0) && order.iter().any(|e| e.method == 8));
+        let mut bufs = EntryBuffers::default();
+        for e in order {
+            let got = read_entry_into(&f, e, &mut bufs).unwrap().to_vec();
+            assert_eq!(got, read_entry(&f, e).unwrap(), "{}", e.name);
+            assert_eq!(got, std::fs::read(src.join(&e.name)).unwrap(), "{}", e.name);
+        }
     }
 
     #[test]

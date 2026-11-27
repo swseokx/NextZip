@@ -121,8 +121,11 @@ BENCH OPTIONS:
 ";
 
 fn main() -> ExitCode {
+    nz_core::trace("main");
     let args: Vec<String> = std::env::args().skip(1).collect();
-    match run(&args) {
+    let r = run(&args);
+    nz_core::trace("run done");
+    match r {
         Ok(()) => ExitCode::SUCCESS,
         Err(e) => {
             eprintln!("nz: error: {e:#}");

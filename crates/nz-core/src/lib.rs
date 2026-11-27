@@ -183,7 +183,9 @@ impl CompressOptions {
 /// Print a timing line to stderr when `NZ_TRACE` is set.
 pub fn trace(msg: &str) {
     if std::env::var_os("NZ_TRACE").is_some() {
-        eprintln!("[nz] {msg}");
+        static T0: std::sync::OnceLock<std::time::Instant> = std::sync::OnceLock::new();
+        let t0 = T0.get_or_init(std::time::Instant::now);
+        eprintln!("[nz {:7.1}] {msg}", t0.elapsed().as_secs_f64() * 1e3);
     }
 }
 
