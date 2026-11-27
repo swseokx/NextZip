@@ -1,0 +1,28 @@
+# interleaved runs, 7 per case, 2 rounds; msvc = perf-4 8070e07 default build, clang = same source with CC_x86_64_pc_windows_msvc=clang-cl (LLVM 23.1.6); reference rows removed
+load: chrome 0.62; chrome 0.60; AMDRSServ 0.52; webwallpaper64 0.18; steamwebhelper 0.14
+total 2.43 max 0.62
+# round 1
+load: chrome 0.54; AMDRSServ 0.48; steamwebhelper 0.21; webwallpaper64 0.19; chrome 0.13
+total 1.89 max 0.54
+== K1 text
+msvc   size   14637388 med 0.0585 min 0.0562 all 0.057 0.059 0.056 0.064 0.058 0.061 0.074
+clang  size   14637388 med 0.0583 min 0.0563 all 0.061 0.069 0.057 0.058 0.058 0.056 0.069
+== K1b mixed
+msvc   size   72391199 med 0.1840 min 0.1542 all 0.218 0.184 0.190 0.189 0.162 0.156 0.154
+clang  size   72391199 med 0.1681 min 0.1527 all 0.186 0.168 0.183 0.166 0.153 0.167 0.173
+== K5 excl
+msvc   size          0 med 0.2113 min 0.2036 all 0.211 0.657 0.204 0.296 0.211 0.208 0.363
+clang  size          0 med 0.2066 min 0.1971 all 0.197 0.228 0.205 0.217 0.615 0.205 0.207
+# round 2
+load: chrome 0.53; AMDRSServ 0.39; steamwebhelper 0.22; webwallpaper64 0.21; webwallpaper64 0.12
+total 1.82 max 0.53
+== K1 text
+msvc   size   14637388 med 0.0637 min 0.0612 all 0.064 0.061 0.071 0.074 0.064 0.064 0.063
+clang  size   14637388 med 0.0624 min 0.0614 all 0.062 0.061 0.069 0.062 0.063 0.067 0.062
+== K1b mixed
+msvc   size   72391199 med 0.1546 min 0.1456 all 0.146 0.160 0.155 0.168 0.146 0.160 0.148
+clang  size   72391199 med 0.1503 min 0.1379 all 0.138 0.150 0.142 0.161 0.154 0.146 0.151
+== K5 excl
+msvc   size          0 med 0.2198 min 0.2028 all 0.210 0.235 0.285 0.296 0.203 0.220 0.210
+clang  size          0 med 0.2123 min 0.2024 all 0.444 0.252 0.202 0.391 0.203 0.212 0.205
+
