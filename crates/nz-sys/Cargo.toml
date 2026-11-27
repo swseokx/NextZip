@@ -7,7 +7,7 @@ license.workspace = true
 rust-version.workspace = true
 
 [target.'cfg(windows)'.dependencies]
-windows-sys = { workspace = true, features = ["Win32_System_ProcessStatus", "Win32_Storage_FileSystem"] }
+windows-sys = { workspace = true, features = ["Win32_System_ProcessStatus", "Win32_Storage_FileSystem", "Win32_System_Memory", "Win32_Security"] }
 
 # Besides nz-xz, this is the only crate that contains `unsafe` code (Win32
 # calls). Everything else keeps `unsafe_code = "forbid"`.

@@ -280,10 +280,16 @@ pub fn extract_with(
     threads: usize,
     opt: &ExtractOptions<'_>,
 ) -> Result<ExtractStats> {
+    let t0 = std::time::Instant::now();
     let fmt = Format::sniff(archive)?;
-    pool(threads)?.install(|| match fmt {
+    let r = pool(threads)?.install(|| match fmt {
         Format::Zip => zip::extract_zip(archive, out_dir),
         Format::SevenZ => sevenz::extract_7z(archive, out_dir),
         _ => tarfam::extract_tar_with(archive, out_dir, opt),
-    })
+    });
+    trace(&format!(
+        "extract {:.1} ms",
+        t0.elapsed().as_secs_f64() * 1e3
+    ));
+    r
 }

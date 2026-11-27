@@ -17,6 +17,9 @@
 //! * [`process_peak_memory`]: peak memory of a (finished) child process, for
 //!   `nz bench`.
 //!
+//! * [`FileMapping`]: a writable mapping of an output file, so several threads
+//!   (or a decoder) can fill it without a single-threaded `WriteFile` copy.
+//!
 //! On other systems there is one "group" holding every CPU and binding is a
 //! no-op.
 
@@ -35,6 +38,9 @@ pub struct ProcessorGroup {
 pub fn low_mask(n: u32) -> u64 {
     if n >= 64 { u64::MAX } else { (1u64 << n) - 1 }
 }
+
+mod mapped;
+pub use mapped::{FileMapping, MAPPING_SUPPORTED, MappedView, VIEW_ALIGN};
 
 /// Active processor groups of the machine, in group order. Never empty.
 pub fn processor_groups() -> Vec<ProcessorGroup> {

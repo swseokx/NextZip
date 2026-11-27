@@ -857,20 +857,36 @@ impl<R: BufRead> Read for MultiLz4<R> {
     }
 }
 
-/// Decompressing reader for an archive file.
+/// Decompressing reader for an archive file. Single-threaded decoders are
+/// wrapped in a [`ReadAhead`] so decoding overlaps extraction; the parallel
+/// zstd decoder already decodes on its own threads, and an extra copy stage
+/// behind it cost K6 time (2.1 GB member).
 fn open_decoder(archive: &Path, threads: usize) -> Result<Box<dyn Read + Send>> {
+    let dec = open_decoder_raw(archive, threads)?;
+    Ok(if dec.1 {
+        dec.0
+    } else {
+        Box::new(ReadAhead::new(dec.0))
+    })
+}
+
+/// The decoder for `archive` and whether it decodes on its own threads.
+fn open_decoder_raw(archive: &Path, threads: usize) -> Result<(Box<dyn Read + Send>, bool)> {
     let f = File::open(archive).with_context(|| format!("cannot open {}", archive.display()))?;
     let mut r = BufReader::with_capacity(1 << 20, f);
     let head = r.fill_buf()?.to_vec();
     let codec = TarCodec::sniff(&head)
         .with_context(|| format!("{}: not a tar archive", archive.display()))?;
     Ok(match codec {
-        TarCodec::None => Box::new(r),
-        TarCodec::Gzip => Box::new(flate2::bufread::MultiGzDecoder::new(r)),
-        TarCodec::Bzip2 => Box::new(bzip2::bufread::MultiBzDecoder::new(r)),
-        TarCodec::Lz4 => Box::new(MultiLz4 {
-            dec: Some(lz4::Decoder::new(r)?),
-        }),
+        TarCodec::None => (Box::new(r), false),
+        TarCodec::Gzip => (Box::new(flate2::bufread::MultiGzDecoder::new(r)), false),
+        TarCodec::Bzip2 => (Box::new(bzip2::bufread::MultiBzDecoder::new(r)), false),
+        TarCodec::Lz4 => (
+            Box::new(MultiLz4 {
+                dec: Some(lz4::Decoder::new(r)?),
+            }),
+            false,
+        ),
         TarCodec::Zstd => {
             // Frames are decoded in parallel (K6); memory: in-flight frames
             // of up to FRAME_BYTES each within half the budget.
@@ -878,7 +894,10 @@ fn open_decoder(archive: &Path, threads: usize) -> Result<Box<dyn Read + Send>> 
             let f = File::open(archive)?;
             let per = crate::tarzst::FRAME_BYTES * 3 / 2;
             let inflight = (crate::mem::default_budget() / 2 / per).clamp(1, threads.max(1) as u64);
-            Box::new(crate::parzst::ParZstd::new(f, threads, inflight as usize))
+            (
+                Box::new(crate::parzst::ParZstd::new(f, threads, inflight as usize)),
+                true,
+            )
         }
         TarCodec::Xz => {
             let stream = liblzma::stream::MtStreamBuilder::new()
@@ -887,7 +906,10 @@ fn open_decoder(archive: &Path, threads: usize) -> Result<Box<dyn Read + Send>> 
                 .memlimit_stop(u64::MAX)
                 .decoder()
                 .map_err(|e| anyhow!("xz decoder: {e}"))?;
-            Box::new(liblzma::bufread::XzDecoder::new_stream(r, stream))
+            (
+                Box::new(liblzma::bufread::XzDecoder::new_stream(r, stream)),
+                false,
+            )
         }
     })
 }
@@ -982,6 +1004,165 @@ const ASYNC_WRITE_MAX: u64 = 8 << 20;
 const ASYNC_WRITE_LIMIT: u64 = 256 << 20;
 /// Piece size for the parallel positional writes of large members.
 const PIECE: u64 = 8 << 20;
+
+/// Window of a large member mapped at a time (a multiple of
+/// [`nz_sys::VIEW_ALIGN`]); bounds the pages the process keeps resident.
+const MAP_WINDOW: u64 = 256 << 20;
+
+/// Write a large member of `size` bytes read from `src` to a new file at
+/// `dest`: through a file mapping filled by the Rayon pool when the system
+/// supports it, else with a sequential writer thread.
+fn write_large<R: Read>(src: &mut R, dest: &Path, size: u64) -> Result<File> {
+    let out = std::fs::OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .truncate(true)
+        .open(dest)
+        .with_context(|| format!("cannot create {}", dest.display()))?;
+    if nz_sys::MAPPING_SUPPORTED {
+        match nz_sys::FileMapping::new(&out, size) {
+            Ok(map) => {
+                write_mapped(src, &map, size, MAP_WINDOW, dest)?;
+                return Ok(out);
+            }
+            Err(e) => crate::trace(&format!(
+                "{}: mapping failed ({e}), writing sequentially",
+                dest.display()
+            )),
+        }
+    }
+    write_streamed(src, out, size, dest)
+}
+
+/// K6 (2.1 GB member): one writer thread spent ~96% of the run in
+/// `WriteFile`. Here the file is mapped window by window; each window is
+/// filled by [`fill_prefault`] and unmapped on a helper thread (~20 ms per
+/// 256 MiB window) while the next one fills.
+fn write_mapped<R: Read>(
+    src: &mut R,
+    map: &nz_sys::FileMapping,
+    size: u64,
+    window: u64,
+    dest: &Path,
+) -> Result<()> {
+    let t0 = std::time::Instant::now();
+    let mut off = 0u64;
+    let mut unmaps = Vec::new();
+    while off < size {
+        let wlen = (size - off).min(window) as usize;
+        let mut view = map
+            .view(off, wlen)
+            .with_context(|| format!("cannot map {}", dest.display()))?;
+        fill_prefault(src, view.as_mut_slice(), dest)?;
+        unmaps.push(std::thread::spawn(move || view.finish()));
+        off += wlen as u64;
+    }
+    for h in unmaps {
+        h.join()
+            .map_err(|_| anyhow!("unmap thread panicked"))?
+            .with_context(|| format!("cannot write {}", dest.display()))?;
+    }
+    crate::trace(&format!(
+        "mapped write {} bytes {:.0} ms",
+        size,
+        t0.elapsed().as_secs_f64() * 1e3
+    ));
+    Ok(())
+}
+
+/// Fill `win` from `src`: the pool touches each page of a piece (zero-fill
+/// fault) while this thread reads earlier pieces straight into the mapping,
+/// so the data is copied once, by this thread, into resident pages.
+fn fill_prefault<R: Read>(src: &mut R, win: &mut [u8], dest: &Path) -> Result<()> {
+    rayon::in_place_scope(|s| -> Result<()> {
+        let (tx, rx) = mpsc::channel::<(usize, &mut [u8])>();
+        for (i, piece) in win.chunks_mut(PIECE as usize).enumerate() {
+            let tx = tx.clone();
+            s.spawn(move |_| {
+                for page in piece.chunks_mut(4096) {
+                    page[0] = 0;
+                }
+                let _ = tx.send((i, piece));
+            });
+        }
+        drop(tx);
+        let mut ready = std::collections::BTreeMap::new();
+        let mut next = 0usize;
+        loop {
+            let piece = loop {
+                if let Some(p) = ready.remove(&next) {
+                    break Some(p);
+                }
+                match rx.try_recv() {
+                    Ok((i, p)) => {
+                        ready.insert(i, p);
+                    }
+                    Err(mpsc::TryRecvError::Disconnected) => break None,
+                    Err(mpsc::TryRecvError::Empty) => {
+                        if rayon::yield_now() != Some(rayon::Yield::Executed) {
+                            std::thread::sleep(Duration::from_micros(20));
+                        }
+                    }
+                }
+            };
+            let Some(piece) = piece else {
+                return Ok(());
+            };
+            src.read_exact(piece).map_err(|e| {
+                if e.kind() == io::ErrorKind::UnexpectedEof {
+                    anyhow!("{}: tar member truncated", dest.display())
+                } else {
+                    e.into()
+                }
+            })?;
+            next += 1;
+        }
+    })
+}
+
+/// Large member without a mapping: a writer thread writes PIECE-byte buffers
+/// in order while this thread reads the stream on. Writes stay sequential:
+/// out-of-order writes past NTFS's valid data length make it zero-fill the
+/// gap first (measured slower).
+fn write_streamed<R: Read>(src: &mut R, out: File, size: u64, dest: &Path) -> Result<File> {
+    out.set_len(size)?;
+    let (tx, rx) = mpsc::sync_channel::<Vec<u8>>(4);
+    let (back_tx, back_rx) = mpsc::channel::<Vec<u8>>();
+    let writer = std::thread::spawn(move || -> io::Result<File> {
+        let mut out = out;
+        for buf in rx {
+            out.write_all(&buf)?;
+            let _ = back_tx.send(buf);
+        }
+        Ok(out)
+    });
+    let mut off = 0u64;
+    let mut failed = false;
+    while off < size {
+        let want = (size - off).min(PIECE);
+        let mut buf = back_rx.try_recv().unwrap_or_default();
+        buf.clear();
+        (&mut *src).take(want).read_to_end(&mut buf)?;
+        if (buf.len() as u64) < want {
+            bail!("{}: tar member truncated", dest.display());
+        }
+        if tx.send(buf).is_err() {
+            failed = true;
+            break;
+        }
+        off += want;
+    }
+    drop(tx);
+    let out = writer
+        .join()
+        .map_err(|_| anyhow!("writer thread panicked"))?
+        .with_context(|| format!("cannot write {}", dest.display()))?;
+    if failed {
+        bail!("cannot write {}", dest.display());
+    }
+    Ok(out)
+}
 
 /// Set a file's modification time to `secs` after the Unix epoch. Values the
 /// platform cannot represent (a corrupt or negative header time read as a huge
@@ -1203,7 +1384,7 @@ pub(crate) fn extract_tar_stream(
     use std::sync::atomic::{AtomicU64, Ordering};
 
     std::fs::create_dir_all(out_dir)?;
-    let mut ar = tar::Archive::new(crate::tarfix::TarFix::new(ReadAhead::new(src)));
+    let mut ar = tar::Archive::new(crate::tarfix::TarFix::new(src));
     let mut stats = ExtractStats::default();
     let mut made: HashSet<PathBuf> = HashSet::new();
     let mut dir_times: Vec<(PathBuf, u64)> = Vec::new();
@@ -1307,49 +1488,7 @@ pub(crate) fn extract_tar_stream(
                             }
                         }
                     } else {
-                        // Large member: a writer thread writes PIECE-byte
-                        // buffers in order while this thread reads the stream
-                        // on (K6: copying and writing on one thread capped a
-                        // 2 GB file near 2 GB/s). Writes stay sequential:
-                        // out-of-order writes past NTFS's valid data length
-                        // make it zero-fill the gap first (measured slower).
-                        let out = File::create(&dest)
-                            .with_context(|| format!("cannot create {}", dest.display()))?;
-                        out.set_len(size)?;
-                        let (tx, rx) = mpsc::sync_channel::<Vec<u8>>(4);
-                        let (back_tx, back_rx) = mpsc::channel::<Vec<u8>>();
-                        let writer = std::thread::spawn(move || -> io::Result<File> {
-                            let mut out = out;
-                            for buf in rx {
-                                out.write_all(&buf)?;
-                                let _ = back_tx.send(buf);
-                            }
-                            Ok(out)
-                        });
-                        let mut off = 0u64;
-                        let mut failed = false;
-                        while off < size {
-                            let want = (size - off).min(PIECE);
-                            let mut buf = back_rx.try_recv().unwrap_or_default();
-                            buf.clear();
-                            (&mut item).take(want).read_to_end(&mut buf)?;
-                            if (buf.len() as u64) < want {
-                                bail!("{}: tar member truncated", dest.display());
-                            }
-                            if tx.send(buf).is_err() {
-                                failed = true;
-                                break;
-                            }
-                            off += want;
-                        }
-                        drop(tx);
-                        let out = writer
-                            .join()
-                            .map_err(|_| anyhow!("writer thread panicked"))?
-                            .with_context(|| format!("cannot write {}", dest.display()))?;
-                        if failed {
-                            bail!("cannot write {}", dest.display());
-                        }
+                        let out = write_large(&mut item, &dest, size)?;
                         if let Some(t) = mtime {
                             set_mtime(&out, t);
                         }
@@ -1529,6 +1668,77 @@ mod tests {
             let a = std::fs::read(tmp.path().join(format!("a{codec:?}1"))).unwrap();
             let b = std::fs::read(tmp.path().join(format!("a{codec:?}4"))).unwrap();
             assert!(a == b, "{codec:?} depends on thread count");
+        }
+    }
+
+    fn noisy(n: usize) -> Vec<u8> {
+        let mut x = 0x9e37_79b9_7f4a_7c15u64;
+        (0..n)
+            .map(|i| {
+                x ^= x << 13;
+                x ^= x >> 7;
+                x ^= x << 17;
+                if i % 3 == 0 { b'a' } else { x as u8 }
+            })
+            .collect()
+    }
+
+    /// Large members go through the mapped writer: several windows, the last
+    /// one partial, and a source that ends early is an error.
+    #[test]
+    fn mapped_large_member_windows() {
+        let tmp = tempfile::tempdir().unwrap();
+        let data = noisy(11 * 1024 * 1024 + 4321);
+        let p = tmp.path().join("big.bin");
+        let pool = crate::cpu::pool(3).unwrap();
+        pool.install(|| {
+            let f = std::fs::OpenOptions::new()
+                .read(true)
+                .write(true)
+                .create(true)
+                .truncate(true)
+                .open(&p)
+                .unwrap();
+            if !nz_sys::MAPPING_SUPPORTED {
+                return;
+            }
+            let map = nz_sys::FileMapping::new(&f, data.len() as u64).unwrap();
+            let window = 3 * nz_sys::VIEW_ALIGN * 16;
+            let mut src = &data[..];
+            write_mapped(&mut src, &map, data.len() as u64, window, &p).unwrap();
+            drop(map);
+            drop(f);
+            assert!(std::fs::read(&p).unwrap() == data);
+            // Truncated source.
+            let f = std::fs::OpenOptions::new()
+                .read(true)
+                .write(true)
+                .open(&p)
+                .unwrap();
+            let map = nz_sys::FileMapping::new(&f, data.len() as u64).unwrap();
+            let mut short = &data[..data.len() - 10];
+            let err = write_mapped(&mut short, &map, data.len() as u64, window, &p).unwrap_err();
+            assert!(err.to_string().contains("truncated"), "{err}");
+        });
+        // End to end: a tar.zst whose member is above ASYNC_WRITE_MAX.
+        let src = tmp.path().join("src");
+        std::fs::create_dir_all(&src).unwrap();
+        std::fs::write(src.join("big.bin"), &data).unwrap();
+        let items = vec![item(
+            "big.bin",
+            Kind::File,
+            src.join("big.bin"),
+            data.len() as u64,
+            None,
+        )];
+        for threads in [1, 4] {
+            let pool = crate::cpu::pool(threads).unwrap();
+            let arc = tmp.path().join(format!("b{threads}.tar.zst"));
+            pool.install(|| write_tar(&items, &arc, &TarOptions::new(TarCodec::Zstd, 3)))
+                .unwrap();
+            let out = tmp.path().join(format!("x{threads}"));
+            pool.install(|| extract_tar(&arc, &out)).unwrap();
+            assert!(std::fs::read(out.join("big.bin")).unwrap() == data);
         }
     }
 
