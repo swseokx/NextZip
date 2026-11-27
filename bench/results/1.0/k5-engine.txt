@@ -1,0 +1,16 @@
+K5 engine (ZIP extract in C:\nzbench-excl), 2026-11-22 13:17-14:17
+Repeated nz bench (7 runs + warm-up each), zip:5 mixed set, nz / bz / kz extract medians:
+  excl r1: nz 0.211  bz 0.663  kz 0.334  ratio 1.58
+  excl r2: nz 0.384  bz 0.918  kz 0.388  ratio 1.01
+  excl r3: nz 0.249  bz 0.570  kz 0.306  ratio 1.23
+  (earlier clean-mixed-excl 1.41, final-mixed-excl 2.14)
+  normal r1: nz 0.410  bz 1.665  kz 1.408  ratio 3.43
+nz runs are bimodal (0.19-0.25 s vs 0.38-0.69 s); best-case ratio nz 0.193 vs kz 0.283 = 1.47.
+Background during these runs: 2.4-3.8 cores (another session's find ~1, chrome 0.6-1.6).
+
+Path check (15 interleaved runs): nz x (nz-archive ZIP path) vs nz-core zip::extract_zip (example xcore)
+  excl:   nz-archive med 0.221 min 0.210 | nz-core med 0.212 min 0.201
+  normal: nz-archive med 0.410 min 0.389 | nz-core med 0.379 min 0.353
+Thread-time breakdown of nz-core path (NZ_TRACE, excl, summed over 12 threads, ms):
+  decode 258-319, create 657-1769, write 746-1034, close 326-430; wall 243-395 ms
+=> ~85% of the work is NTFS create/write/close of 1444 files, inflate ~13%.

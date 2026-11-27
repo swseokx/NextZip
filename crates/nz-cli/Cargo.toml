@@ -1,0 +1,31 @@
+[package]
+name = "nz-cli"
+description = "NextZip command line tool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "nz"
+path = "src/main.rs"
+
+[dependencies]
+nz-core.workspace = true
+nz-archive.workspace = true
+nz-create.workspace = true
+nz-sys.workspace = true
+nz-front.workspace = true
+nz-nzf.workspace = true
+chrono.workspace = true
+anyhow.workspace = true
+rayon.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tempfile.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

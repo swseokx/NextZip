@@ -1,0 +1,8 @@
+# liblzma-sys ships a generic config.h without TUKLIB_FAST_UNALIGNED_ACCESS,
+# which makes liblzma's match-length comparison (memcmplen.h) take the slow
+# byte-by-byte path. M1 measurement (text set, 1 thread, LZMA2 preset 1):
+# 4.67 s -> 2.91 s. Only x86-64 targets, where unaligned loads are cheap.
+[env]
+CFLAGS_x86_64_pc_windows_msvc = "/DTUKLIB_FAST_UNALIGNED_ACCESS=1"
+CFLAGS_x86_64_unknown_linux_gnu = "-DTUKLIB_FAST_UNALIGNED_ACCESS=1"
+CFLAGS_x86_64_apple_darwin = "-DTUKLIB_FAST_UNALIGNED_ACCESS=1"

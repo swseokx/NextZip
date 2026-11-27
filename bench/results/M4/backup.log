@@ -1,0 +1,29 @@
+load before: 82
+== run 1 (initial)
+C:/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/b.nz: snapshot 1: 1444 files, 248 dirs, 105120128 bytes scanned, 2453 new chunks (104925496 bytes), 98 reused, +73776279 bytes written, archive 73776279 bytes, 0.596s
+/c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/backup_bench.sh: line 10: bc: command not found
+time:  s, archive bytes: 73776279
+== run 2 (unchanged)
+C:/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/b.nz: snapshot 2: 1444 files, 248 dirs, 105120128 bytes scanned, 0 new chunks (0 bytes), 2551 reused, +2677708 bytes written, archive 73904903 bytes, 0.166s
+/c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/backup_bench.sh: line 10: bc: command not found
+time:  s, archive bytes: 73904903
+largest: /c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/src/jars_framework/Generic/lib/bcprov-jdk18on-1.84.jar
+== run 3 (modified)
+C:/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/b.nz: snapshot 3: 1445 files, 248 dirs, 107120170 bytes scanned, 54 new chunks (3819894 bytes), 2525 reused, +6501711 bytes written, archive 77853016 bytes, 0.185s
+/c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/backup_bench.sh: line 10: bc: command not found
+time:  s, archive bytes: 77853016
+   #  time                  entries           bytes  label
+   1  2026-11-23 10:54:35      1692       105120128  
+   2  2026-11-23 10:54:36      1692       105120128  
+   3  2026-11-23 10:54:36      1693       107120170  
+restore latest vs tree:
+diff: /c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/r3/src: No such file or directory
+diff: /c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/r3/src: No such file or directory
+DIFFERENT
+load after: 80
+snap1 vs original:
+diff: /c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/r1/src: No such file or directory
+DIFFERENT
+snap2 vs original:
+diff: /c/Users/swseokx/AppData/Local/Temp/claude/fd7528ba0a816534/620d7eef-c08c-47db-ad18-1b17588e95d2/scratchpad/bk/r2/src: No such file or directory
+DIFFERENT

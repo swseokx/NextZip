@@ -1,0 +1,8 @@
+dataset <bench-data> : 1444 files, 105120128 bytes; 5 runs + 1 warm-up, 12 threads
+nz zip:5                     compress...... extract......
+dataset: <bench-data> (1444 files, 100.25 MiB), median of 5 runs, 12 threads
+
+| case | size (bytes) | ratio | compress s | MB/s | extract s | verified |
+|---|---:|---:|---:|---:|---:|:---:|
+| nz zip:5 | 72391199 | 68.87% | 0.139 | 721.0 | 0.766 | yes |
+

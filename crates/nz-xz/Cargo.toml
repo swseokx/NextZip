@@ -1,0 +1,15 @@
+[package]
+name = "nz-xz"
+description = "NextZip: minimal liblzma FFI shim for features the safe liblzma crate does not expose (LZMA2 preset dictionary)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+liblzma-sys.workspace = true
+
+# This crate is the only place in the workspace that contains `unsafe` code:
+# it calls liblzma directly. Everything else keeps `unsafe_code = "forbid"`.
+[lints.clippy]
+all = { level = "warn", priority = -1 }

@@ -1,0 +1,101 @@
+dataset <bench-data> : 1444 files, 105120128 bytes; 7 runs + 1 warm-up, 12 threads
+nz zip:5                     compress........ extract........
+nz 7z:6                      compress........ extract........
+dataset: <bench-data> (1444 files, 100.25 MiB), median of 7 runs, 12 threads
+
+| case | size (bytes) | ratio | compress s | MB/s | extract s | verified | peak WS c/x MiB |
+|---|---:|---:|---:|---:|---:|:---:|---:|
+| nz zip:5 | 72391199 | 68.87% | 0.151 | 662.6 | 0.489 | yes | 129 / 32 |
+| nz 7z:6 | 65359443 | 62.18% | 2.539 | 39.5 | 0.662 | yes | 709 / 194 |
+
+{
+  "tool": "nz",
+  "version": "0.1.0",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 7,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz zip:5",
+      "tool": "nz",
+      "format": "zip",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 72391199,
+      "ratio_pct": 68.86521199821979,
+      "compress_s": 0.1512965,
+      "compress_mbps": 662.6086275025364,
+      "compress_runs_s": [
+        0.1471444,
+        0.1512965,
+        0.1506884,
+        0.1607594,
+        0.1571214,
+        0.1467429,
+        0.1635743
+      ],
+      "extract_s": 0.4894943,
+      "extract_runs_s": [
+        0.4894943,
+        0.4484088,
+        0.7258642,
+        0.6984161,
+        0.5587511,
+        0.4183349,
+        0.411852
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 129.0234375,
+      "compress_peak_commit_mib": 142.41015625,
+      "extract_peak_ws_mib": 32.3203125,
+      "extract_peak_commit_mib": 29.625
+    },
+    {
+      "case": "nz 7z:6",
+      "tool": "nz",
+      "format": "7z",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 65359443,
+      "ratio_pct": 62.175954542216694,
+      "compress_s": 2.5393755000000002,
+      "compress_mbps": 39.478354505246465,
+      "compress_runs_s": [
+        2.329023,
+        2.5375728,
+        2.5393755000000002,
+        2.522404,
+        2.8620305999999998,
+        2.6704909,
+        2.8111644
+      ],
+      "extract_s": 0.6619388,
+      "extract_runs_s": [
+        0.6671583,
+        0.622343,
+        0.7429934,
+        0.6619388,
+        0.5342537,
+        0.5197883,
+        0.6628144
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 709.0,
+      "compress_peak_commit_mib": 791.0,
+      "extract_peak_ws_mib": 194.265625,
+      "extract_peak_commit_mib": 248.12890625
+    }
+  ]
+}

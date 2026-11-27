@@ -1,0 +1,6 @@
+nz median 2.922 min 2.624 max 3.106 size 65381644
+bz median 4.823 min 4.695 max 5.520 size 65607307
+bz/nz median 1.65, per-pair ratio median 1.70 (min 1.54 max 1.79)
+nz median 2.924 min 2.770 max 3.746 size 65381644
+bz median 4.824 min 4.687 max 5.195 size 65607307
+bz/nz median 1.65, per-pair ratio median 1.66 (min 1.29 max 1.81)

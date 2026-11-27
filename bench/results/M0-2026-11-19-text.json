@@ -1,0 +1,199 @@
+{
+  "tool": "nz",
+  "version": "0.0.1",
+  "dataset": "<bench-data>\\text_processors",
+  "input_bytes": 28712178,
+  "input_files": 1211,
+  "runs": 5,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz zip:5",
+      "tool": "nz",
+      "format": "zip",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 14645796,
+      "ratio_pct": 51.009003914645554,
+      "compress_s": 0.0949644,
+      "compress_mbps": 288.34033307939154,
+      "compress_runs_s": [
+        0.082246,
+        0.0921396,
+        0.1011463,
+        0.114773,
+        0.0949644
+      ],
+      "extract_s": 0.8164066,
+      "extract_runs_s": [
+        0.7455415,
+        0.8000976,
+        0.8921099,
+        0.8790012,
+        0.8164066
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz zip:9",
+      "tool": "nz",
+      "format": "zip",
+      "level": 9,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 14529525,
+      "ratio_pct": 50.60405030924509,
+      "compress_s": 0.7459639,
+      "compress_mbps": 36.70695958166953,
+      "compress_runs_s": [
+        0.6995473,
+        0.8040801,
+        0.8395837,
+        0.7459639,
+        0.7086515
+      ],
+      "extract_s": 0.929267,
+      "extract_runs_s": [
+        0.9364268,
+        0.9420673,
+        0.7155347,
+        0.929267,
+        0.7251727
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.zst:5",
+      "tool": "nz",
+      "format": "tar.zst",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 13882494,
+      "ratio_pct": 48.35054310404456,
+      "compress_s": 0.4621715,
+      "compress_mbps": 59.24654966107726,
+      "compress_runs_s": [
+        0.4621715,
+        0.5675972,
+        0.414383,
+        0.3960537,
+        0.4658579
+      ],
+      "extract_s": 1.3943425999999999,
+      "extract_runs_s": [
+        1.3943425999999999,
+        1.6435737000000001,
+        1.2682319,
+        1.3143823000000001,
+        2.0494
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.zst:6",
+      "tool": "nz",
+      "format": "tar.zst",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 13860305,
+      "ratio_pct": 48.27326230702526,
+      "compress_s": 0.5171799,
+      "compress_mbps": 52.94495537565278,
+      "compress_runs_s": [
+        0.5198856,
+        0.5322509,
+        0.5103248,
+        0.5171799,
+        0.5096019
+      ],
+      "extract_s": 1.2532735,
+      "extract_runs_s": [
+        1.1521234,
+        1.6518571,
+        1.4146921,
+        1.2532735,
+        1.2529954
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.zst:7",
+      "tool": "nz",
+      "format": "tar.zst",
+      "level": 7,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 13736574,
+      "ratio_pct": 47.84232669496546,
+      "compress_s": 0.7883111,
+      "compress_mbps": 34.73510233039287,
+      "compress_runs_s": [
+        0.7745077,
+        0.7271719,
+        0.8510693,
+        0.7883111,
+        0.8704607
+      ],
+      "extract_s": 1.4108304,
+      "extract_runs_s": [
+        1.4108304,
+        2.0482516,
+        1.494297,
+        1.328235,
+        1.2527023
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.zst:8",
+      "tool": "nz",
+      "format": "tar.zst",
+      "level": 8,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 13588340,
+      "ratio_pct": 47.326050987842166,
+      "compress_s": 1.2824197,
+      "compress_mbps": 21.351876243545362,
+      "compress_runs_s": [
+        1.2824197,
+        1.246838,
+        1.3358156,
+        1.2651246999999999,
+        1.5478942999999998
+      ],
+      "extract_s": 1.4325218,
+      "extract_runs_s": [
+        1.265905,
+        1.2769363,
+        1.8237792000000002,
+        1.7736920999999999,
+        1.4325218
+      ],
+      "extract_verified": true
+    }
+  ]
+}

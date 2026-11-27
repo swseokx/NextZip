@@ -1,0 +1,91 @@
+{
+  "tool": "nz",
+  "version": "0.1.0",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 7,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz zip:5",
+      "tool": "nz",
+      "format": "zip",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 72391199,
+      "ratio_pct": 68.86521199821979,
+      "compress_s": 0.1382393,
+      "compress_mbps": 725.194399935022,
+      "compress_runs_s": [
+        0.1382393,
+        0.1334093,
+        0.1324707,
+        0.1320289,
+        0.1411711,
+        0.1459765,
+        0.1452113
+      ],
+      "extract_s": 0.3593719,
+      "extract_runs_s": [
+        0.3593719,
+        0.4457028,
+        0.3356527,
+        0.3395542,
+        0.3253814,
+        0.6052136,
+        0.4908046
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 130.1328125,
+      "compress_peak_commit_mib": 147.08203125,
+      "extract_peak_ws_mib": 28.96875,
+      "extract_peak_commit_mib": 27.76953125
+    },
+    {
+      "case": "nz 7z:6",
+      "tool": "nz",
+      "format": "7z",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 65359443,
+      "ratio_pct": 62.175954542216694,
+      "compress_s": 2.6858293,
+      "compress_mbps": 37.32566556293712,
+      "compress_runs_s": [
+        2.6582036,
+        2.5913059,
+        2.7082194,
+        2.7345881,
+        2.7314889,
+        2.6737295,
+        2.6858293
+      ],
+      "extract_s": 0.4403449,
+      "extract_runs_s": [
+        0.4403449,
+        0.6619375,
+        0.4770634,
+        0.4132806,
+        0.4203631,
+        0.4201516,
+        0.4476533
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 637.38671875,
+      "compress_peak_commit_mib": 820.19140625,
+      "extract_peak_ws_mib": 193.94921875,
+      "extract_peak_commit_mib": 248.1484375
+    }
+  ]
+}

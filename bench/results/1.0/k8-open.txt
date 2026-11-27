@@ -1,0 +1,15 @@
+startup_ms=132.7
+startup_ms=125.1
+startup_ms=118.8
+startup_ms=128.6
+startup_ms=120.5
+startup_ms=122.6
+startup_ms=127.4
+startup_ms=122.0
+startup_ms=121.5
+startup_ms=125.7
+startup_ms=124.6
+startup_ms=118.7
+startup_ms=121.9
+startup_ms=119.3
+startup_ms=123.1

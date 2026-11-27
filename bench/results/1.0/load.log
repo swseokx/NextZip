@@ -1,0 +1,763 @@
+09:03:57 total=0.89 top: AMDRSServ=0.41 webwallpaper64=0.23 claude=0.16 audiodg=0.03 wallpaper64=0.02
+09:04:02 total=1.06 top: AMDRSServ=0.44 webwallpaper64=0.26 claude=0.20 ATK HUB=0.03 steamwebhelper=0.02
+09:04:07 total=0.85 top: AMDRSServ=0.33 webwallpaper64=0.26 claude=0.15 ATK HUB=0.03 SamsungMagician=0.02
+09:04:12 total=0.81 top: AMDRSServ=0.42 webwallpaper64=0.22 claude=0.07 Discord=0.02 SamsungMagician=0.01
+09:04:17 total=0.82 top: AMDRSServ=0.32 webwallpaper64=0.25 claude=0.13 ATK HUB=0.02 steamwebhelper=0.01
+09:04:22 total=0.71 top: AMDRSServ=0.35 webwallpaper64=0.22 claude=0.08 com.docker.backend=0.02 SamsungMagician=0.02
+== before final-text
+09:04:28 total=1.73 top: find=0.99 AMDRSServ=0.32 webwallpaper64=0.21 claude=0.07 audiodg=0.04
+09:04:33 total=1.99 top: find=0.98 AMDRSServ=0.36 webwallpaper64=0.30 claude=0.24 ATK HUB=0.02
+== before final-mixed
+09:06:27 total=2.03 top: find=0.98 claude=0.33 AMDRSServ=0.31 webwallpaper64=0.28 ATK HUB=0.03
+09:06:33 total=1.83 top: find=0.98 AMDRSServ=0.36 webwallpaper64=0.28 claude=0.08 Adguard=0.02
+== before final-mixed-excl
+09:10:27 total=2.15 top: find=0.99 claude=0.27 AMDRSServ=0.27 explorer=0.27 webwallpaper64=0.24
+09:10:32 total=2.12 top: find=0.99 AMDRSServ=0.33 webwallpaper64=0.29 explorer=0.21 claude=0.14
+== before final-mixed-2
+09:13:31 total=2.20 top: find=0.99 claude=0.68 AMDRSServ=0.23 chrome=0.08 Discord=0.08
+09:13:36 total=1.80 top: find=0.98 claude=0.40 AMDRSServ=0.28 audiodg=0.04 chrome=0.03
+== before k3-text
+09:20:04 total=1.43 top: find=1.01 AMDRSServ=0.26 audiodg=0.06 ATK HUB=0.02 Discord=0.02
+09:20:09 total=1.38 top: find=1.00 AMDRSServ=0.22 audiodg=0.09 ATK HUB=0.02 claude=0.01
+09:20:14 total=1.39 top: find=0.98 AMDRSServ=0.29 ATK HUB=0.03 Adguard=0.01 SamsungMagician=0.01
+== before k7-text-t1
+09:20:39 total=1.43 top: find=1.00 AMDRSServ=0.25 audiodg=0.05 ATK HUB=0.02 Adguard=0.02
+09:20:45 total=1.33 top: find=1.00 AMDRSServ=0.23 ATK HUB=0.02 Discord=0.01 claude=0.01
+== before k7-text-t12
+09:21:13 total=1.36 top: find=0.99 AMDRSServ=0.27 audiodg=0.03 ATK HUB=0.02 powershell=0.01
+09:21:18 total=1.23 top: find=1.00 AMDRSServ=0.17 ATK HUB=0.01 claude=0.01 wallpaper64=0.01
+09:21:23 total=1.30 top: find=1.00 AMDRSServ=0.22 audiodg=0.04 Discord=0.01 claude=0.01
+09:21:28 total=1.30 top: find=1.00 AMDRSServ=0.19 audiodg=0.05 ATK HUB=0.01 Discord=0.01
+09:21:33 total=1.35 top: find=1.00 AMDRSServ=0.26 ATK HUB=0.03 AudioSwitch=0.02 claude=0.01
+09:21:38 total=1.31 top: find=0.99 AMDRSServ=0.25 ATK HUB=0.01 claude=0.01 wallpaper64=0.01
+09:21:43 total=1.35 top: find=0.99 AMDRSServ=0.25 audiodg=0.04 claude=0.02 wallpaper64=0.01
+== before k7-mixed-t1
+09:21:55 total=1.34 top: find=0.99 AMDRSServ=0.25 ATK HUB=0.03 wallpaper64=0.01 com.docker.backend=0.01
+09:22:00 total=1.37 top: find=0.99 AMDRSServ=0.25 ATK HUB=0.03 Adguard=0.02 Discord=0.02
+== before k7-mixed-t12
+09:23:02 total=1.41 top: find=0.99 AMDRSServ=0.35 SamsungMagician=0.02 claude=0.01 powershell=0.01
+09:23:07 total=1.28 top: find=0.99 AMDRSServ=0.24 ATK HUB=0.02 powershell=0.01 audiodg=0.01
+== before k8
+09:23:28 total=1.38 top: find=1.00 AMDRSServ=0.26 ATK HUB=0.04 Discord=0.01 AudioSwitch=0.01
+09:23:33 total=1.52 top: find=0.99 AMDRSServ=0.34 com.docker.backend=0.03 Discord=0.03 ATK HUB=0.02
+09:23:38 total=1.30 top: find=0.99 AMDRSServ=0.20 ATK HUB=0.02 claude=0.01 Discord=0.01
+== before clean-text
+12:11:34 total=2.01 top: chrome=0.78 AMDRSServ=0.43 webwallpaper64=0.28 claude=0.19 Taskmgr=0.08
+12:11:39 total=2.04 top: chrome=1.05 AMDRSServ=0.38 webwallpaper64=0.28 SystemSettings=0.11 Taskmgr=0.08
+12:11:44 total=1.72 top: chrome=0.76 AMDRSServ=0.37 webwallpaper64=0.25 Taskmgr=0.08 claude=0.07
+12:11:49 total=1.97 top: chrome=0.89 AMDRSServ=0.49 webwallpaper64=0.26 SystemSettings=0.08 Taskmgr=0.06
+12:11:54 total=1.94 top: chrome=0.94 AMDRSServ=0.41 webwallpaper64=0.28 SystemSettings=0.09 Taskmgr=0.08
+== before clean-mixed
+12:13:53 total=1.70 top: chrome=0.83 AMDRSServ=0.35 webwallpaper64=0.27 Taskmgr=0.08 SystemSettings=0.08
+12:13:58 total=1.70 top: chrome=0.75 AMDRSServ=0.42 webwallpaper64=0.26 SystemSettings=0.09 Taskmgr=0.08
+12:14:04 total=1.83 top: chrome=0.90 AMDRSServ=0.40 webwallpaper64=0.25 SystemSettings=0.08 Taskmgr=0.07
+== before clean-mixed-excl
+12:18:35 total=1.56 top: chrome=0.81 AMDRSServ=0.45 Taskmgr=0.08 SystemSettings=0.07 SamsungMagician=0.03
+12:18:40 total=1.65 top: chrome=0.83 AMDRSServ=0.50 SystemSettings=0.10 Taskmgr=0.08 ATK HUB=0.03
+12:18:46 total=2.03 top: chrome=1.08 AMDRSServ=0.52 SystemSettings=0.09 Taskmgr=0.08 claude=0.04
+12:18:51 total=1.56 top: chrome=0.94 AMDRSServ=0.39 Taskmgr=0.07 SystemSettings=0.04 audiodg=0.04
+12:18:56 total=2.60 top: chrome=1.38 AMDRSServ=0.70 Taskmgr=0.09 SystemSettings=0.07 audiodg=0.07
+12:19:01 total=2.04 top: chrome=1.24 AMDRSServ=0.49 Taskmgr=0.08 SystemSettings=0.05 RiotClientServices=0.04
+12:19:06 total=1.97 top: chrome=1.24 AMDRSServ=0.43 SystemSettings=0.09 Taskmgr=0.07 ATK HUB=0.04
+12:19:11 total=2.44 top: chrome=1.49 AMDRSServ=0.48 Taskmgr=0.09 SystemSettings=0.08 ATK HUB=0.05
+12:19:16 total=1.05 top: chrome=0.46 AMDRSServ=0.39 Taskmgr=0.07 SystemSettings=0.04 claude=0.02
+12:19:21 total=1.20 top: chrome=0.55 AMDRSServ=0.36 Taskmgr=0.08 SystemSettings=0.08 ATK HUB=0.03
+12:19:26 total=1.38 top: chrome=0.68 AMDRSServ=0.41 Taskmgr=0.08 SystemSettings=0.06 ATK HUB=0.03
+== before k6
+12:22:32 total=1.30 top: chrome=0.53 AMDRSServ=0.47 Taskmgr=0.09 SystemSettings=0.09 audiodg=0.04
+12:22:37 total=1.65 top: chrome=0.89 AMDRSServ=0.34 SystemSettings=0.12 Taskmgr=0.08 ATK HUB=0.04
+12:22:42 total=1.59 top: chrome=0.79 AMDRSServ=0.37 SystemSettings=0.13 Taskmgr=0.09 ATK HUB=0.04
+== before k5-excl-r1
+13:17:41 total=3.81 top: find=0.98 chrome=0.97 AMDRSServ=0.46 llama-server=0.45 webwallpaper64=0.33
+13:17:46 total=4.69 top: chrome=1.80 find=0.88 AMDRSServ=0.62 llama-server=0.39 webwallpaper64=0.38
+13:17:51 total=5.19 top: chrome=2.46 find=0.82 AMDRSServ=0.73 llama-server=0.41 claude=0.13
+13:17:56 total=3.95 top: chrome=1.41 find=0.97 llama-server=0.44 AMDRSServ=0.41 claude=0.21
+13:18:01 total=3.71 top: chrome=1.28 find=0.97 llama-server=0.57 AMDRSServ=0.38 Taskmgr=0.11
+13:18:06 total=3.57 top: chrome=1.13 find=0.98 llama-server=0.49 AMDRSServ=0.39 claude=0.18
+13:18:11 total=4.12 top: chrome=1.62 find=0.95 AMDRSServ=0.52 llama-server=0.51 Taskmgr=0.13
+13:18:17 total=3.75 top: chrome=1.30 find=0.96 llama-server=0.51 AMDRSServ=0.49 Taskmgr=0.11
+13:18:22 total=3.28 top: chrome=1.12 find=0.98 llama-server=0.49 AMDRSServ=0.27 Taskmgr=0.10
+13:18:27 total=3.34 top: chrome=1.02 find=0.98 llama-server=0.56 AMDRSServ=0.41 Taskmgr=0.11
+13:18:32 total=3.41 top: find=0.99 chrome=0.83 llama-server=0.51 AMDRSServ=0.45 Taskmgr=0.11
+13:18:37 total=3.84 top: chrome=1.41 find=0.96 llama-server=0.55 AMDRSServ=0.44 SystemSettings=0.11
+13:18:42 total=3.65 top: chrome=1.45 find=0.96 llama-server=0.45 AMDRSServ=0.37 Taskmgr=0.13
+13:18:47 total=3.43 top: chrome=1.09 find=0.95 llama-server=0.45 AMDRSServ=0.43 SystemSettings=0.12
+13:18:52 total=3.65 top: chrome=1.33 find=0.98 llama-server=0.55 AMDRSServ=0.40 Taskmgr=0.10
+13:18:57 total=3.37 top: chrome=0.99 find=0.98 llama-server=0.54 AMDRSServ=0.38 Taskmgr=0.09
+13:19:02 total=3.87 top: chrome=1.34 find=0.96 llama-server=0.57 AMDRSServ=0.45 Taskmgr=0.10
+13:19:07 total=3.46 top: chrome=1.09 find=0.98 llama-server=0.53 AMDRSServ=0.33 audiodg=0.11
+13:19:12 total=3.31 top: find=0.97 chrome=0.94 llama-server=0.50 AMDRSServ=0.49 Taskmgr=0.10
+13:19:17 total=6.06 top: chrome=3.52 find=0.87 AMDRSServ=0.59 llama-server=0.56 Taskmgr=0.12
+13:19:22 total=4.13 top: chrome=1.69 find=0.93 AMDRSServ=0.55 llama-server=0.51 Taskmgr=0.13
+13:19:28 total=3.12 top: chrome=1.04 find=0.95 AMDRSServ=0.50 SystemSettings=0.12 Taskmgr=0.10
+13:19:33 total=3.82 top: chrome=1.81 find=0.96 AMDRSServ=0.57 SystemSettings=0.11 Taskmgr=0.10
+13:19:38 total=2.53 top: find=0.97 chrome=0.73 AMDRSServ=0.26 Taskmgr=0.11 claude=0.10
+13:19:43 total=3.58 top: chrome=1.33 find=0.78 AMDRSServ=0.44 llama-server=0.41 claude=0.14
+13:19:48 total=3.59 top: find=0.99 chrome=0.97 llama-server=0.90 AMDRSServ=0.30 claude=0.11
+13:19:53 total=6.50 top: llama-server=3.21 chrome=1.10 find=0.97 AMDRSServ=0.48 Adguard=0.34
+13:19:58 total=5.80 top: llama-server=3.24 find=0.95 chrome=0.64 AMDRSServ=0.50 SystemSettings=0.11
+13:20:03 total=5.92 top: llama-server=3.20 find=0.96 chrome=0.89 AMDRSServ=0.38 Taskmgr=0.12
+13:20:08 total=5.99 top: llama-server=3.30 find=0.98 chrome=0.74 AMDRSServ=0.38 SystemSettings=0.16
+13:20:13 total=5.97 top: llama-server=3.34 find=0.98 chrome=0.87 AMDRSServ=0.38 Taskmgr=0.10
+13:20:18 total=6.02 top: llama-server=3.27 find=0.98 chrome=0.96 AMDRSServ=0.37 Taskmgr=0.11
+13:20:23 total=6.34 top: llama-server=3.02 chrome=1.45 find=0.93 AMDRSServ=0.51 Taskmgr=0.11
+13:20:28 total=7.21 top: llama-server=2.75 chrome=2.55 find=0.88 AMDRSServ=0.46 Taskmgr=0.12
+13:20:33 total=7.43 top: llama-server=3.06 chrome=2.14 find=0.94 AMDRSServ=0.67 Taskmgr=0.13
+13:20:39 total=6.65 top: llama-server=3.02 chrome=1.54 find=0.94 AMDRSServ=0.59 SystemSettings=0.13
+13:20:44 total=6.42 top: llama-server=3.10 chrome=1.48 find=0.94 AMDRSServ=0.47 Taskmgr=0.13
+13:20:49 total=6.05 top: llama-server=3.25 find=0.97 chrome=0.93 AMDRSServ=0.48 SystemSettings=0.12
+13:20:54 total=5.87 top: llama-server=3.33 find=0.96 chrome=0.73 AMDRSServ=0.37 Taskmgr=0.11
+13:20:59 total=5.71 top: llama-server=3.40 find=0.98 chrome=0.69 AMDRSServ=0.34 Taskmgr=0.11
+13:21:04 total=6.32 top: llama-server=3.30 chrome=1.10 find=0.97 AMDRSServ=0.52 SystemSettings=0.11
+13:21:09 total=6.13 top: llama-server=3.34 find=0.98 chrome=0.89 AMDRSServ=0.50 SystemSettings=0.13
+13:21:14 total=6.50 top: llama-server=3.13 chrome=1.57 find=0.94 AMDRSServ=0.51 Taskmgr=0.10
+13:21:19 total=6.09 top: llama-server=3.33 chrome=0.97 find=0.95 AMDRSServ=0.41 Taskmgr=0.12
+13:21:24 total=6.28 top: llama-server=3.18 chrome=1.14 find=0.96 AMDRSServ=0.50 Taskmgr=0.13
+13:21:29 total=5.79 top: llama-server=3.27 find=0.97 chrome=0.88 AMDRSServ=0.32 Taskmgr=0.12
+13:21:34 total=6.76 top: llama-server=3.17 chrome=1.55 find=0.96 AMDRSServ=0.68 Taskmgr=0.10
+13:21:39 total=6.30 top: llama-server=2.96 find=0.91 chrome=0.78 AMDRSServ=0.60 webwallpaper64=0.34
+13:21:44 total=6.07 top: llama-server=2.31 find=0.89 claude=0.80 chrome=0.61 AMDRSServ=0.53
+13:21:50 total=6.61 top: llama-server=3.39 find=0.94 chrome=0.51 claude=0.47 AMDRSServ=0.45
+13:21:55 total=7.00 top: llama-server=3.34 find=0.95 chrome=0.82 claude=0.56 AMDRSServ=0.50
+13:22:00 total=6.76 top: llama-server=2.88 claude=0.90 find=0.86 chrome=0.58 AMDRSServ=0.52
+13:22:05 total=6.62 top: llama-server=3.25 find=0.94 chrome=0.57 AMDRSServ=0.57 claude=0.45
+13:22:10 total=6.38 top: llama-server=3.12 find=0.90 chrome=0.66 AMDRSServ=0.54 webwallpaper64=0.43
+13:22:15 total=6.46 top: llama-server=3.40 find=0.96 chrome=0.63 AMDRSServ=0.47 webwallpaper64=0.41
+13:22:20 total=6.29 top: llama-server=3.46 find=0.96 AMDRSServ=0.55 chrome=0.50 webwallpaper64=0.39
+13:22:25 total=6.32 top: llama-server=3.43 find=0.96 AMDRSServ=0.50 chrome=0.49 webwallpaper64=0.40
+13:22:30 total=6.40 top: llama-server=3.32 find=0.95 chrome=0.56 AMDRSServ=0.52 webwallpaper64=0.42
+13:22:35 total=6.30 top: llama-server=3.46 find=0.96 chrome=0.67 AMDRSServ=0.46 webwallpaper64=0.31
+13:22:40 total=6.59 top: llama-server=3.00 find=0.89 claude=0.67 chrome=0.63 AMDRSServ=0.44
+13:22:45 total=6.40 top: llama-server=3.16 find=0.92 chrome=0.55 AMDRSServ=0.53 claude=0.43
+13:22:51 total=6.23 top: llama-server=3.35 find=0.94 chrome=0.51 AMDRSServ=0.48 webwallpaper64=0.35
+13:22:56 total=6.37 top: llama-server=3.36 find=0.93 chrome=0.68 AMDRSServ=0.50 webwallpaper64=0.33
+13:23:01 total=6.50 top: llama-server=3.46 find=0.94 chrome=0.65 AMDRSServ=0.50 webwallpaper64=0.41
+13:23:06 total=6.62 top: llama-server=3.45 find=0.98 chrome=0.73 AMDRSServ=0.47 webwallpaper64=0.36
+13:23:11 total=6.07 top: llama-server=3.49 find=0.98 chrome=0.43 AMDRSServ=0.41 webwallpaper64=0.35
+13:23:16 total=5.85 top: llama-server=3.54 find=0.98 AMDRSServ=0.39 webwallpaper64=0.33 chrome=0.16
+13:23:21 total=5.74 top: llama-server=3.52 find=0.97 AMDRSServ=0.36 webwallpaper64=0.34 claude=0.11
+13:23:26 total=5.73 top: llama-server=3.51 find=0.99 AMDRSServ=0.36 webwallpaper64=0.31 chrome=0.12
+13:23:31 total=5.73 top: llama-server=3.52 find=0.98 AMDRSServ=0.47 webwallpaper64=0.34 chrome=0.10
+13:23:36 total=5.82 top: llama-server=3.60 find=0.99 AMDRSServ=0.42 webwallpaper64=0.32 Taskmgr=0.11
+13:23:41 total=5.61 top: llama-server=3.52 find=0.98 AMDRSServ=0.39 webwallpaper64=0.31 Taskmgr=0.10
+13:23:46 total=5.77 top: llama-server=3.52 find=0.98 AMDRSServ=0.46 webwallpaper64=0.32 chrome=0.11
+13:23:51 total=5.64 top: llama-server=3.60 find=0.99 webwallpaper64=0.36 AMDRSServ=0.33 Taskmgr=0.10
+13:23:56 total=5.76 top: llama-server=3.56 find=0.98 AMDRSServ=0.38 webwallpaper64=0.34 Taskmgr=0.11
+13:24:02 total=5.82 top: llama-server=3.56 find=0.98 AMDRSServ=0.45 webwallpaper64=0.35 chrome=0.13
+13:24:07 total=5.77 top: llama-server=3.56 find=0.99 AMDRSServ=0.44 webwallpaper64=0.34 chrome=0.11
+13:24:12 total=5.75 top: llama-server=3.43 find=0.98 AMDRSServ=0.56 webwallpaper64=0.32 Taskmgr=0.12
+13:24:17 total=5.70 top: llama-server=3.54 find=0.98 AMDRSServ=0.35 webwallpaper64=0.32 chrome=0.11
+13:24:22 total=5.78 top: llama-server=3.60 find=0.98 AMDRSServ=0.41 webwallpaper64=0.35 chrome=0.12
+13:24:27 total=5.79 top: llama-server=3.53 find=0.98 AMDRSServ=0.41 webwallpaper64=0.32 chrome=0.18
+13:24:32 total=5.75 top: llama-server=3.51 find=0.97 AMDRSServ=0.44 webwallpaper64=0.35 chrome=0.14
+13:24:37 total=5.71 top: llama-server=3.57 find=0.98 AMDRSServ=0.38 webwallpaper64=0.31 Taskmgr=0.12
+13:24:42 total=5.72 top: llama-server=3.49 find=0.97 AMDRSServ=0.42 webwallpaper64=0.35 Taskmgr=0.10
+13:24:47 total=5.70 top: llama-server=3.56 find=0.98 AMDRSServ=0.45 webwallpaper64=0.29 Taskmgr=0.10
+13:24:52 total=5.79 top: llama-server=3.48 find=0.98 AMDRSServ=0.38 webwallpaper64=0.29 claude=0.15
+13:24:57 total=5.77 top: llama-server=3.41 find=0.97 AMDRSServ=0.39 webwallpaper64=0.31 claude=0.18
+13:25:02 total=5.89 top: llama-server=3.53 find=0.98 webwallpaper64=0.41 AMDRSServ=0.37 claude=0.15
+13:25:07 total=5.75 top: llama-server=3.54 find=0.98 AMDRSServ=0.40 webwallpaper64=0.30 claude=0.20
+13:25:12 total=5.93 top: llama-server=3.46 find=0.97 AMDRSServ=0.48 webwallpaper64=0.39 chrome=0.14
+13:25:18 total=5.87 top: llama-server=3.50 find=0.97 AMDRSServ=0.52 webwallpaper64=0.34 Taskmgr=0.12
+13:25:23 total=5.83 top: llama-server=3.59 find=0.99 AMDRSServ=0.45 webwallpaper64=0.33 chrome=0.11
+13:25:28 total=5.84 top: llama-server=3.48 find=0.98 AMDRSServ=0.48 webwallpaper64=0.33 chrome=0.13
+13:25:33 total=5.70 top: llama-server=3.48 find=0.98 AMDRSServ=0.38 webwallpaper64=0.37 chrome=0.14
+13:25:38 total=5.73 top: llama-server=3.51 find=0.98 AMDRSServ=0.46 webwallpaper64=0.30 chrome=0.13
+13:25:43 total=5.81 top: llama-server=3.47 find=0.97 AMDRSServ=0.35 webwallpaper64=0.34 chrome=0.25
+13:25:48 total=5.75 top: llama-server=3.58 find=1.00 AMDRSServ=0.41 webwallpaper64=0.32 chrome=0.12
+13:25:53 total=5.80 top: llama-server=3.53 find=0.97 AMDRSServ=0.45 webwallpaper64=0.35 Taskmgr=0.10
+13:25:58 total=5.73 top: llama-server=3.53 find=0.97 AMDRSServ=0.46 webwallpaper64=0.30 chrome=0.10
+13:26:03 total=5.90 top: llama-server=3.52 find=0.98 AMDRSServ=0.49 webwallpaper64=0.36 chrome=0.18
+13:26:08 total=5.80 top: llama-server=3.52 find=0.97 AMDRSServ=0.41 webwallpaper64=0.36 chrome=0.12
+13:26:13 total=5.68 top: llama-server=3.45 find=0.96 AMDRSServ=0.53 webwallpaper64=0.35 Taskmgr=0.10
+13:26:18 total=5.81 top: llama-server=3.52 find=0.98 AMDRSServ=0.45 webwallpaper64=0.35 Taskmgr=0.12
+13:26:23 total=5.87 top: llama-server=3.45 find=0.97 AMDRSServ=0.54 webwallpaper64=0.33 SystemSettings=0.09
+13:26:29 total=5.75 top: llama-server=3.55 find=0.98 AMDRSServ=0.39 webwallpaper64=0.37 Taskmgr=0.11
+13:26:34 total=5.85 top: llama-server=3.56 find=0.98 AMDRSServ=0.44 webwallpaper64=0.36 Taskmgr=0.10
+13:26:39 total=5.92 top: llama-server=3.53 find=0.99 AMDRSServ=0.44 webwallpaper64=0.35 chrome=0.14
+13:26:44 total=5.83 top: llama-server=3.51 find=0.96 AMDRSServ=0.43 webwallpaper64=0.38 chrome=0.21
+13:26:49 total=5.75 top: llama-server=3.53 find=0.97 AMDRSServ=0.46 webwallpaper64=0.36 chrome=0.11
+13:26:54 total=5.79 top: llama-server=3.55 find=0.99 AMDRSServ=0.44 webwallpaper64=0.37 chrome=0.13
+13:26:59 total=5.78 top: llama-server=3.44 find=0.97 AMDRSServ=0.43 webwallpaper64=0.38 Taskmgr=0.11
+13:27:04 total=5.76 top: llama-server=3.48 find=0.98 AMDRSServ=0.55 webwallpaper64=0.33 Taskmgr=0.11
+13:27:09 total=6.01 top: llama-server=3.43 find=0.96 AMDRSServ=0.55 webwallpaper64=0.47 Taskmgr=0.10
+13:27:14 total=5.80 top: llama-server=3.52 find=0.97 AMDRSServ=0.54 webwallpaper64=0.34 chrome=0.11
+13:27:19 total=5.86 top: llama-server=3.53 find=0.98 AMDRSServ=0.38 webwallpaper64=0.36 chrome=0.12
+13:27:24 total=5.84 top: llama-server=3.56 find=0.98 AMDRSServ=0.50 webwallpaper64=0.34 chrome=0.12
+13:27:29 total=5.81 top: llama-server=3.53 find=0.98 AMDRSServ=0.50 webwallpaper64=0.31 chrome=0.12
+13:27:35 total=5.88 top: llama-server=3.51 find=0.97 AMDRSServ=0.53 webwallpaper64=0.35 chrome=0.10
+13:27:40 total=5.80 top: llama-server=3.38 find=0.95 AMDRSServ=0.42 webwallpaper64=0.38 chrome=0.13
+13:27:45 total=5.95 top: llama-server=3.42 find=0.97 AMDRSServ=0.46 webwallpaper64=0.39 chrome=0.23
+13:27:50 total=5.67 top: llama-server=3.52 find=0.98 AMDRSServ=0.37 webwallpaper64=0.31 chrome=0.15
+13:27:55 total=5.92 top: llama-server=3.53 find=0.99 AMDRSServ=0.46 webwallpaper64=0.38 claude=0.18
+13:28:00 total=5.87 top: llama-server=3.52 find=0.96 AMDRSServ=0.52 webwallpaper64=0.38 chrome=0.13
+13:28:05 total=5.82 top: llama-server=3.54 find=0.98 AMDRSServ=0.51 webwallpaper64=0.34 Taskmgr=0.11
+13:28:10 total=5.76 top: llama-server=3.54 find=0.99 AMDRSServ=0.44 webwallpaper64=0.38 Taskmgr=0.11
+13:28:15 total=5.78 top: llama-server=3.54 find=0.98 AMDRSServ=0.40 webwallpaper64=0.36 chrome=0.12
+13:28:20 total=5.84 top: llama-server=3.50 find=0.97 AMDRSServ=0.42 webwallpaper64=0.38 Taskmgr=0.11
+13:28:25 total=5.77 top: llama-server=3.37 find=0.95 AMDRSServ=0.63 webwallpaper64=0.31 chrome=0.14
+13:28:30 total=5.75 top: llama-server=3.48 find=0.98 AMDRSServ=0.44 webwallpaper64=0.37 Taskmgr=0.11
+13:28:35 total=5.62 top: llama-server=3.57 find=0.99 AMDRSServ=0.36 webwallpaper64=0.30 Taskmgr=0.11
+13:28:41 total=5.80 top: llama-server=3.51 find=0.97 AMDRSServ=0.43 webwallpaper64=0.34 chrome=0.15
+13:28:46 total=5.96 top: llama-server=3.49 find=0.98 AMDRSServ=0.45 webwallpaper64=0.34 chrome=0.28
+13:28:51 total=5.75 top: llama-server=3.56 find=0.99 AMDRSServ=0.45 webwallpaper64=0.32 chrome=0.12
+13:28:56 total=5.63 top: llama-server=3.58 find=0.99 AMDRSServ=0.37 webwallpaper64=0.30 Taskmgr=0.10
+13:29:01 total=5.64 top: llama-server=3.53 find=0.98 AMDRSServ=0.44 webwallpaper64=0.33 Taskmgr=0.10
+13:29:06 total=5.68 top: llama-server=3.58 find=0.99 AMDRSServ=0.33 webwallpaper64=0.27 chrome=0.11
+13:29:11 total=5.75 top: llama-server=3.51 find=0.97 AMDRSServ=0.46 webwallpaper64=0.30 chrome=0.14
+13:29:16 total=6.44 top: llama-server=3.35 find=0.94 chrome=0.75 AMDRSServ=0.53 webwallpaper64=0.36
+13:29:21 total=6.59 top: llama-server=3.54 chrome=0.98 find=0.97 AMDRSServ=0.47 webwallpaper64=0.14
+13:29:26 total=6.23 top: llama-server=3.57 find=0.97 chrome=0.90 AMDRSServ=0.44 Taskmgr=0.10
+13:29:31 total=6.13 top: llama-server=3.54 find=0.96 chrome=0.75 AMDRSServ=0.52 Taskmgr=0.11
+13:29:36 total=6.19 top: llama-server=3.51 find=0.96 chrome=0.78 AMDRSServ=0.45 SystemSettings=0.12
+13:29:41 total=5.97 top: llama-server=3.59 find=0.98 chrome=0.63 AMDRSServ=0.42 SystemSettings=0.10
+13:29:46 total=6.08 top: llama-server=3.51 find=0.97 chrome=0.78 AMDRSServ=0.41 Taskmgr=0.11
+13:29:52 total=6.05 top: llama-server=3.45 find=0.98 chrome=0.64 AMDRSServ=0.37 claude=0.22
+13:29:57 total=6.15 top: llama-server=3.40 find=0.96 chrome=0.86 AMDRSServ=0.41 Taskmgr=0.12
+13:30:02 total=6.12 top: llama-server=3.52 find=0.98 chrome=0.64 AMDRSServ=0.45 SystemSettings=0.12
+13:30:07 total=6.34 top: llama-server=3.56 find=0.98 chrome=0.84 AMDRSServ=0.39 SystemSettings=0.12
+13:30:12 total=5.99 top: llama-server=3.48 find=0.97 chrome=0.73 AMDRSServ=0.38 SystemSettings=0.11
+13:30:17 total=6.28 top: llama-server=3.58 find=0.97 chrome=0.84 AMDRSServ=0.47 SystemSettings=0.11
+13:30:22 total=5.87 top: llama-server=3.59 find=0.97 chrome=0.53 AMDRSServ=0.35 Taskmgr=0.10
+13:30:27 total=6.16 top: llama-server=3.50 find=0.98 chrome=0.80 AMDRSServ=0.46 Taskmgr=0.11
+13:30:32 total=6.12 top: llama-server=3.45 find=0.98 chrome=0.71 AMDRSServ=0.47 Taskmgr=0.09
+13:30:37 total=6.32 top: llama-server=3.44 find=0.96 chrome=0.93 AMDRSServ=0.39 SystemSettings=0.14
+13:30:42 total=6.18 top: llama-server=3.55 find=0.97 chrome=0.78 AMDRSServ=0.32 Taskmgr=0.12
+13:30:47 total=6.12 top: llama-server=3.51 find=0.97 chrome=0.83 AMDRSServ=0.45 SystemSettings=0.10
+13:30:52 total=6.02 top: llama-server=3.54 find=0.99 chrome=0.72 AMDRSServ=0.34 Taskmgr=0.12
+13:30:57 total=6.24 top: llama-server=3.55 find=0.98 chrome=0.93 AMDRSServ=0.37 Taskmgr=0.10
+13:31:03 total=5.83 top: llama-server=3.56 find=0.99 chrome=0.52 AMDRSServ=0.43 Taskmgr=0.09
+13:31:08 total=6.24 top: llama-server=3.57 find=0.98 chrome=0.88 AMDRSServ=0.38 Taskmgr=0.11
+13:31:13 total=5.90 top: llama-server=3.61 find=0.98 chrome=0.64 AMDRSServ=0.29 Taskmgr=0.10
+13:31:18 total=6.16 top: llama-server=3.52 find=0.98 chrome=0.93 AMDRSServ=0.30 SystemSettings=0.13
+13:31:23 total=5.87 top: llama-server=3.56 find=0.97 chrome=0.55 AMDRSServ=0.42 SystemSettings=0.11
+13:31:28 total=6.18 top: llama-server=3.52 find=0.97 chrome=0.86 AMDRSServ=0.44 SystemSettings=0.11
+13:31:33 total=6.08 top: llama-server=3.51 find=0.99 chrome=0.78 AMDRSServ=0.38 Taskmgr=0.09
+13:31:38 total=6.10 top: llama-server=3.55 find=0.96 chrome=0.88 AMDRSServ=0.35 Taskmgr=0.11
+13:31:43 total=5.94 top: llama-server=3.62 find=0.98 chrome=0.63 AMDRSServ=0.37 Taskmgr=0.10
+13:31:48 total=6.24 top: llama-server=3.61 find=0.99 chrome=0.84 AMDRSServ=0.41 Taskmgr=0.11
+13:31:53 total=5.98 top: llama-server=3.48 find=0.97 chrome=0.66 AMDRSServ=0.42 Taskmgr=0.11
+13:31:58 total=6.34 top: llama-server=3.53 find=0.98 chrome=0.89 AMDRSServ=0.46 Taskmgr=0.10
+13:32:03 total=5.95 top: llama-server=3.55 find=0.97 chrome=0.57 AMDRSServ=0.40 Taskmgr=0.12
+13:32:08 total=6.20 top: llama-server=3.45 find=0.96 chrome=0.83 AMDRSServ=0.55 Taskmgr=0.11
+13:32:14 total=5.90 top: llama-server=3.41 find=0.95 chrome=0.71 AMDRSServ=0.44 SystemSettings=0.11
+13:32:19 total=6.32 top: llama-server=3.54 find=0.98 chrome=0.88 AMDRSServ=0.45 SystemSettings=0.12
+13:32:24 total=5.90 top: llama-server=3.51 find=0.95 chrome=0.62 AMDRSServ=0.42 Taskmgr=0.11
+13:32:29 total=6.22 top: llama-server=3.53 find=0.98 chrome=0.91 AMDRSServ=0.43 SystemSettings=0.12
+13:32:34 total=5.98 top: llama-server=3.50 find=0.97 chrome=0.61 AMDRSServ=0.43 Taskmgr=0.10
+13:32:39 total=6.27 top: llama-server=3.57 find=0.98 chrome=0.93 AMDRSServ=0.38 Taskmgr=0.12
+13:32:44 total=5.95 top: llama-server=3.52 find=0.99 chrome=0.54 AMDRSServ=0.46 Taskmgr=0.10
+13:32:49 total=6.32 top: llama-server=3.47 chrome=0.99 find=0.96 AMDRSServ=0.43 SystemSettings=0.13
+13:32:54 total=6.04 top: llama-server=3.51 find=0.98 chrome=0.61 AMDRSServ=0.48 Taskmgr=0.12
+13:32:59 total=6.48 top: llama-server=3.48 find=0.96 chrome=0.90 AMDRSServ=0.57 SystemSettings=0.13
+13:33:04 total=5.95 top: llama-server=3.50 find=0.98 chrome=0.63 AMDRSServ=0.29 claude=0.22
+13:33:09 total=6.19 top: llama-server=3.48 find=0.97 chrome=0.97 AMDRSServ=0.40 Taskmgr=0.10
+13:33:14 total=6.01 top: llama-server=3.57 find=0.99 chrome=0.63 AMDRSServ=0.40 claude=0.12
+13:33:19 total=6.35 top: llama-server=3.58 find=0.96 chrome=0.92 AMDRSServ=0.48 Taskmgr=0.10
+13:33:25 total=6.01 top: llama-server=3.54 find=0.97 chrome=0.64 AMDRSServ=0.34 claude=0.11
+13:33:30 total=6.49 top: llama-server=3.53 find=0.99 chrome=0.97 AMDRSServ=0.45 claude=0.13
+13:33:35 total=5.99 top: llama-server=3.48 find=0.96 chrome=0.66 AMDRSServ=0.42 Taskmgr=0.12
+13:33:40 total=6.18 top: llama-server=3.50 find=0.96 chrome=0.80 AMDRSServ=0.43 claude=0.13
+13:33:45 total=6.37 top: llama-server=3.38 find=0.95 chrome=0.93 AMDRSServ=0.40 claude=0.21
+13:33:50 total=7.01 top: llama-server=3.27 chrome=1.14 find=0.91 AMDRSServ=0.51 webwallpaper64=0.38
+13:33:55 total=6.45 top: llama-server=3.28 find=0.93 chrome=0.68 AMDRSServ=0.54 webwallpaper64=0.37
+13:34:00 total=6.79 top: llama-server=3.37 find=0.94 chrome=0.87 AMDRSServ=0.45 webwallpaper64=0.38
+13:34:05 total=6.79 top: llama-server=3.16 find=0.90 claude=0.68 chrome=0.55 AMDRSServ=0.49
+13:34:10 total=7.03 top: llama-server=3.27 chrome=0.97 find=0.91 AMDRSServ=0.59 claude=0.47
+13:34:15 total=6.36 top: llama-server=3.39 find=0.93 chrome=0.83 AMDRSServ=0.47 webwallpaper64=0.36
+13:34:20 total=6.58 top: llama-server=3.35 find=0.94 chrome=0.90 AMDRSServ=0.53 webwallpaper64=0.34
+13:34:25 total=6.53 top: llama-server=3.32 find=0.96 chrome=0.82 AMDRSServ=0.51 webwallpaper64=0.38
+13:34:31 total=6.63 top: llama-server=3.28 chrome=1.03 find=0.91 AMDRSServ=0.46 webwallpaper64=0.38
+13:34:36 total=6.45 top: llama-server=3.48 find=0.96 chrome=0.61 AMDRSServ=0.52 webwallpaper64=0.32
+13:34:41 total=6.80 top: llama-server=3.35 chrome=1.02 find=0.98 AMDRSServ=0.53 webwallpaper64=0.37
+13:34:46 total=6.36 top: llama-server=3.43 find=0.97 chrome=0.65 AMDRSServ=0.55 webwallpaper64=0.33
+13:34:51 total=6.57 top: llama-server=3.39 find=0.96 chrome=0.94 AMDRSServ=0.39 webwallpaper64=0.34
+13:34:56 total=6.53 top: llama-server=3.47 find=0.97 chrome=0.70 AMDRSServ=0.43 webwallpaper64=0.34
+13:35:01 total=6.59 top: llama-server=3.36 find=0.95 chrome=0.91 AMDRSServ=0.52 webwallpaper64=0.33
+13:35:06 total=6.27 top: llama-server=3.29 find=0.95 chrome=0.71 AMDRSServ=0.48 webwallpaper64=0.34
+13:35:11 total=6.38 top: llama-server=3.17 chrome=1.01 find=0.91 AMDRSServ=0.53 webwallpaper64=0.31
+13:35:16 total=6.32 top: llama-server=3.33 find=0.95 chrome=0.70 AMDRSServ=0.48 webwallpaper64=0.40
+13:35:21 total=6.51 top: llama-server=3.34 find=0.94 chrome=0.89 AMDRSServ=0.50 webwallpaper64=0.35
+13:35:26 total=6.54 top: llama-server=3.43 find=0.96 chrome=0.63 AMDRSServ=0.52 webwallpaper64=0.43
+13:35:32 total=6.55 top: llama-server=3.45 find=0.97 chrome=0.87 AMDRSServ=0.46 webwallpaper64=0.42
+13:35:37 total=6.47 top: llama-server=3.33 find=0.93 chrome=0.61 AMDRSServ=0.59 webwallpaper64=0.40
+13:35:42 total=6.62 top: llama-server=3.32 chrome=0.99 find=0.94 AMDRSServ=0.48 webwallpaper64=0.34
+13:35:47 total=6.28 top: llama-server=3.38 find=0.98 chrome=0.61 AMDRSServ=0.47 webwallpaper64=0.36
+13:35:52 total=6.54 top: llama-server=3.38 find=0.94 chrome=0.94 AMDRSServ=0.48 webwallpaper64=0.30
+13:35:57 total=6.88 top: llama-server=3.18 chrome=1.24 find=0.91 AMDRSServ=0.50 webwallpaper64=0.35
+13:36:02 total=6.56 top: llama-server=3.24 find=0.93 chrome=0.75 claude=0.47 AMDRSServ=0.46
+13:36:07 total=6.48 top: llama-server=2.94 find=0.85 claude=0.73 AMDRSServ=0.57 chrome=0.55
+13:36:12 total=6.75 top: llama-server=3.34 find=0.94 chrome=0.74 AMDRSServ=0.53 claude=0.42
+13:36:17 total=6.30 top: llama-server=3.34 find=0.95 chrome=0.51 AMDRSServ=0.50 claude=0.33
+13:36:22 total=6.51 top: llama-server=3.47 find=0.97 chrome=0.66 AMDRSServ=0.52 webwallpaper64=0.33
+13:36:27 total=6.06 top: llama-server=3.48 find=0.96 AMDRSServ=0.38 chrome=0.36 webwallpaper64=0.36
+13:36:32 total=6.23 top: llama-server=3.48 find=0.96 chrome=0.53 AMDRSServ=0.47 webwallpaper64=0.35
+13:36:38 total=6.45 top: llama-server=3.34 find=0.92 chrome=0.65 AMDRSServ=0.49 webwallpaper64=0.38
+13:36:43 total=6.29 top: llama-server=2.72 find=0.83 chrome=0.78 AMDRSServ=0.76 webwallpaper64=0.42
+13:36:48 total=8.00 top: llama-server=2.12 Riot Client=1.78 RiotClientServices=1.34 find=0.72 chrome=0.63
+13:36:53 total=8.06 top: llama-server=3.11 Riot Client=1.05 RiotClientServices=0.99 find=0.89 chrome=0.65
+13:36:58 total=7.39 top: llama-server=3.29 find=0.91 RiotClientServices=0.87 Riot Client=0.56 chrome=0.55
+13:37:03 total=6.54 top: llama-server=3.25 find=0.90 chrome=0.61 AMDRSServ=0.53 webwallpaper64=0.39
+13:37:08 total=6.34 top: llama-server=3.46 find=0.96 chrome=0.51 AMDRSServ=0.40 webwallpaper64=0.40
+13:37:13 total=6.75 top: llama-server=3.33 find=0.92 chrome=0.71 AMDRSServ=0.59 webwallpaper64=0.40
+13:37:18 total=6.52 top: llama-server=3.31 find=0.94 chrome=0.65 AMDRSServ=0.60 webwallpaper64=0.43
+13:37:23 total=6.29 top: llama-server=2.69 find=0.83 chrome=0.68 AMDRSServ=0.66 claude=0.51
+13:37:28 total=7.41 top: llama-server=2.72 claude=1.02 find=0.88 chrome=0.62 AMDRSServ=0.56
+13:37:34 total=7.29 top: llama-server=3.18 find=0.94 VALORANT-Win64-Shipping=0.84 chrome=0.84 AMDRSServ=0.47
+13:37:39 total=7.71 top: llama-server=3.12 VALORANT-Win64-Shipping=0.96 find=0.91 chrome=0.64 claude=0.58
+13:37:44 total=7.48 top: llama-server=2.33 VALORANT-Win64-Shipping=1.37 find=0.80 AMDRSServ=0.79 chrome=0.76
+13:37:49 total=8.05 top: llama-server=3.11 VALORANT-Win64-Shipping=1.86 find=0.91 chrome=0.60 AMDRSServ=0.58
+13:37:54 total=7.77 top: llama-server=3.09 VALORANT-Win64-Shipping=1.94 find=0.92 chrome=0.72 AMDRSServ=0.55
+13:37:59 total=7.21 top: llama-server=2.96 VALORANT-Win64-Shipping=1.53 find=0.85 AMDRSServ=0.60 chrome=0.52
+13:38:04 total=7.12 top: llama-server=2.49 VALORANT-Win64-Shipping=1.46 find=0.83 chrome=0.77 AMDRSServ=0.57
+13:38:09 total=6.50 top: llama-server=2.46 VALORANT-Win64-Shipping=1.29 find=0.88 AMDRSServ=0.58 chrome=0.45
+13:38:14 total=7.84 top: llama-server=3.01 VALORANT-Win64-Shipping=1.71 find=0.86 chrome=0.84 AMDRSServ=0.58
+13:38:19 total=7.96 top: llama-server=3.31 VALORANT-Win64-Shipping=1.81 find=0.89 chrome=0.62 AMDRSServ=0.51
+13:38:25 total=7.61 top: llama-server=3.43 VALORANT-Win64-Shipping=1.29 find=0.92 chrome=0.77 AMDRSServ=0.53
+13:38:30 total=7.80 top: llama-server=3.36 VALORANT-Win64-Shipping=1.71 find=0.89 chrome=0.53 AMDRSServ=0.47
+13:38:35 total=7.87 top: llama-server=2.85 VALORANT-Win64-Shipping=1.94 chrome=0.89 find=0.79 AMDRSServ=0.60
+13:38:40 total=8.04 top: llama-server=2.97 VALORANT-Win64-Shipping=2.36 find=0.86 chrome=0.52 AMDRSServ=0.50
+13:38:45 total=8.30 top: llama-server=3.09 VALORANT-Win64-Shipping=2.32 find=0.85 chrome=0.73 AMDRSServ=0.59
+13:38:50 total=8.09 top: llama-server=2.94 VALORANT-Win64-Shipping=2.53 find=0.83 AMDRSServ=0.57 chrome=0.53
+13:38:55 total=8.30 top: llama-server=2.70 VALORANT-Win64-Shipping=2.55 chrome=0.95 find=0.75 AMDRSServ=0.70
+13:39:00 total=8.04 top: llama-server=2.85 VALORANT-Win64-Shipping=2.50 find=0.82 chrome=0.59 AMDRSServ=0.52
+13:39:06 total=8.02 top: llama-server=2.47 VALORANT-Win64-Shipping=2.45 chrome=0.80 find=0.75 AMDRSServ=0.72
+13:39:11 total=8.16 top: VALORANT-Win64-Shipping=2.73 llama-server=2.65 find=0.77 AMDRSServ=0.65 chrome=0.52
+13:39:16 total=8.58 top: llama-server=3.01 VALORANT-Win64-Shipping=2.54 chrome=1.00 find=0.83 AMDRSServ=0.54
+13:39:21 total=7.98 top: llama-server=3.16 VALORANT-Win64-Shipping=2.24 find=0.86 chrome=0.62 AMDRSServ=0.45
+13:39:26 total=8.22 top: llama-server=2.96 VALORANT-Win64-Shipping=2.52 find=0.83 chrome=0.80 AMDRSServ=0.55
+13:39:31 total=5.20 top: VALORANT-Win64-Shipping=2.04 llama-server=1.16 chrome=0.57 find=0.47 AMDRSServ=0.47
+13:39:37 total=6.63 top: VALORANT-Win64-Shipping=2.43 llama-server=1.59 chrome=0.76 AMDRSServ=0.67 find=0.59
+13:39:42 total=6.58 top: VALORANT-Win64-Shipping=2.55 llama-server=1.58 AMDRSServ=0.68 find=0.57 chrome=0.41
+13:39:47 total=7.02 top: VALORANT-Win64-Shipping=2.64 llama-server=1.79 chrome=0.78 AMDRSServ=0.64 find=0.60
+13:39:52 total=7.14 top: VALORANT-Win64-Shipping=2.77 llama-server=2.00 find=0.68 AMDRSServ=0.61 chrome=0.49
+13:39:57 total=7.45 top: VALORANT-Win64-Shipping=2.80 llama-server=1.97 chrome=0.91 find=0.59 AMDRSServ=0.51
+13:40:02 total=7.40 top: VALORANT-Win64-Shipping=2.89 llama-server=1.99 find=0.67 chrome=0.58 AMDRSServ=0.56
+13:40:08 total=7.55 top: VALORANT-Win64-Shipping=2.78 llama-server=2.14 chrome=0.70 find=0.70 AMDRSServ=0.63
+13:40:13 total=7.74 top: VALORANT-Win64-Shipping=3.00 llama-server=2.28 find=0.72 AMDRSServ=0.65 chrome=0.54
+13:40:18 total=7.96 top: VALORANT-Win64-Shipping=2.98 llama-server=2.27 chrome=0.82 find=0.74 AMDRSServ=0.60
+13:40:23 total=8.03 top: VALORANT-Win64-Shipping=3.07 llama-server=2.41 find=0.71 AMDRSServ=0.70 chrome=0.54
+13:40:28 total=8.55 top: VALORANT-Win64-Shipping=3.22 llama-server=2.36 chrome=0.89 AMDRSServ=0.73 find=0.69
+13:40:33 total=8.03 top: VALORANT-Win64-Shipping=2.78 llama-server=2.66 find=0.80 chrome=0.64 AMDRSServ=0.57
+13:40:38 total=8.25 top: VALORANT-Win64-Shipping=2.84 llama-server=2.52 chrome=0.89 find=0.79 AMDRSServ=0.62
+13:40:43 total=7.53 top: VALORANT-Win64-Shipping=2.65 llama-server=2.38 find=0.76 AMDRSServ=0.57 chrome=0.53
+13:40:49 total=7.97 top: VALORANT-Win64-Shipping=2.81 llama-server=2.40 chrome=0.78 find=0.73 AMDRSServ=0.71
+13:40:54 total=7.87 top: VALORANT-Win64-Shipping=2.97 llama-server=2.53 find=0.74 chrome=0.54 AMDRSServ=0.53
+13:40:59 total=7.28 top: VALORANT-Win64-Shipping=2.96 llama-server=1.71 chrome=0.80 find=0.64 AMDRSServ=0.59
+13:41:04 total=7.30 top: VALORANT-Win64-Shipping=2.91 llama-server=1.81 find=0.64 chrome=0.61 AMDRSServ=0.58
+13:41:09 total=7.87 top: VALORANT-Win64-Shipping=2.80 llama-server=2.40 find=0.81 chrome=0.77 AMDRSServ=0.58
+13:41:14 total=8.04 top: VALORANT-Win64-Shipping=3.30 llama-server=2.24 find=0.76 AMDRSServ=0.64 chrome=0.50
+13:41:19 total=8.07 top: VALORANT-Win64-Shipping=2.91 llama-server=2.28 chrome=0.77 AMDRSServ=0.73 find=0.72
+13:41:25 total=7.67 top: VALORANT-Win64-Shipping=2.90 llama-server=2.15 chrome=0.79 find=0.70 AMDRSServ=0.54
+13:41:30 total=8.30 top: VALORANT-Win64-Shipping=3.08 llama-server=2.35 chrome=0.78 AMDRSServ=0.76 find=0.70
+13:41:35 total=7.98 top: VALORANT-Win64-Shipping=2.97 llama-server=2.42 find=0.75 AMDRSServ=0.63 chrome=0.56
+13:41:40 total=7.74 top: VALORANT-Win64-Shipping=2.80 llama-server=2.10 chrome=0.81 find=0.72 AMDRSServ=0.61
+13:41:45 total=7.86 top: VALORANT-Win64-Shipping=2.93 llama-server=2.33 find=0.73 chrome=0.66 AMDRSServ=0.60
+13:41:50 total=8.00 top: VALORANT-Win64-Shipping=3.06 llama-server=2.28 chrome=0.71 find=0.69 AMDRSServ=0.65
+13:41:55 total=8.35 top: VALORANT-Win64-Shipping=2.90 llama-server=2.60 find=0.79 chrome=0.67 AMDRSServ=0.65
+13:42:01 total=8.13 top: VALORANT-Win64-Shipping=2.85 llama-server=2.50 find=0.79 chrome=0.63 AMDRSServ=0.63
+13:42:06 total=8.55 top: llama-server=2.92 VALORANT-Win64-Shipping=2.82 find=0.78 AMDRSServ=0.75 chrome=0.73
+13:42:11 total=8.78 top: VALORANT-Win64-Shipping=2.92 llama-server=2.84 AMDRSServ=0.93 find=0.75 chrome=0.70
+13:42:16 total=8.39 top: llama-server=2.99 VALORANT-Win64-Shipping=2.77 find=0.84 AMDRSServ=0.66 chrome=0.56
+13:42:21 total=8.29 top: VALORANT-Win64-Shipping=3.01 llama-server=2.72 find=0.79 chrome=0.67 AMDRSServ=0.61
+13:42:26 total=8.02 top: VALORANT-Win64-Shipping=2.69 llama-server=2.62 find=0.82 AMDRSServ=0.68 chrome=0.55
+13:42:31 total=8.18 top: VALORANT-Win64-Shipping=2.88 llama-server=2.52 chrome=0.75 find=0.74 AMDRSServ=0.59
+13:42:36 total=8.42 top: VALORANT-Win64-Shipping=2.92 llama-server=2.81 find=0.80 AMDRSServ=0.70 chrome=0.54
+13:42:42 total=8.22 top: VALORANT-Win64-Shipping=2.87 llama-server=2.49 chrome=0.77 AMDRSServ=0.75 find=0.73
+13:42:47 total=8.61 top: VALORANT-Win64-Shipping=3.17 llama-server=2.79 find=0.80 AMDRSServ=0.64 chrome=0.55
+13:42:52 total=8.73 top: VALORANT-Win64-Shipping=2.89 llama-server=2.86 chrome=0.85 find=0.81 AMDRSServ=0.61
+13:42:57 total=8.52 top: VALORANT-Win64-Shipping=2.94 llama-server=2.90 find=0.81 AMDRSServ=0.60 chrome=0.57
+13:43:02 total=8.94 top: VALORANT-Win64-Shipping=3.14 llama-server=2.82 find=0.81 chrome=0.73 AMDRSServ=0.69
+13:43:07 total=8.63 top: llama-server=2.97 VALORANT-Win64-Shipping=2.90 find=0.81 chrome=0.69 AMDRSServ=0.56
+13:43:12 total=8.57 top: VALORANT-Win64-Shipping=2.88 llama-server=2.86 find=0.82 chrome=0.81 AMDRSServ=0.62
+13:43:17 total=8.31 top: VALORANT-Win64-Shipping=3.08 llama-server=2.70 find=0.80 AMDRSServ=0.60 chrome=0.55
+13:43:23 total=8.45 top: VALORANT-Win64-Shipping=3.03 llama-server=2.53 chrome=0.77 find=0.75 AMDRSServ=0.55
+13:43:28 total=8.50 top: VALORANT-Win64-Shipping=3.04 llama-server=2.34 find=0.72 AMDRSServ=0.67 chrome=0.64
+13:43:33 total=8.65 top: VALORANT-Win64-Shipping=2.95 llama-server=2.54 chrome=0.97 find=0.74 AMDRSServ=0.72
+13:43:38 total=8.56 top: VALORANT-Win64-Shipping=2.97 llama-server=2.73 find=0.79 AMDRSServ=0.76 chrome=0.58
+13:43:43 total=8.31 top: VALORANT-Win64-Shipping=2.91 llama-server=2.47 find=0.78 AMDRSServ=0.78 chrome=0.59
+13:43:48 total=8.83 top: VALORANT-Win64-Shipping=3.32 llama-server=2.80 find=0.82 AMDRSServ=0.60 chrome=0.50
+13:43:53 total=8.71 top: VALORANT-Win64-Shipping=3.09 llama-server=2.88 find=0.80 AMDRSServ=0.71 chrome=0.57
+13:43:59 total=8.69 top: VALORANT-Win64-Shipping=3.32 llama-server=2.56 find=0.77 AMDRSServ=0.73 chrome=0.63
+13:44:04 total=8.15 top: VALORANT-Win64-Shipping=3.28 llama-server=2.32 find=0.70 chrome=0.68 AMDRSServ=0.64
+13:44:09 total=8.24 top: VALORANT-Win64-Shipping=2.90 llama-server=2.38 AMDRSServ=0.72 find=0.70 chrome=0.58
+13:44:14 total=7.86 top: VALORANT-Win64-Shipping=2.94 llama-server=1.91 chrome=0.80 AMDRSServ=0.72 find=0.61
+13:44:19 total=7.81 top: VALORANT-Win64-Shipping=2.85 llama-server=2.16 find=0.67 AMDRSServ=0.66 chrome=0.61
+13:44:24 total=8.15 top: VALORANT-Win64-Shipping=3.06 llama-server=2.03 AMDRSServ=0.82 chrome=0.74 find=0.65
+13:44:29 total=8.47 top: VALORANT-Win64-Shipping=3.20 llama-server=2.51 find=0.78 AMDRSServ=0.69 chrome=0.68
+13:44:35 total=8.47 top: VALORANT-Win64-Shipping=3.08 llama-server=2.60 find=0.76 chrome=0.72 AMDRSServ=0.65
+13:44:40 total=8.08 top: VALORANT-Win64-Shipping=3.15 llama-server=2.12 AMDRSServ=0.71 find=0.71 chrome=0.61
+13:44:45 total=8.73 top: VALORANT-Win64-Shipping=3.20 llama-server=2.48 find=0.74 chrome=0.73 AMDRSServ=0.73
+13:44:50 total=8.35 top: VALORANT-Win64-Shipping=3.09 llama-server=2.33 find=0.74 AMDRSServ=0.72 chrome=0.65
+13:44:55 total=8.29 top: VALORANT-Win64-Shipping=3.17 llama-server=2.43 chrome=0.76 find=0.76 AMDRSServ=0.52
+13:45:00 total=7.93 top: VALORANT-Win64-Shipping=3.22 llama-server=2.17 find=0.70 chrome=0.63 AMDRSServ=0.56
+13:45:06 total=7.92 top: VALORANT-Win64-Shipping=2.90 llama-server=2.21 chrome=0.79 find=0.67 AMDRSServ=0.60
+13:45:11 total=7.84 top: VALORANT-Win64-Shipping=3.18 llama-server=1.88 chrome=0.69 AMDRSServ=0.66 find=0.64
+13:45:16 total=7.72 top: VALORANT-Win64-Shipping=2.84 llama-server=2.10 find=0.67 AMDRSServ=0.65 chrome=0.62
+13:45:21 total=7.79 top: llama-server=1.95 Discord=1.77 chrome=0.77 VALORANT-Win64-Shipping=0.71 AMDRSServ=0.70
+13:45:26 total=7.44 top: llama-server=2.81 Discord=1.04 find=0.78 VALORANT-Win64-Shipping=0.67 chrome=0.64
+13:45:31 total=7.91 top: llama-server=3.01 Discord=0.95 find=0.86 chrome=0.76 VALORANT-Win64-Shipping=0.72
+13:45:37 total=7.75 top: llama-server=3.20 VALORANT-Win64-Shipping=1.21 find=0.87 AMDRSServ=0.78 chrome=0.68
+13:45:42 total=8.61 top: VALORANT-Win64-Shipping=3.12 llama-server=2.64 find=0.78 chrome=0.76 AMDRSServ=0.59
+13:45:47 total=8.72 top: VALORANT-Win64-Shipping=2.89 llama-server=2.84 find=0.85 chrome=0.79 AMDRSServ=0.64
+13:45:52 total=8.22 top: llama-server=2.75 VALORANT-Win64-Shipping=2.73 find=0.81 chrome=0.68 AMDRSServ=0.61
+13:45:57 total=8.13 top: VALORANT-Win64-Shipping=3.02 llama-server=2.41 chrome=0.72 find=0.71 AMDRSServ=0.57
+13:46:02 total=8.31 top: VALORANT-Win64-Shipping=3.15 llama-server=2.65 find=0.81 chrome=0.64 AMDRSServ=0.60
+13:46:07 total=8.39 top: VALORANT-Win64-Shipping=3.12 llama-server=2.55 find=0.78 chrome=0.68 AMDRSServ=0.63
+13:46:12 total=8.68 top: VALORANT-Win64-Shipping=2.89 llama-server=2.83 find=0.86 chrome=0.76 AMDRSServ=0.64
+13:46:18 total=8.73 top: VALORANT-Win64-Shipping=2.95 llama-server=2.94 find=0.83 chrome=0.72 AMDRSServ=0.66
+13:46:23 total=8.88 top: VALORANT-Win64-Shipping=3.04 llama-server=3.00 find=0.85 AMDRSServ=0.72 chrome=0.66
+13:46:28 total=8.85 top: llama-server=3.08 VALORANT-Win64-Shipping=3.05 find=0.87 AMDRSServ=0.61 chrome=0.58
+13:46:33 total=8.72 top: VALORANT-Win64-Shipping=3.15 llama-server=2.92 find=0.83 chrome=0.58 AMDRSServ=0.54
+13:46:38 total=8.62 top: VALORANT-Win64-Shipping=3.20 llama-server=2.79 find=0.83 chrome=0.63 AMDRSServ=0.56
+13:46:43 total=8.39 top: VALORANT-Win64-Shipping=3.37 llama-server=2.27 find=0.69 chrome=0.63 AMDRSServ=0.62
+13:46:48 total=8.48 top: VALORANT-Win64-Shipping=2.97 llama-server=2.75 find=0.78 AMDRSServ=0.61 chrome=0.60
+13:46:53 total=8.20 top: VALORANT-Win64-Shipping=3.03 llama-server=2.48 find=0.74 chrome=0.68 AMDRSServ=0.57
+13:46:59 total=8.65 top: VALORANT-Win64-Shipping=3.23 llama-server=2.55 find=0.79 chrome=0.74 AMDRSServ=0.61
+13:47:04 total=8.60 top: VALORANT-Win64-Shipping=3.08 llama-server=2.77 find=0.76 chrome=0.63 AMDRSServ=0.62
+13:47:09 total=8.61 top: VALORANT-Win64-Shipping=3.03 llama-server=2.89 find=0.84 chrome=0.69 AMDRSServ=0.58
+13:47:14 total=8.65 top: VALORANT-Win64-Shipping=3.42 llama-server=2.57 find=0.78 chrome=0.68 AMDRSServ=0.49
+13:47:19 total=8.96 top: VALORANT-Win64-Shipping=3.23 llama-server=2.92 find=0.81 AMDRSServ=0.70 chrome=0.59
+13:47:24 total=8.86 top: llama-server=3.11 VALORANT-Win64-Shipping=3.03 find=0.85 chrome=0.70 AMDRSServ=0.61
+13:47:29 total=9.03 top: VALORANT-Win64-Shipping=3.55 llama-server=2.88 find=0.83 AMDRSServ=0.65 chrome=0.60
+13:47:35 total=8.84 top: VALORANT-Win64-Shipping=3.38 llama-server=2.78 find=0.78 chrome=0.77 AMDRSServ=0.62
+13:47:40 total=8.31 top: VALORANT-Win64-Shipping=3.01 llama-server=2.41 chrome=0.92 find=0.74 AMDRSServ=0.66
+13:47:45 total=8.43 top: VALORANT-Win64-Shipping=3.49 llama-server=2.18 chrome=0.73 find=0.70 AMDRSServ=0.60
+13:47:50 total=8.47 top: VALORANT-Win64-Shipping=3.34 llama-server=2.48 find=0.76 chrome=0.73 AMDRSServ=0.55
+13:47:55 total=8.74 top: VALORANT-Win64-Shipping=3.01 llama-server=2.84 chrome=0.87 find=0.80 AMDRSServ=0.64
+13:48:00 total=8.78 top: VALORANT-Win64-Shipping=3.36 llama-server=2.72 find=0.81 AMDRSServ=0.69 chrome=0.58
+13:48:05 total=8.57 top: llama-server=3.01 VALORANT-Win64-Shipping=2.94 find=0.81 chrome=0.75 AMDRSServ=0.54
+13:48:11 total=8.32 top: VALORANT-Win64-Shipping=3.09 llama-server=2.59 find=0.78 chrome=0.72 AMDRSServ=0.52
+13:48:16 total=8.33 top: VALORANT-Win64-Shipping=3.04 llama-server=2.65 find=0.80 chrome=0.76 AMDRSServ=0.57
+13:48:21 total=8.54 top: VALORANT-Win64-Shipping=3.51 llama-server=2.58 find=0.78 chrome=0.64 AMDRSServ=0.48
+13:48:26 total=8.10 top: VALORANT-Win64-Shipping=3.23 llama-server=2.36 find=0.77 chrome=0.74 AMDRSServ=0.46
+13:48:31 total=7.28 top: VALORANT-Win64-Shipping=3.15 llama-server=1.71 chrome=0.69 find=0.64 AMDRSServ=0.51
+13:48:36 total=7.27 top: VALORANT-Win64-Shipping=3.28 llama-server=1.47 chrome=0.71 find=0.60 AMDRSServ=0.55
+13:48:42 total=7.23 top: VALORANT-Win64-Shipping=3.03 llama-server=1.76 chrome=0.70 find=0.65 AMDRSServ=0.47
+13:48:47 total=7.90 top: VALORANT-Win64-Shipping=3.08 llama-server=2.27 chrome=0.73 find=0.67 AMDRSServ=0.56
+13:48:52 total=8.48 top: VALORANT-Win64-Shipping=3.38 llama-server=2.64 find=0.78 AMDRSServ=0.63 chrome=0.53
+13:48:57 total=8.34 top: VALORANT-Win64-Shipping=3.33 llama-server=2.38 chrome=0.74 find=0.68 AMDRSServ=0.63
+13:49:02 total=8.03 top: VALORANT-Win64-Shipping=2.87 llama-server=2.58 find=0.79 chrome=0.59 AMDRSServ=0.51
+13:49:07 total=8.73 top: VALORANT-Win64-Shipping=3.53 llama-server=2.41 chrome=0.81 find=0.69 AMDRSServ=0.65
+13:49:12 total=8.10 top: VALORANT-Win64-Shipping=3.30 llama-server=2.17 chrome=0.71 find=0.65 AMDRSServ=0.60
+13:49:17 total=7.98 top: llama-server=2.62 VALORANT-Win64-Shipping=2.57 chrome=0.80 find=0.79 AMDRSServ=0.52
+13:49:23 total=7.78 top: VALORANT-Win64-Shipping=3.04 llama-server=2.14 find=0.70 AMDRSServ=0.62 chrome=0.61
+13:49:28 total=7.97 top: VALORANT-Win64-Shipping=3.01 llama-server=2.35 chrome=0.79 find=0.70 AMDRSServ=0.48
+13:49:33 total=7.40 top: VALORANT-Win64-Shipping=2.86 llama-server=2.01 AMDRSServ=0.72 find=0.65 chrome=0.59
+13:49:38 total=7.90 top: VALORANT-Win64-Shipping=3.26 llama-server=2.03 chrome=0.78 find=0.64 AMDRSServ=0.58
+13:49:43 total=7.94 top: VALORANT-Win64-Shipping=2.92 llama-server=2.43 find=0.76 AMDRSServ=0.74 chrome=0.58
+13:49:49 total=8.39 top: VALORANT-Win64-Shipping=2.81 llama-server=2.37 chrome=0.86 find=0.74 AMDRSServ=0.55
+13:49:54 total=8.54 top: VALORANT-Win64-Shipping=3.52 llama-server=2.46 find=0.75 AMDRSServ=0.58 chrome=0.51
+13:49:59 total=8.59 top: VALORANT-Win64-Shipping=3.32 llama-server=2.49 chrome=0.86 find=0.75 AMDRSServ=0.58
+13:50:04 total=7.83 top: VALORANT-Win64-Shipping=2.69 llama-server=2.60 find=0.78 AMDRSServ=0.64 chrome=0.54
+13:50:09 total=7.73 top: VALORANT-Win64-Shipping=2.71 llama-server=1.96 chrome=0.89 find=0.64 AMDRSServ=0.61
+13:50:14 total=7.45 top: VALORANT-Win64-Shipping=3.23 llama-server=1.81 find=0.68 AMDRSServ=0.61 chrome=0.45
+13:50:19 total=8.18 top: VALORANT-Win64-Shipping=3.11 llama-server=2.37 chrome=0.73 find=0.71 AMDRSServ=0.68
+13:50:25 total=7.51 top: VALORANT-Win64-Shipping=3.21 llama-server=1.91 AMDRSServ=0.70 find=0.63 chrome=0.54
+13:50:30 total=8.14 top: VALORANT-Win64-Shipping=3.29 llama-server=2.10 chrome=0.84 AMDRSServ=0.68 find=0.67
+13:50:35 total=8.44 top: VALORANT-Win64-Shipping=3.25 llama-server=2.41 find=0.74 AMDRSServ=0.73 chrome=0.66
+13:50:40 total=8.13 top: VALORANT-Win64-Shipping=3.06 llama-server=2.46 chrome=0.73 find=0.73 AMDRSServ=0.53
+13:50:45 total=8.45 top: VALORANT-Win64-Shipping=3.24 llama-server=2.65 find=0.75 AMDRSServ=0.64 chrome=0.53
+13:50:50 total=8.57 top: VALORANT-Win64-Shipping=2.92 llama-server=2.80 find=0.80 chrome=0.77 AMDRSServ=0.56
+13:50:56 total=7.06 top: llama-server=2.19 find=0.71 VALORANT-Win64-Shipping=0.67 chrome=0.63 Discord=0.58
+13:51:01 total=7.41 top: llama-server=3.14 VALORANT-Win64-Shipping=1.09 find=0.85 chrome=0.62 AMDRSServ=0.48
+13:51:06 total=6.73 top: llama-server=2.46 VALORANT-Win64-Shipping=0.90 find=0.77 claude=0.64 AMDRSServ=0.50
+13:51:11 total=6.33 top: llama-server=1.95 claude=1.03 chrome=0.77 find=0.61 VALORANT-Win64-Shipping=0.49
+13:51:16 total=5.91 top: llama-server=1.71 VALORANT-Win64-Shipping=0.92 claude=0.88 find=0.59 AMDRSServ=0.54
+13:51:21 total=7.49 top: llama-server=2.39 VALORANT-Win64-Shipping=1.14 chrome=0.82 find=0.77 AMDRSServ=0.73
+13:51:26 total=7.71 top: VALORANT-Win64-Shipping=2.92 llama-server=2.04 find=0.70 AMDRSServ=0.67 chrome=0.56
+13:51:31 total=8.16 top: VALORANT-Win64-Shipping=2.89 llama-server=2.43 find=0.78 chrome=0.70 AMDRSServ=0.61
+13:51:37 total=8.02 top: VALORANT-Win64-Shipping=2.84 llama-server=2.39 chrome=0.75 find=0.74 AMDRSServ=0.61
+13:51:42 total=8.21 top: VALORANT-Win64-Shipping=3.10 llama-server=2.23 chrome=0.81 find=0.76 AMDRSServ=0.51
+13:51:47 total=7.97 top: VALORANT-Win64-Shipping=3.45 llama-server=2.19 find=0.73 AMDRSServ=0.57 chrome=0.36
+13:51:52 total=8.45 top: VALORANT-Win64-Shipping=2.92 llama-server=2.70 chrome=0.86 find=0.78 AMDRSServ=0.63
+13:51:57 total=7.78 top: VALORANT-Win64-Shipping=3.08 llama-server=2.33 find=0.73 AMDRSServ=0.59 chrome=0.52
+13:52:02 total=7.93 top: VALORANT-Win64-Shipping=2.92 llama-server=2.13 chrome=0.74 AMDRSServ=0.71 find=0.63
+13:52:07 total=6.51 top: llama-server=1.71 chrome=1.06 find=0.66 VALORANT-Win64-Shipping=0.66 AMDRSServ=0.58
+13:52:13 total=6.44 top: llama-server=1.96 chrome=1.22 VALORANT-Win64-Shipping=0.94 find=0.73 AMDRSServ=0.63
+13:52:18 total=6.98 top: llama-server=1.97 chrome=1.58 VALORANT-Win64-Shipping=1.09 find=0.69 webwallpaper64=0.48
+13:52:23 total=6.95 top: llama-server=3.08 find=0.85 chrome=0.82 VALORANT-Win64-Shipping=0.63 AMDRSServ=0.55
+13:52:28 total=7.07 top: llama-server=3.24 find=0.88 VALORANT-Win64-Shipping=0.75 chrome=0.67 AMDRSServ=0.61
+13:52:33 total=7.71 top: llama-server=2.63 chrome=1.46 VALORANT-Win64-Shipping=1.09 find=0.80 AMDRSServ=0.60
+13:52:38 total=6.98 top: llama-server=2.48 chrome=1.27 VALORANT-Win64-Shipping=0.97 find=0.73 AMDRSServ=0.65
+13:52:43 total=7.04 top: llama-server=3.06 chrome=0.90 find=0.89 VALORANT-Win64-Shipping=0.63 AMDRSServ=0.62
+13:52:48 total=7.10 top: llama-server=2.95 VALORANT-Win64-Shipping=1.01 chrome=0.87 find=0.84 AMDRSServ=0.65
+13:52:53 total=7.02 top: llama-server=2.60 VALORANT-Win64-Shipping=1.00 chrome=0.85 find=0.78 AMDRSServ=0.70
+13:52:59 total=6.57 top: llama-server=2.98 find=0.88 chrome=0.67 VALORANT-Win64-Shipping=0.61 AMDRSServ=0.55
+13:53:04 total=6.23 top: llama-server=2.36 chrome=1.07 find=0.75 VALORANT-Win64-Shipping=0.58 AMDRSServ=0.53
+13:53:09 total=5.88 top: llama-server=2.03 chrome=0.89 VALORANT-Win64-Shipping=0.69 find=0.68 AMDRSServ=0.67
+13:53:14 total=6.85 top: llama-server=2.93 chrome=0.93 find=0.87 AMDRSServ=0.68 VALORANT-Win64-Shipping=0.64
+13:53:19 total=7.18 top: llama-server=3.07 VALORANT-Win64-Shipping=1.03 find=0.87 chrome=0.83 AMDRSServ=0.57
+13:53:24 total=7.37 top: llama-server=3.04 chrome=1.05 find=0.86 VALORANT-Win64-Shipping=0.76 AMDRSServ=0.61
+13:53:29 total=7.50 top: llama-server=2.76 VALORANT-Win64-Shipping=1.46 find=0.81 chrome=0.74 AMDRSServ=0.68
+13:53:34 total=8.47 top: VALORANT-Win64-Shipping=3.40 llama-server=2.38 find=0.71 chrome=0.70 AMDRSServ=0.59
+13:53:40 total=8.29 top: VALORANT-Win64-Shipping=3.19 llama-server=2.49 find=0.74 chrome=0.58 AMDRSServ=0.54
+13:53:45 total=8.03 top: VALORANT-Win64-Shipping=2.92 llama-server=2.59 find=0.75 AMDRSServ=0.63 chrome=0.58
+13:53:50 total=7.98 top: VALORANT-Win64-Shipping=3.11 llama-server=2.34 find=0.73 AMDRSServ=0.60 chrome=0.58
+13:53:55 total=7.67 top: VALORANT-Win64-Shipping=2.76 llama-server=2.23 chrome=0.91 find=0.71 AMDRSServ=0.54
+13:54:00 total=7.81 top: VALORANT-Win64-Shipping=2.82 llama-server=2.61 find=0.75 chrome=0.65 AMDRSServ=0.45
+13:54:05 total=8.18 top: VALORANT-Win64-Shipping=3.13 llama-server=2.58 find=0.80 chrome=0.61 AMDRSServ=0.53
+13:54:10 total=8.09 top: VALORANT-Win64-Shipping=2.91 llama-server=2.58 find=0.73 chrome=0.68 AMDRSServ=0.60
+13:54:16 total=8.05 top: llama-server=2.95 VALORANT-Win64-Shipping=2.56 find=0.81 chrome=0.78 AMDRSServ=0.49
+13:54:21 total=8.30 top: VALORANT-Win64-Shipping=2.98 llama-server=2.74 find=0.83 chrome=0.59 AMDRSServ=0.49
+13:54:26 total=8.43 top: VALORANT-Win64-Shipping=3.07 llama-server=2.80 find=0.77 chrome=0.68 AMDRSServ=0.59
+13:54:31 total=7.99 top: VALORANT-Win64-Shipping=2.86 llama-server=2.51 find=0.74 chrome=0.67 AMDRSServ=0.54
+13:54:36 total=7.74 top: VALORANT-Win64-Shipping=3.09 llama-server=2.04 AMDRSServ=0.70 find=0.67 chrome=0.65
+13:54:41 total=7.28 top: VALORANT-Win64-Shipping=2.96 llama-server=1.90 chrome=0.68 find=0.63 AMDRSServ=0.52
+13:54:46 total=7.51 top: VALORANT-Win64-Shipping=2.53 llama-server=2.41 find=0.73 AMDRSServ=0.71 chrome=0.63
+13:54:52 total=7.83 top: VALORANT-Win64-Shipping=3.01 llama-server=2.20 AMDRSServ=0.69 find=0.66 chrome=0.65
+13:54:57 total=8.07 top: VALORANT-Win64-Shipping=3.07 llama-server=2.48 find=0.78 chrome=0.68 AMDRSServ=0.48
+13:55:02 total=8.03 top: llama-server=2.89 VALORANT-Win64-Shipping=2.52 find=0.83 chrome=0.61 AMDRSServ=0.53
+13:55:07 total=8.56 top: VALORANT-Win64-Shipping=3.06 llama-server=2.67 find=0.76 chrome=0.74 AMDRSServ=0.65
+13:55:12 total=8.25 top: VALORANT-Win64-Shipping=2.93 llama-server=2.38 chrome=0.80 AMDRSServ=0.70 find=0.69
+13:55:17 total=8.28 top: VALORANT-Win64-Shipping=2.92 llama-server=2.72 find=0.77 chrome=0.76 AMDRSServ=0.53
+13:55:22 total=8.52 top: VALORANT-Win64-Shipping=3.35 llama-server=2.53 chrome=0.79 find=0.79 AMDRSServ=0.52
+13:55:27 total=8.16 top: VALORANT-Win64-Shipping=3.17 llama-server=2.32 find=0.72 chrome=0.68 AMDRSServ=0.63
+13:55:33 total=7.94 top: VALORANT-Win64-Shipping=2.76 llama-server=2.43 find=0.78 AMDRSServ=0.64 chrome=0.63
+13:55:38 total=7.60 top: VALORANT-Win64-Shipping=3.22 llama-server=1.81 chrome=0.74 find=0.63 AMDRSServ=0.58
+13:55:43 total=7.84 top: VALORANT-Win64-Shipping=2.97 llama-server=2.12 find=0.68 AMDRSServ=0.66 chrome=0.63
+13:55:48 total=7.92 top: VALORANT-Win64-Shipping=2.87 llama-server=2.42 find=0.76 AMDRSServ=0.67 chrome=0.63
+13:55:53 total=8.50 top: VALORANT-Win64-Shipping=3.08 llama-server=2.77 find=0.78 chrome=0.73 AMDRSServ=0.54
+13:55:58 total=8.48 top: VALORANT-Win64-Shipping=3.34 llama-server=2.36 chrome=0.77 find=0.75 AMDRSServ=0.52
+13:56:04 total=8.48 top: VALORANT-Win64-Shipping=3.09 llama-server=2.77 find=0.80 chrome=0.67 AMDRSServ=0.48
+13:56:09 total=8.36 top: VALORANT-Win64-Shipping=2.87 llama-server=2.79 find=0.78 AMDRSServ=0.70 chrome=0.61
+13:56:14 total=8.07 top: VALORANT-Win64-Shipping=3.43 llama-server=2.23 find=0.69 chrome=0.66 AMDRSServ=0.51
+13:56:19 total=8.19 top: VALORANT-Win64-Shipping=3.23 llama-server=2.23 chrome=0.72 find=0.70 AMDRSServ=0.62
+13:56:24 total=7.85 top: VALORANT-Win64-Shipping=2.85 llama-server=2.23 find=0.71 chrome=0.64 AMDRSServ=0.62
+13:56:29 total=8.06 top: VALORANT-Win64-Shipping=3.25 llama-server=2.20 chrome=0.72 find=0.71 AMDRSServ=0.54
+13:56:34 total=7.86 top: VALORANT-Win64-Shipping=3.13 llama-server=2.14 chrome=0.77 find=0.70 AMDRSServ=0.49
+13:56:40 total=7.72 top: VALORANT-Win64-Shipping=2.76 llama-server=2.31 find=0.71 chrome=0.68 AMDRSServ=0.58
+13:56:45 total=8.68 top: VALORANT-Win64-Shipping=3.47 llama-server=2.37 chrome=0.80 find=0.71 AMDRSServ=0.67
+13:56:50 total=8.49 top: VALORANT-Win64-Shipping=3.04 llama-server=2.62 find=0.79 chrome=0.70 AMDRSServ=0.67
+13:56:55 total=8.38 top: VALORANT-Win64-Shipping=2.91 llama-server=2.65 find=0.81 AMDRSServ=0.66 chrome=0.64
+13:57:00 total=8.38 top: VALORANT-Win64-Shipping=3.34 llama-server=2.43 find=0.75 chrome=0.71 AMDRSServ=0.52
+13:57:05 total=8.04 top: VALORANT-Win64-Shipping=3.04 llama-server=2.34 find=0.74 chrome=0.72 AMDRSServ=0.63
+13:57:10 total=7.79 top: VALORANT-Win64-Shipping=2.72 llama-server=2.49 find=0.78 chrome=0.62 AMDRSServ=0.57
+13:57:16 total=8.02 top: VALORANT-Win64-Shipping=3.28 llama-server=2.27 chrome=0.78 find=0.68 AMDRSServ=0.48
+13:57:21 total=7.44 top: VALORANT-Win64-Shipping=3.06 llama-server=2.01 find=0.69 chrome=0.59 AMDRSServ=0.47
+13:57:26 total=7.84 top: VALORANT-Win64-Shipping=2.79 llama-server=2.42 chrome=0.80 find=0.76 AMDRSServ=0.48
+13:57:31 total=7.90 top: VALORANT-Win64-Shipping=3.38 llama-server=2.08 chrome=0.71 find=0.67 AMDRSServ=0.46
+13:57:36 total=8.30 top: VALORANT-Win64-Shipping=3.21 llama-server=2.72 find=0.76 chrome=0.63 AMDRSServ=0.53
+13:57:41 total=7.91 top: llama-server=2.76 VALORANT-Win64-Shipping=2.50 find=0.81 AMDRSServ=0.63 chrome=0.62
+13:57:46 total=8.61 top: VALORANT-Win64-Shipping=3.23 llama-server=2.71 find=0.81 chrome=0.72 AMDRSServ=0.53
+13:57:52 total=8.28 top: VALORANT-Win64-Shipping=2.91 llama-server=2.67 find=0.79 chrome=0.68 AMDRSServ=0.56
+13:57:57 total=8.40 top: llama-server=2.73 VALORANT-Win64-Shipping=2.71 chrome=0.99 find=0.79 AMDRSServ=0.55
+13:58:02 total=8.53 top: VALORANT-Win64-Shipping=3.30 llama-server=2.48 find=0.77 chrome=0.67 AMDRSServ=0.63
+13:58:07 total=8.09 top: VALORANT-Win64-Shipping=2.81 llama-server=2.33 chrome=0.89 find=0.75 AMDRSServ=0.69
+13:58:12 total=7.45 top: VALORANT-Win64-Shipping=2.79 llama-server=2.24 find=0.73 chrome=0.70 AMDRSServ=0.46
+13:58:17 total=8.19 top: VALORANT-Win64-Shipping=3.43 llama-server=2.12 chrome=0.83 find=0.68 AMDRSServ=0.53
+13:58:23 total=7.88 top: VALORANT-Win64-Shipping=3.31 llama-server=2.20 find=0.68 AMDRSServ=0.61 chrome=0.56
+13:58:28 total=8.24 top: VALORANT-Win64-Shipping=3.27 llama-server=2.29 chrome=0.87 find=0.71 AMDRSServ=0.55
+13:58:33 total=7.98 top: VALORANT-Win64-Shipping=3.00 llama-server=2.53 find=0.76 AMDRSServ=0.66 chrome=0.56
+13:58:38 total=8.22 top: VALORANT-Win64-Shipping=3.03 llama-server=2.54 find=0.73 chrome=0.65 AMDRSServ=0.60
+13:58:43 total=7.84 top: llama-server=2.73 VALORANT-Win64-Shipping=2.60 find=0.83 AMDRSServ=0.66 chrome=0.51
+13:58:48 total=8.48 top: VALORANT-Win64-Shipping=3.15 llama-server=2.50 chrome=1.01 find=0.76 AMDRSServ=0.53
+13:58:53 total=8.31 top: VALORANT-Win64-Shipping=2.91 llama-server=2.87 find=0.85 AMDRSServ=0.56 chrome=0.51
+13:58:59 total=7.78 top: VALORANT-Win64-Shipping=2.60 llama-server=2.51 chrome=0.76 find=0.70 AMDRSServ=0.56
+13:59:04 total=7.78 top: VALORANT-Win64-Shipping=3.16 llama-server=2.20 find=0.68 chrome=0.65 AMDRSServ=0.53
+13:59:09 total=7.71 top: VALORANT-Win64-Shipping=3.01 llama-server=2.13 chrome=0.82 find=0.65 AMDRSServ=0.61
+13:59:14 total=7.72 top: VALORANT-Win64-Shipping=2.78 llama-server=2.27 find=0.72 AMDRSServ=0.68 chrome=0.62
+13:59:19 total=8.17 top: VALORANT-Win64-Shipping=3.23 llama-server=2.35 chrome=0.81 find=0.71 AMDRSServ=0.54
+13:59:24 total=8.33 top: VALORANT-Win64-Shipping=3.07 llama-server=2.59 find=0.75 AMDRSServ=0.62 chrome=0.61
+13:59:30 total=8.34 top: llama-server=2.68 VALORANT-Win64-Shipping=2.65 chrome=0.93 find=0.78 AMDRSServ=0.72
+13:59:35 total=8.25 top: VALORANT-Win64-Shipping=3.32 llama-server=2.52 find=0.73 AMDRSServ=0.60 chrome=0.52
+13:59:40 total=8.15 top: VALORANT-Win64-Shipping=2.88 llama-server=2.56 chrome=0.76 find=0.75 AMDRSServ=0.62
+13:59:45 total=8.05 top: VALORANT-Win64-Shipping=2.85 llama-server=2.60 find=0.76 AMDRSServ=0.67 chrome=0.63
+13:59:50 total=8.51 top: VALORANT-Win64-Shipping=3.33 llama-server=2.48 find=0.73 chrome=0.68 AMDRSServ=0.66
+13:59:55 total=7.39 top: VALORANT-Win64-Shipping=2.82 llama-server=2.38 find=0.70 AMDRSServ=0.49 chrome=0.47
+14:00:00 total=7.61 top: VALORANT-Win64-Shipping=2.79 llama-server=2.17 find=0.72 chrome=0.71 AMDRSServ=0.64
+14:00:06 total=7.73 top: VALORANT-Win64-Shipping=3.30 llama-server=2.10 find=0.68 AMDRSServ=0.63 chrome=0.51
+14:00:11 total=7.83 top: VALORANT-Win64-Shipping=2.99 llama-server=2.28 chrome=0.75 find=0.74 AMDRSServ=0.48
+14:00:16 total=8.13 top: VALORANT-Win64-Shipping=2.72 llama-server=2.67 find=0.78 chrome=0.73 AMDRSServ=0.58
+14:00:21 total=8.49 top: VALORANT-Win64-Shipping=3.18 llama-server=2.70 find=0.79 chrome=0.64 AMDRSServ=0.53
+14:00:26 total=6.88 top: llama-server=2.26 VALORANT-Win64-Shipping=0.83 chrome=0.82 AMDRSServ=0.79 find=0.77
+14:00:31 total=7.63 top: llama-server=2.86 chrome=1.67 find=0.86 AMDRSServ=0.53 webwallpaper64=0.48
+14:00:36 total=7.54 top: llama-server=3.26 chrome=1.21 find=0.88 python=0.60 AMDRSServ=0.57
+14:00:42 total=7.60 top: llama-server=3.27 chrome=1.13 find=0.92 python=0.67 AMDRSServ=0.54
+14:00:47 total=6.98 top: llama-server=3.38 find=0.91 chrome=0.76 python=0.54 AMDRSServ=0.52
+14:00:52 total=6.79 top: llama-server=3.16 chrome=0.91 find=0.86 webwallpaper64=0.48 AMDRSServ=0.47
+14:00:57 total=6.44 top: llama-server=3.17 find=0.90 chrome=0.68 AMDRSServ=0.49 webwallpaper64=0.39
+14:01:02 total=7.13 top: llama-server=3.44 chrome=1.23 find=0.92 AMDRSServ=0.51 webwallpaper64=0.43
+14:01:07 total=7.08 top: llama-server=3.46 chrome=1.16 find=0.93 AMDRSServ=0.57 webwallpaper64=0.42
+14:01:12 total=7.28 top: llama-server=3.24 chrome=1.06 find=0.90 claude=0.63 AMDRSServ=0.56
+14:01:17 total=6.59 top: llama-server=3.50 find=0.94 chrome=0.61 AMDRSServ=0.51 webwallpaper64=0.46
+14:01:22 total=7.02 top: llama-server=3.48 find=0.93 chrome=0.81 AMDRSServ=0.56 webwallpaper64=0.47
+14:01:27 total=6.78 top: llama-server=3.40 find=0.89 chrome=0.64 AMDRSServ=0.53 webwallpaper64=0.47
+14:01:32 total=7.06 top: llama-server=2.78 chrome=1.03 find=0.85 AMDRSServ=0.62 webwallpaper64=0.44
+14:01:38 total=7.08 top: llama-server=3.17 find=0.88 AdGuardVpn=0.72 chrome=0.60 AMDRSServ=0.50
+14:01:43 total=7.33 top: llama-server=2.63 AdGuardVpn=1.03 chrome=0.92 find=0.80 AMDRSServ=0.58
+14:01:48 total=6.89 top: llama-server=3.07 find=0.88 chrome=0.67 AMDRSServ=0.60 webwallpaper64=0.47
+14:01:53 total=7.17 top: llama-server=3.25 chrome=1.13 find=0.92 AMDRSServ=0.57 webwallpaper64=0.47
+14:01:58 total=7.01 top: llama-server=3.40 chrome=0.95 find=0.91 AMDRSServ=0.63 webwallpaper64=0.45
+14:02:03 total=7.08 top: llama-server=3.42 chrome=1.12 find=0.93 AMDRSServ=0.56 webwallpaper64=0.44
+14:02:08 total=6.68 top: llama-server=2.88 find=0.87 chrome=0.70 AMDRSServ=0.56 AdGuardVpn=0.51
+14:02:13 total=7.03 top: llama-server=2.93 chrome=1.16 find=0.89 AMDRSServ=0.50 webwallpaper64=0.47
+14:02:18 total=6.69 top: llama-server=3.33 find=0.92 chrome=0.78 AMDRSServ=0.57 webwallpaper64=0.40
+14:02:24 total=7.55 top: llama-server=2.98 chrome=1.07 RiotClientServices=1.07 find=0.88 AMDRSServ=0.58
+14:02:29 total=6.85 top: llama-server=3.36 find=0.95 RiotClientServices=0.76 chrome=0.64 AMDRSServ=0.54
+14:02:34 total=7.80 top: llama-server=3.06 chrome=1.67 find=0.85 AMDRSServ=0.75 RiotClientServices=0.67
+14:02:39 total=7.59 top: llama-server=3.28 RiotClientServices=1.12 chrome=0.98 find=0.91 AMDRSServ=0.55
+14:02:44 total=7.48 top: llama-server=3.58 chrome=0.97 find=0.94 RiotClientServices=0.78 AMDRSServ=0.51
+14:02:49 total=7.15 top: llama-server=3.52 chrome=1.15 find=0.94 AMDRSServ=0.66 RiotClientServices=0.44
+14:02:54 total=6.50 top: llama-server=3.64 find=0.96 chrome=0.91 AMDRSServ=0.60 Taskmgr=0.13
+14:02:59 total=6.74 top: llama-server=3.56 chrome=1.22 find=0.94 AMDRSServ=0.59 Taskmgr=0.16
+14:03:04 total=6.83 top: llama-server=3.50 chrome=1.29 find=0.94 AMDRSServ=0.63 Taskmgr=0.13
+14:03:09 total=6.63 top: llama-server=3.41 chrome=1.23 find=0.90 AMDRSServ=0.58 Taskmgr=0.14
+14:03:15 total=6.71 top: llama-server=3.42 chrome=1.34 find=0.93 AMDRSServ=0.56 Taskmgr=0.13
+14:03:20 total=6.49 top: llama-server=3.47 chrome=1.05 find=0.93 AMDRSServ=0.41 Taskmgr=0.13
+14:03:25 total=6.43 top: llama-server=3.32 chrome=1.21 find=0.91 AMDRSServ=0.48 Taskmgr=0.13
+14:03:30 total=6.39 top: llama-server=3.66 chrome=0.94 find=0.93 AMDRSServ=0.46 Taskmgr=0.12
+14:03:35 total=6.61 top: llama-server=3.55 chrome=1.10 find=0.95 AMDRSServ=0.65 Taskmgr=0.14
+14:03:40 total=6.99 top: llama-server=3.36 chrome=1.30 find=0.90 AMDRSServ=0.68 RiotClientServices=0.14
+14:03:45 total=6.87 top: llama-server=3.42 chrome=1.33 find=0.92 AMDRSServ=0.50 Taskmgr=0.15
+14:03:50 total=7.07 top: llama-server=3.43 chrome=1.27 find=0.93 AMDRSServ=0.78 Taskmgr=0.13
+14:03:55 total=7.62 top: llama-server=2.93 chrome=2.35 find=0.88 AMDRSServ=0.73 Taskmgr=0.17
+14:04:00 total=6.62 top: llama-server=3.61 find=0.97 chrome=0.95 AMDRSServ=0.45 Taskmgr=0.13
+14:04:06 total=6.59 top: llama-server=3.58 chrome=1.11 find=0.94 AMDRSServ=0.55 Taskmgr=0.13
+14:04:11 total=6.40 top: llama-server=3.35 chrome=1.17 find=0.93 AMDRSServ=0.48 Taskmgr=0.14
+14:04:16 total=6.75 top: llama-server=3.22 chrome=1.42 find=0.90 AMDRSServ=0.58 RiotClientServices=0.15
+14:04:21 total=6.64 top: llama-server=3.50 chrome=1.35 find=0.94 AMDRSServ=0.48 Taskmgr=0.14
+14:04:26 total=6.78 top: llama-server=3.58 chrome=1.17 find=0.94 AMDRSServ=0.45 Taskmgr=0.14
+14:04:31 total=6.46 top: llama-server=3.75 find=0.97 chrome=0.94 AMDRSServ=0.38 Taskmgr=0.13
+14:04:36 total=7.07 top: llama-server=3.56 chrome=1.43 find=0.94 AMDRSServ=0.63 Taskmgr=0.13
+14:04:41 total=6.18 top: llama-server=3.76 find=0.98 chrome=0.59 AMDRSServ=0.44 Taskmgr=0.13
+14:04:46 total=6.01 top: llama-server=3.63 find=0.96 AMDRSServ=0.58 chrome=0.43 Taskmgr=0.12
+14:04:51 total=5.89 top: llama-server=3.77 find=1.00 chrome=0.45 AMDRSServ=0.40 Taskmgr=0.12
+14:04:56 total=6.05 top: llama-server=3.65 find=0.96 chrome=0.47 AMDRSServ=0.34 Taskmgr=0.13
+14:05:02 total=5.99 top: llama-server=3.75 find=1.00 chrome=0.41 AMDRSServ=0.40 Taskmgr=0.13
+14:05:07 total=6.23 top: llama-server=3.63 find=0.94 AMDRSServ=0.66 chrome=0.55 Taskmgr=0.13
+14:05:12 total=6.12 top: llama-server=3.66 find=0.95 AMDRSServ=0.53 chrome=0.52 Taskmgr=0.11
+14:05:17 total=5.90 top: llama-server=3.70 find=0.97 AMDRSServ=0.47 chrome=0.33 Taskmgr=0.12
+14:05:22 total=5.98 top: llama-server=3.70 find=0.98 AMDRSServ=0.53 chrome=0.42 Taskmgr=0.11
+14:05:27 total=6.13 top: llama-server=3.69 find=0.98 chrome=0.51 AMDRSServ=0.47 Taskmgr=0.12
+14:05:32 total=5.86 top: llama-server=3.73 find=0.98 chrome=0.46 AMDRSServ=0.38 Taskmgr=0.11
+14:05:37 total=5.85 top: llama-server=3.67 find=0.97 AMDRSServ=0.52 chrome=0.37 Taskmgr=0.10
+14:05:42 total=6.13 top: llama-server=3.66 find=0.97 chrome=0.56 AMDRSServ=0.51 Taskmgr=0.14
+14:05:47 total=5.87 top: llama-server=3.76 find=0.98 AMDRSServ=0.45 chrome=0.39 Taskmgr=0.11
+14:05:52 total=6.01 top: llama-server=3.71 find=0.98 chrome=0.58 AMDRSServ=0.43 Taskmgr=0.12
+14:05:57 total=6.68 top: llama-server=3.60 chrome=1.19 find=0.97 AMDRSServ=0.43 Taskmgr=0.13
+14:06:03 total=6.67 top: llama-server=3.59 chrome=1.04 find=0.97 AMDRSServ=0.64 Taskmgr=0.12
+14:06:08 total=6.28 top: llama-server=3.67 find=0.95 chrome=0.61 AMDRSServ=0.57 Taskmgr=0.11
+14:06:13 total=6.07 top: llama-server=3.77 find=0.97 AMDRSServ=0.47 chrome=0.46 Taskmgr=0.12
+14:06:18 total=6.26 top: llama-server=3.68 find=0.97 chrome=0.71 AMDRSServ=0.50 Taskmgr=0.13
+14:06:23 total=7.04 top: llama-server=3.52 chrome=1.33 find=0.95 AMDRSServ=0.87 Taskmgr=0.11
+14:06:28 total=6.40 top: llama-server=3.43 chrome=1.05 find=0.95 AMDRSServ=0.54 Taskmgr=0.13
+14:06:33 total=6.43 top: llama-server=3.63 find=0.98 AMDRSServ=0.67 chrome=0.65 Taskmgr=0.12
+14:06:38 total=6.57 top: llama-server=3.00 chrome=1.57 find=0.88 AMDRSServ=0.68 Taskmgr=0.12
+14:06:43 total=7.13 top: llama-server=3.28 chrome=1.34 find=0.93 AMDRSServ=0.81 RiotClientServices=0.15
+14:06:48 total=6.59 top: llama-server=3.53 find=0.96 chrome=0.94 AMDRSServ=0.54 Taskmgr=0.12
+14:06:53 total=7.02 top: llama-server=3.33 chrome=1.67 find=0.93 AMDRSServ=0.56 Taskmgr=0.13
+14:06:59 total=7.77 top: llama-server=3.28 chrome=2.40 find=0.93 AMDRSServ=0.59 Taskmgr=0.17
+14:07:04 total=7.02 top: llama-server=3.42 chrome=1.67 find=0.95 AMDRSServ=0.42 Taskmgr=0.13
+14:07:09 total=7.04 top: llama-server=3.71 chrome=1.52 find=0.98 AMDRSServ=0.45 Taskmgr=0.14
+14:07:14 total=6.83 top: llama-server=3.74 chrome=1.27 find=0.99 AMDRSServ=0.43 Taskmgr=0.14
+14:07:19 total=6.77 top: llama-server=3.68 chrome=1.29 find=0.96 AMDRSServ=0.48 Taskmgr=0.14
+14:07:24 total=7.43 top: llama-server=3.43 chrome=1.78 find=0.91 AMDRSServ=0.77 Taskmgr=0.12
+14:07:29 total=6.78 top: llama-server=3.60 chrome=1.17 find=0.97 AMDRSServ=0.56 Taskmgr=0.15
+14:07:34 total=6.50 top: llama-server=3.72 find=0.98 chrome=0.92 AMDRSServ=0.46 Taskmgr=0.12
+14:07:39 total=6.34 top: llama-server=3.67 find=0.97 chrome=0.88 AMDRSServ=0.41 Taskmgr=0.13
+14:07:44 total=6.48 top: llama-server=3.68 find=0.98 chrome=0.90 AMDRSServ=0.54 Taskmgr=0.12
+14:07:49 total=6.36 top: llama-server=3.75 find=0.98 chrome=0.89 AMDRSServ=0.47 Taskmgr=0.13
+14:07:54 total=6.50 top: llama-server=3.69 find=0.98 chrome=0.86 AMDRSServ=0.47 Taskmgr=0.12
+14:08:00 total=6.47 top: llama-server=3.72 find=0.98 chrome=0.89 AMDRSServ=0.45 Taskmgr=0.13
+14:08:05 total=7.31 top: llama-server=3.67 chrome=1.60 find=0.98 AMDRSServ=0.53 Taskmgr=0.13
+14:08:10 total=6.88 top: llama-server=3.68 chrome=1.29 find=0.97 AMDRSServ=0.48 Taskmgr=0.12
+14:08:15 total=6.72 top: llama-server=3.58 find=0.98 chrome=0.93 AMDRSServ=0.63 Taskmgr=0.13
+14:08:20 total=6.56 top: llama-server=3.66 chrome=1.05 find=0.98 AMDRSServ=0.50 Taskmgr=0.11
+14:08:25 total=7.15 top: llama-server=3.54 chrome=1.70 find=0.97 AMDRSServ=0.54 Taskmgr=0.14
+14:08:30 total=6.42 top: llama-server=3.72 find=0.97 chrome=0.77 AMDRSServ=0.58 Taskmgr=0.13
+14:08:35 total=6.43 top: llama-server=3.71 find=0.95 chrome=0.85 AMDRSServ=0.53 Taskmgr=0.11
+14:08:40 total=7.05 top: llama-server=3.58 chrome=1.48 find=0.96 AMDRSServ=0.47 Taskmgr=0.13
+14:08:45 total=7.34 top: llama-server=3.63 chrome=1.64 find=0.96 AMDRSServ=0.65 Taskmgr=0.12
+14:08:50 total=7.23 top: llama-server=3.59 chrome=1.48 find=0.95 AMDRSServ=0.61 Taskmgr=0.14
+14:08:56 total=7.42 top: llama-server=3.40 chrome=1.76 find=0.94 AMDRSServ=0.60 Taskmgr=0.12
+14:09:01 total=7.20 top: llama-server=3.20 chrome=2.06 find=0.92 AMDRSServ=0.55 Taskmgr=0.13
+14:09:06 total=6.61 top: llama-server=3.63 chrome=0.99 find=0.95 AMDRSServ=0.51 Taskmgr=0.13
+14:09:11 total=6.40 top: llama-server=3.54 find=0.98 chrome=0.88 AMDRSServ=0.47 Taskmgr=0.15
+14:09:16 total=6.97 top: llama-server=3.54 chrome=1.17 find=0.93 AMDRSServ=0.82 Taskmgr=0.12
+14:09:21 total=6.67 top: llama-server=3.32 chrome=1.28 find=0.92 AMDRSServ=0.65 Taskmgr=0.14
+14:09:26 total=7.36 top: llama-server=3.48 chrome=1.79 find=0.93 AMDRSServ=0.70 Taskmgr=0.13
+14:09:31 total=6.25 top: llama-server=3.69 find=0.95 chrome=0.73 AMDRSServ=0.48 Taskmgr=0.13
+14:09:36 total=6.79 top: llama-server=3.53 chrome=1.33 find=0.95 AMDRSServ=0.47 Taskmgr=0.15
+14:09:41 total=6.41 top: llama-server=3.72 find=0.98 chrome=0.69 AMDRSServ=0.48 Taskmgr=0.13
+14:09:46 total=6.23 top: llama-server=3.72 find=1.00 chrome=0.68 AMDRSServ=0.34 Taskmgr=0.12
+14:09:52 total=6.23 top: llama-server=3.74 find=0.98 chrome=0.64 AMDRSServ=0.43 Taskmgr=0.12
+14:09:57 total=6.69 top: llama-server=3.57 chrome=1.16 find=0.94 AMDRSServ=0.50 Taskmgr=0.11
+14:10:02 total=6.70 top: llama-server=3.43 chrome=1.11 find=0.96 AMDRSServ=0.76 Taskmgr=0.12
+14:10:07 total=6.16 top: llama-server=3.52 find=0.95 chrome=0.80 AMDRSServ=0.42 Taskmgr=0.13
+14:10:12 total=6.66 top: llama-server=3.47 chrome=1.19 find=0.97 AMDRSServ=0.61 Taskmgr=0.14
+14:10:17 total=6.94 top: llama-server=3.59 chrome=1.17 find=0.96 AMDRSServ=0.65 Taskmgr=0.13
+14:10:22 total=6.83 top: llama-server=3.59 chrome=1.21 find=0.94 AMDRSServ=0.58 Taskmgr=0.13
+14:10:27 total=6.49 top: llama-server=3.63 find=0.97 chrome=0.80 AMDRSServ=0.48 Taskmgr=0.14
+14:10:32 total=6.70 top: llama-server=3.49 chrome=1.22 find=0.94 AMDRSServ=0.43 claude=0.15
+14:10:37 total=7.06 top: llama-server=3.43 chrome=1.65 find=0.92 AMDRSServ=0.64 Taskmgr=0.12
+14:10:42 total=6.49 top: llama-server=3.46 find=0.95 chrome=0.90 AMDRSServ=0.60 Taskmgr=0.13
+14:10:48 total=6.09 top: llama-server=3.47 find=0.93 chrome=0.61 AMDRSServ=0.55 Taskmgr=0.13
+14:10:53 total=6.39 top: llama-server=3.51 find=0.97 chrome=0.91 AMDRSServ=0.50 Taskmgr=0.15
+14:10:58 total=6.03 top: llama-server=3.65 find=0.96 chrome=0.59 AMDRSServ=0.39 Taskmgr=0.15
+14:11:03 total=6.39 top: llama-server=3.67 find=0.97 chrome=0.69 AMDRSServ=0.44 Taskmgr=0.12
+14:11:08 total=6.74 top: llama-server=3.63 chrome=1.17 find=0.95 AMDRSServ=0.33 claude=0.22
+14:11:13 total=6.58 top: llama-server=3.61 find=0.97 chrome=0.85 AMDRSServ=0.50 Taskmgr=0.16
+14:11:18 total=3.54 top: find=0.96 chrome=0.81 AMDRSServ=0.61 llama-server=0.42 claude=0.14
+14:11:23 total=3.28 top: chrome=1.16 find=0.98 AMDRSServ=0.50 claude=0.30 Taskmgr=0.12
+14:11:28 total=3.19 top: chrome=1.28 find=0.97 AMDRSServ=0.53 Taskmgr=0.12 claude=0.07
+14:11:33 total=2.75 top: chrome=0.98 find=0.94 AMDRSServ=0.43 Taskmgr=0.11 ATK HUB=0.05
+14:11:38 total=2.55 top: find=0.97 chrome=0.70 AMDRSServ=0.45 claude=0.10 Taskmgr=0.10
+14:11:43 total=2.19 top: find=0.97 chrome=0.50 AMDRSServ=0.43 Taskmgr=0.11 wallpaper64=0.03
+== before k5-excl-r2
+14:12:24 total=3.44 top: chrome=1.61 find=0.97 AMDRSServ=0.44 Taskmgr=0.09 RiotClientServices=0.05
+14:12:29 total=3.38 top: chrome=1.44 find=0.97 AMDRSServ=0.44 Taskmgr=0.10 ATK HUB=0.06
+14:12:34 total=2.87 top: chrome=1.15 find=0.98 AMDRSServ=0.41 Taskmgr=0.12 audiodg=0.07
+14:12:39 total=2.70 top: find=0.97 chrome=0.88 AMDRSServ=0.52 Taskmgr=0.12 ATK HUB=0.03
+14:12:44 total=2.65 top: chrome=1.01 find=0.99 AMDRSServ=0.35 Taskmgr=0.10 SamsungMagician=0.03
+14:12:49 total=2.60 top: find=0.99 chrome=0.88 AMDRSServ=0.39 Taskmgr=0.11 ATK HUB=0.03
+14:12:54 total=2.33 top: find=0.98 chrome=0.72 AMDRSServ=0.32 Taskmgr=0.11 SamsungMagician=0.04
+14:12:59 total=2.33 top: find=0.98 chrome=0.56 AMDRSServ=0.37 Taskmgr=0.09 Riot Client=0.06
+== before k5-excl-r3
+14:13:38 total=2.79 top: chrome=1.11 find=0.99 AMDRSServ=0.41 Taskmgr=0.11 ATK HUB=0.02
+14:13:43 total=2.46 top: find=0.97 chrome=0.63 AMDRSServ=0.48 Taskmgr=0.11 ATK HUB=0.05
+14:13:48 total=2.26 top: find=0.99 chrome=0.70 AMDRSServ=0.31 Taskmgr=0.09 audiodg=0.02
+14:13:54 total=2.90 top: chrome=1.08 find=0.98 AMDRSServ=0.51 Taskmgr=0.09 audiodg=0.05
+14:13:59 total=2.66 top: find=0.98 chrome=0.82 AMDRSServ=0.48 Taskmgr=0.09 audiodg=0.06
+14:14:04 total=3.00 top: chrome=1.27 find=0.97 AMDRSServ=0.46 Taskmgr=0.10 svchost=0.03
+14:14:09 total=2.85 top: chrome=1.14 find=0.97 AMDRSServ=0.41 Taskmgr=0.10 ATK HUB=0.04
+14:14:14 total=3.64 top: chrome=1.72 find=0.95 AMDRSServ=0.61 Taskmgr=0.11 svchost=0.07
+14:14:19 total=3.25 top: chrome=1.54 find=0.96 AMDRSServ=0.43 Taskmgr=0.11 svchost=0.03
+14:14:24 total=2.31 top: find=0.99 chrome=0.72 AMDRSServ=0.36 Taskmgr=0.09 RiotClientServices=0.04
+14:14:29 total=2.85 top: chrome=1.00 find=0.98 AMDRSServ=0.35 Taskmgr=0.11 ATK HUB=0.06
+14:14:34 total=2.53 top: find=0.98 chrome=0.65 AMDRSServ=0.57 Taskmgr=0.10 ATK HUB=0.04
+14:14:39 total=2.50 top: find=0.95 chrome=0.74 AMDRSServ=0.43 Taskmgr=0.10 SamsungMagician=0.03
+14:14:44 total=3.36 top: chrome=1.66 find=0.92 AMDRSServ=0.37 Taskmgr=0.11 ATK HUB=0.04
+14:14:49 total=2.33 top: find=0.99 AMDRSServ=0.47 chrome=0.46 Taskmgr=0.09 Riot Client=0.05
+14:14:54 total=2.52 top: find=0.97 chrome=0.81 AMDRSServ=0.45 Taskmgr=0.09 ATK HUB=0.04
+14:14:59 total=2.49 top: find=0.98 chrome=0.72 AMDRSServ=0.50 Taskmgr=0.10 SamsungMagician=0.03
+== before k5-normal-r1
+14:15:38 total=2.38 top: find=0.98 chrome=0.65 AMDRSServ=0.49 Taskmgr=0.09 ATK HUB=0.03
+14:15:43 total=1.98 top: find=1.00 chrome=0.43 AMDRSServ=0.33 Taskmgr=0.10 com.docker.backend=0.02
+14:15:48 total=1.84 top: find=0.99 chrome=0.41 AMDRSServ=0.27 Taskmgr=0.09 AudioSwitch=0.01
+14:15:53 total=2.09 top: find=0.99 chrome=0.51 AMDRSServ=0.31 Taskmgr=0.09 com.docker.backend=0.03
+14:15:58 total=2.17 top: find=0.98 chrome=0.44 AMDRSServ=0.42 Taskmgr=0.08 ATK HUB=0.03
+== before v2-text
+14:31:08 total=1.52 top: AMDRSServ=0.45 chrome=0.43 webwallpaper64=0.27 claude=0.15 Taskmgr=0.09
+14:31:13 total=1.54 top: AMDRSServ=0.47 chrome=0.39 webwallpaper64=0.26 claude=0.22 Taskmgr=0.09
+14:31:18 total=1.60 top: chrome=0.46 AMDRSServ=0.33 claude=0.30 webwallpaper64=0.24 Taskmgr=0.09
+== before v2-mixed
+14:33:10 total=1.31 top: chrome=0.55 AMDRSServ=0.34 Taskmgr=0.09 claude=0.04 ATK HUB=0.03
+14:33:15 total=0.90 top: AMDRSServ=0.36 chrome=0.29 Taskmgr=0.10 ATK HUB=0.02 powershell=0.02
+14:33:20 total=1.11 top: chrome=0.52 AMDRSServ=0.35 Taskmgr=0.09 ATK HUB=0.03 claude=0.02
+== before v2-mixed-excl
+14:37:02 total=1.09 top: chrome=0.39 AMDRSServ=0.38 Taskmgr=0.09 audiodg=0.04 ATK HUB=0.03
+14:37:08 total=0.94 top: chrome=0.40 AMDRSServ=0.32 Taskmgr=0.09 RiotClientServices=0.03 ATK HUB=0.01
+14:37:13 total=1.00 top: chrome=0.56 AMDRSServ=0.24 Taskmgr=0.08 ATK HUB=0.02 wallpaper64=0.02
+== before v2-text-b
+14:40:02 total=1.00 top: chrome=0.36 AMDRSServ=0.35 Taskmgr=0.10 claude=0.03 ATK HUB=0.02
+14:40:07 total=1.01 top: chrome=0.44 AMDRSServ=0.27 Taskmgr=0.09 Riot Client=0.04 RiotClientServices=0.04
+14:40:12 total=1.01 top: chrome=0.43 AMDRSServ=0.28 Taskmgr=0.08 RiotClientServices=0.05 Riot Client=0.03
+== before v2-mixed-b
+14:41:57 total=1.12 top: AMDRSServ=0.46 chrome=0.37 Taskmgr=0.08 ATK HUB=0.03 SamsungMagician=0.02
+14:42:02 total=1.21 top: chrome=0.42 AMDRSServ=0.30 Taskmgr=0.10 Riot Client=0.09 RiotClientServices=0.08
+14:42:07 total=0.80 top: chrome=0.34 AMDRSServ=0.17 Taskmgr=0.09 RiotClientServices=0.06 Riot Client=0.05
+== before v2-k3
+14:45:47 total=1.06 top: chrome=0.38 AMDRSServ=0.36 Taskmgr=0.08 audiodg=0.07 claude=0.03
+14:45:52 total=1.16 top: chrome=0.46 AMDRSServ=0.34 Taskmgr=0.10 ATK HUB=0.04 RiotClientServices=0.04
+14:45:57 total=0.89 top: chrome=0.38 AMDRSServ=0.27 Taskmgr=0.08 ATK HUB=0.02 Riot Client=0.02

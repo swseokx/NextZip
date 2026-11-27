@@ -1,0 +1,261 @@
+{
+  "tool": "nz",
+  "version": "0.0.1",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 5,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz tar:5",
+      "tool": "nz",
+      "format": "tar",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 106383360,
+      "ratio_pct": 101.20170325515585,
+      "compress_s": 0.0783002,
+      "compress_mbps": 1280.3334628894627,
+      "compress_runs_s": [
+        0.0783002,
+        0.0830335,
+        0.0798933,
+        0.0729448,
+        0.0755448
+      ],
+      "extract_s": 1.0922447,
+      "extract_runs_s": [
+        1.0708199,
+        1.174766,
+        1.168818,
+        1.0119813,
+        1.0922447
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.gz:1",
+      "tool": "nz",
+      "format": "tar.gz",
+      "level": 1,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 73204529,
+      "ratio_pct": 69.63892680952596,
+      "compress_s": 0.2412185,
+      "compress_mbps": 415.5998242710965,
+      "compress_runs_s": [
+        0.2372884,
+        0.2412185,
+        0.2440371,
+        0.2820679,
+        0.2410424
+      ],
+      "extract_s": 1.3634157,
+      "extract_runs_s": [
+        1.1883164,
+        1.3634157,
+        1.7846876,
+        1.6467466,
+        1.1820549
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.gz:5",
+      "tool": "nz",
+      "format": "tar.gz",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 71632636,
+      "ratio_pct": 68.14359662880167,
+      "compress_s": 0.321174,
+      "compress_mbps": 312.13724090660355,
+      "compress_runs_s": [
+        0.3198666,
+        0.3322728,
+        0.321174,
+        0.3073337,
+        0.361515
+      ],
+      "extract_s": 1.3459998,
+      "extract_runs_s": [
+        1.3786323999999999,
+        1.5957191,
+        1.2477245,
+        1.3459998,
+        1.1713286
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.gz:9",
+      "tool": "nz",
+      "format": "tar.gz",
+      "level": 9,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 71152585,
+      "ratio_pct": 67.68692766431944,
+      "compress_s": 3.22488,
+      "compress_mbps": 31.086541580132437,
+      "compress_runs_s": [
+        3.2015988,
+        3.2909110999999998,
+        3.0723784,
+        3.22488,
+        3.9575128
+      ],
+      "extract_s": 1.7970618,
+      "extract_runs_s": [
+        1.9129775,
+        1.7970618,
+        1.6640779,
+        1.6210413,
+        1.7981504
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.xz:5",
+      "tool": "nz",
+      "format": "tar.xz",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 66297116,
+      "ratio_pct": 63.067955929429615,
+      "compress_s": 5.9707656,
+      "compress_mbps": 16.790202953359533,
+      "compress_runs_s": [
+        6.1450327,
+        5.7865173,
+        5.8642749,
+        5.9707656,
+        6.4605856
+      ],
+      "extract_s": 2.1842259,
+      "extract_runs_s": [
+        2.0970943,
+        2.1842259,
+        2.1233154,
+        2.3582706,
+        2.1885003
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.bz2:5",
+      "tool": "nz",
+      "format": "tar.bz2",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 71409164,
+      "ratio_pct": 67.93100936863395,
+      "compress_s": 3.8683921,
+      "compress_mbps": 25.915254612100334,
+      "compress_runs_s": [
+        3.1866923,
+        3.7277872,
+        5.8219529,
+        3.8683921,
+        4.6074152999999995
+      ],
+      "extract_s": 7.5185609,
+      "extract_runs_s": [
+        7.5185609,
+        6.8650663,
+        9.2548681,
+        7.8839062,
+        6.0797692
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.lz4:5",
+      "tool": "nz",
+      "format": "tar.lz4",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 73888307,
+      "ratio_pct": 70.28939976176589,
+      "compress_s": 0.6550504,
+      "compress_mbps": 153.04221814220324,
+      "compress_runs_s": [
+        0.8136791,
+        0.9035074,
+        0.6550504,
+        0.6235867,
+        0.6102141
+      ],
+      "extract_s": 1.5599756,
+      "extract_runs_s": [
+        1.4071552,
+        1.3507631,
+        1.6839783000000002,
+        1.5599756,
+        1.6005455
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz tar.zst:5",
+      "tool": "nz",
+      "format": "tar.zst",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 68084530,
+      "ratio_pct": 64.76830964284974,
+      "compress_s": 0.7323114,
+      "compress_mbps": 136.89581537435782,
+      "compress_runs_s": [
+        0.785471,
+        0.7323114,
+        0.8000347,
+        0.6922357,
+        0.675362
+      ],
+      "extract_s": 1.6477684,
+      "extract_runs_s": [
+        1.5430743,
+        1.6477684,
+        1.9112768,
+        1.7001887,
+        1.5481364
+      ],
+      "extract_verified": true
+    }
+  ]
+}

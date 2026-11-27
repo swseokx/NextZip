@@ -1,0 +1,33 @@
+[package]
+name = "nz-formats"
+description = "NextZip: readers for the 1.0 format expansion (legacy, disk image, installer and package formats). Runs inside the isolated decoder process."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+# unarc-rs (delharc 0.8) needs Rust 1.95, which sets the workspace MSRV.
+rust-version.workspace = true
+
+[dependencies]
+nz-front.workspace = true
+anyhow.workspace = true
+serde.workspace = true
+# default feature "zstd": zstd-compressed ZIP members (zstd-sys, already used by nz-core).
+unarc-rs = "0.8"
+serde_json.workspace = true
+flate2.workspace = true
+bzip2.workspace = true
+liblzma.workspace = true
+zstd.workspace = true
+lz4.workspace = true
+tar.workspace = true
+brotli-decompressor = "5"
+cfb = "0.16"
+crc32fast.workspace = true
+# Enable the optional 7z coders unarc-rs leaves off (feature unification).
+sevenz-rust2 = { version = "0.24", default-features = false, features = ["deflate", "zstd", "brotli", "lz4"] }
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

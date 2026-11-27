@@ -1,0 +1,141 @@
+# Coverage-guided fuzzing (cargo-fuzz + libFuzzer, nightly toolchain).
+# Kept out of the workspace so stable `cargo build/test` never touches it.
+#
+#   cargo +nightly fuzz run archive fuzz/corpus/archive
+#
+# Seed corpus: NZ_FUZZ_CORPUS=fuzz/corpus cargo test -p nz-archive --test fuzz_smoke
+[package]
+name = "nz-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+nz-archive = { path = "../crates/nz-archive" }
+nz-formats = { path = "../crates/nz-formats" }
+nz-nzf = { path = "../crates/nz-nzf" }
+
+[workspace]
+
+# Same patched crates as the main workspace, plus sevenz-rust2 without its
+# cdylib target (see third_party/README.md).
+[patch.crates-io]
+lzxd = { path = "../third_party/lzxd" }
+sevenz-rust2 = { path = "../third_party/sevenz-rust2" }
+unarc-rs = { path = "../third_party/unarc-rs" }
+
+[[bin]]
+name = "archive"
+path = "fuzz_targets/archive.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "archive_alz"
+path = "fuzz_targets/archive_alz.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "archive_egg"
+path = "fuzz_targets/archive_egg.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "bzip2"
+path = "fuzz_targets/bzip2.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "names"
+path = "fuzz_targets/names.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fmt_detect"
+path = "fuzz_targets/fmt_detect.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fmt_legacy"
+path = "fuzz_targets/fmt_legacy.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fmt_stream"
+path = "fuzz_targets/fmt_stream.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fmt_package"
+path = "fuzz_targets/fmt_package.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fmt_image"
+path = "fuzz_targets/fmt_image.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fmt_zip7z"
+path = "fuzz_targets/fmt_zip7z.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "core_tar"
+path = "fuzz_targets/core_tar.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "nz_read"
+path = "fuzz_targets/nz_read.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "core_7z"
+path = "fuzz_targets/core_7z.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codecs"
+path = "fuzz_targets/codecs.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "nz_recovery"
+path = "fuzz_targets/nz_recovery.rs"
+test = false
+doc = false
+bench = false

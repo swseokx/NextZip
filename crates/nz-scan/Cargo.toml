@@ -1,0 +1,27 @@
+[package]
+name = "nz-scan"
+description = "NextZip: malware scanning of extracted content through AMSI, in a separate scanner process (spec 8, 9)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+# The scanner process. Ship it next to nextzip.exe, nz.exe and nz-decode.exe.
+name = "nz-scan"
+path = "src/bin/nz-scan.rs"
+
+[dependencies]
+nz-front.workspace = true
+anyhow.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = ["Win32_System_Antimalware"] }
+
+[dev-dependencies]
+tempfile.workspace = true
+
+# AMSI calls need `unsafe` (src/amsi.rs only); like nz-sys and nz-sandbox,
+# this crate is exempt from the workspace-wide `unsafe_code = "forbid"`.
+[lints.clippy]
+all = { level = "warn", priority = -1 }

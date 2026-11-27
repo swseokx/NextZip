@@ -1,0 +1,106 @@
+{
+  "tool": "nz",
+  "version": "0.0.1",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 5,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz 7z:1",
+      "tool": "nz",
+      "format": "7z",
+      "level": 1,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 67157880,
+      "ratio_pct": 63.886794353979475,
+      "compress_s": 1.6683177,
+      "compress_mbps": 60.0906926845753,
+      "compress_runs_s": [
+        1.6683177,
+        1.5453133000000001,
+        1.6702213000000001,
+        1.6784036,
+        1.653435
+      ],
+      "extract_s": 1.0303813,
+      "extract_runs_s": [
+        1.0803142000000001,
+        1.0241909,
+        1.0303813,
+        0.9998554,
+        1.0355327
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz 7z:6",
+      "tool": "nz",
+      "format": "7z",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 65558730,
+      "ratio_pct": 62.365534790825215,
+      "compress_s": 3.5337005,
+      "compress_mbps": 28.369797103896467,
+      "compress_runs_s": [
+        3.5931693,
+        3.6301914,
+        3.4723882,
+        3.5109871,
+        3.5337005
+      ],
+      "extract_s": 1.0639154,
+      "extract_runs_s": [
+        1.0179871,
+        1.0639154,
+        1.0532438,
+        1.0877665,
+        1.1028545
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz zip:5",
+      "tool": "nz",
+      "format": "zip",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 72240415,
+      "ratio_pct": 68.7217722946456,
+      "compress_s": 0.2581399,
+      "compress_mbps": 388.3567252134889,
+      "compress_runs_s": [
+        0.3069441,
+        0.2565943,
+        0.2944831,
+        0.2519047,
+        0.2581399
+      ],
+      "extract_s": 0.7718013,
+      "extract_runs_s": [
+        0.7604239,
+        0.7450194,
+        0.7718013,
+        0.8515498,
+        0.7725875
+      ],
+      "extract_verified": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+file read 9.90 GB/s; read+scan 32 frames 3.44 GB/s (compressed)
+round 0: 2102405120 bytes; sequential 2.13 GB/s, parallel 3.90 GB/s
+round 1: 2102405120 bytes; sequential 2.06 GB/s, parallel 3.43 GB/s
+round 2: 2102405120 bytes; sequential 1.76 GB/s, parallel 2.93 GB/s
+file read 7.09 GB/s; read+scan 32 frames 3.30 GB/s (compressed)
+round 0: 2102405120 bytes; sequential 2.10 GB/s, parallel 4.38 GB/s
+round 1: 2102405120 bytes; sequential 2.32 GB/s, parallel 4.42 GB/s
+round 2: 2102405120 bytes; sequential 1.90 GB/s, parallel 2.35 GB/s
+file read 4.39 GB/s; read+scan 32 frames 3.29 GB/s (compressed)
+round 0: 2102405120 bytes; sequential 1.29 GB/s, parallel 2.83 GB/s
+round 1: 2102405120 bytes; sequential 1.47 GB/s, parallel 3.64 GB/s
+round 2: 2102405120 bytes; sequential 1.56 GB/s, parallel 3.52 GB/s

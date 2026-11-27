@@ -1,0 +1,52 @@
+{
+  "tool": "nz",
+  "version": "0.1.0",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 7,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz zip:5",
+      "tool": "nz",
+      "format": "zip",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 72391199,
+      "ratio_pct": 68.86521199821979,
+      "compress_s": 0.1509023,
+      "compress_mbps": 664.3395508944363,
+      "compress_runs_s": [
+        0.1509023,
+        0.15136,
+        0.1587624,
+        0.1424547,
+        0.1577104,
+        0.1482447,
+        0.1484058
+      ],
+      "extract_s": 0.4100152,
+      "extract_runs_s": [
+        0.3881195,
+        0.4064927,
+        0.5272283,
+        0.4100152,
+        0.3815895,
+        0.5345213,
+        0.4697087
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 131.5390625,
+      "compress_peak_commit_mib": 149.38671875,
+      "extract_peak_ws_mib": 29.4921875,
+      "extract_peak_commit_mib": 34.58203125
+    }
+  ]
+}

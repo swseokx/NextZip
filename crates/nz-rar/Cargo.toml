@@ -1,0 +1,18 @@
+[package]
+name = "nz-rar"
+description = "NextZip RAR extraction (UnRAR library, extraction only)"
+version.workspace = true
+edition.workspace = true
+# Our code is MIT OR Apache-2.0. The UnRAR source linked through `unrar_sys`
+# is under the UnRAR licence: free to use and redistribute for extraction,
+# but it must not be used to re-create the RAR compression algorithm.
+license = "(MIT OR Apache-2.0) AND LicenseRef-UnRAR"
+rust-version.workspace = true
+
+[dependencies]
+nz-front.workspace = true
+unrar = "0.5"
+unrar_sys = "0.5"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }

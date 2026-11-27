@@ -1,0 +1,2 @@
+# These files are copied into a Linux OSS-Fuzz checkout; keep LF even with core.autocrlf.
+* text eol=lf

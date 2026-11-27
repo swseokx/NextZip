@@ -1,0 +1,12 @@
+# OSS-Fuzz project file for NextZip (spec 10.1: cargo-fuzz + OSS-Fuzz).
+# NOT SUBMITTED. Before a pull request to google/oss-fuzz (projects/nextzip/)
+# the maintainer must fill in the three TODO fields below; see README.md.
+homepage: "TODO: public project page"
+main_repo: "TODO: public git URL (same as in Dockerfile)"
+language: rust
+primary_contact: "TODO: maintainer e-mail (receives crash reports)"
+auto_ccs: []
+sanitizers:
+  - address
+fuzzing_engines:
+  - libfuzzer

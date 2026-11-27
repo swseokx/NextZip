@@ -1,0 +1,53 @@
+[package]
+name = "nz-archive"
+description = "NextZip archive facade: listing and extraction for every supported format (ZIP with code page detection, 7z, tar.zst, ALZ, EGG, RAR)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[features]
+default = ["rar"]
+# RAR extraction links the UnRAR source (see crates/nz-rar/LICENSE-UNRAR.txt).
+rar = ["dep:nz-rar"]
+
+[[bin]]
+# The isolated decoder process (see src/isolated.rs). Ship it next to
+# nextzip.exe and nz.exe.
+name = "nz-decode"
+path = "src/bin/nz-decode.rs"
+
+[dependencies]
+nz-front.workspace = true
+nz-core.workspace = true
+nz-formats.workspace = true
+nz-sandbox.workspace = true
+nz-sys.workspace = true
+nz-scan.workspace = true
+nz-nzf.workspace = true
+serde_json.workspace = true
+nz-rar = { workspace = true, optional = true }
+anyhow.workspace = true
+rayon.workspace = true
+crc32fast.workspace = true
+libdeflater.workspace = true
+liblzma.workspace = true
+zstd.workspace = true
+tar.workspace = true
+chrono.workspace = true
+encoding_rs = "0.8"
+# zeroize: key schedules and password copies are wiped after use (spec 9).
+aes = { version = "0.8", features = ["zeroize"] }
+zeroize = "1.9"
+pbkdf2 = { version = "0.12", default-features = false, features = ["hmac"] }
+hmac = "0.12"
+sha1 = "0.10"
+serde.workspace = true
+
+[dev-dependencies]
+crc32fast.workspace = true
+tempfile.workspace = true
+bzip2 = "0.5"
+
+[lints]
+workspace = true

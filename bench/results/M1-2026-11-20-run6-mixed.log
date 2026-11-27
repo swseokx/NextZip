@@ -1,0 +1,16 @@
+dataset <bench-data> : 1444 files, 105120128 bytes; 5 runs + 1 warm-up, 12 threads
+nz 7z:1                      compress...... extract......
+nz 7z:5                      compress...... extract......
+nz 7z:6                      compress...... extract......
+nz zip:1                     compress...... extract......
+nz zip:5                     compress...... extract......
+dataset: <bench-data> (1444 files, 100.25 MiB), median of 5 runs, 12 threads
+
+| case | size (bytes) | ratio | compress s | MB/s | extract s | verified |
+|---|---:|---:|---:|---:|---:|:---:|
+| nz 7z:1 | 66839301 | 63.58% | 1.038 | 96.6 | 0.891 | yes |
+| nz 7z:5 | 65686150 | 62.49% | 2.317 | 43.3 | 0.901 | yes |
+| nz 7z:6 | 65381644 | 62.20% | 3.015 | 33.3 | 0.899 | yes |
+| nz zip:1 | 73500776 | 69.92% | 0.159 | 630.5 | 0.905 | yes |
+| nz zip:5 | 72165071 | 68.65% | 0.185 | 540.7 | 0.892 | yes |
+

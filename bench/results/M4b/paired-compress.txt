@@ -1,0 +1,4 @@
+﻿text nz:5 before 0.283s after 0.295s x1.04
+text nz:6 before 0.330s after 0.757s x2.29
+mixed nz:5 before 0.726s after 0.882s x1.22
+mixed nz:6 before 0.890s after 1.622s x1.82

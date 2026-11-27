@@ -1,0 +1,80 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/nz-core",
+    "crates/nz-cli",
+    "crates/nz-xz",
+    "crates/nz-sys",
+    "crates/nz-archive",
+    "crates/nz-rar",
+    "crates/nz-gui",
+    "crates/nz-shell",
+    "crates/nz-setup",
+    "crates/nz-sandbox",
+    "crates/nz-formats",
+    "crates/nz-create",
+    "crates/nz-sfx",
+    "crates/nz-scan",
+    "crates/nz-front",
+    "crates/nz-nzf",
+]
+# Patched third-party crates (see third_party/README.md); not workspace members.
+exclude = ["third_party/lzxd"]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+# Effective MSRV: unarc-rs (nz-formats) needs 1.95; let chains need 1.88.
+rust-version = "1.95"
+
+[workspace.dependencies]
+nz-core = { path = "crates/nz-core" }
+anyhow = "1"
+rayon = "1"
+libdeflater = "1"
+zstd = { version = "0.13", features = ["zstdmt"] }
+lz4 = "1"
+liblzma = { version = "0.4", default-features = false, features = ["static", "parallel"] }
+liblzma-sys = { version = "0.4", default-features = false, features = ["static", "parallel"] }
+nz-xz = { path = "crates/nz-xz" }
+nz-archive = { path = "crates/nz-archive" }
+nz-rar = { path = "crates/nz-rar" }
+nz-sys = { path = "crates/nz-sys" }
+nz-sandbox = { path = "crates/nz-sandbox" }
+nz-formats = { path = "crates/nz-formats" }
+nz-create = { path = "crates/nz-create" }
+nz-scan = { path = "crates/nz-scan" }
+nz-front = { path = "crates/nz-front" }
+nz-nzf = { path = "crates/nz-nzf" }
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_Globalization", "Win32_System_SystemInformation", "Win32_System_Threading"] }
+flate2 = { version = "1", default-features = false, features = ["zlib-rs"] }
+bzip2 = "0.6"
+xxhash-rust = { version = "0.8", features = ["xxh32"] }
+ppmd-rust = "1.5.2"
+crc32fast = "1"
+walkdir = "2"
+tar = "0.4"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+debug = "line-tables-only"
+
+# lzxd 0.2.7 mistranslates an E8 call whose target is offset 0 (CAB/WIM/CHM
+# LZX); third_party/lzxd carries the one-line fix until upstream releases it.
+[patch.crates-io]
+lzxd = { path = "third_party/lzxd" }
+# unarc-rs 0.8.1 HA (HSC/ASC) decoders run away on damaged input (release
+# builds fill memory); third_party/unarc-rs bounds them (third_party/README.md).
+unarc-rs = { path = "third_party/unarc-rs" }

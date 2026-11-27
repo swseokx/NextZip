@@ -1,0 +1,7 @@
+/target
+*.zip
+*.tar.zst
+!crates/**/testdata/**
+!crates/nz-archive/tests/data/fuzz-regressions/*.zip
+# Test fixtures are data, not build output.
+!crates/nz-formats/tests/data/**

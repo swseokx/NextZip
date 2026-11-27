@@ -1,0 +1,60 @@
+dataset <bench-data> : 1444 files, 105120128 bytes; 7 runs + 1 warm-up, 12 threads
+nz 7z:6                      compress........ extract........
+dataset: <bench-data> (1444 files, 100.25 MiB), median of 7 runs, 12 threads
+
+| case | size (bytes) | ratio | compress s | MB/s | extract s | verified | peak WS c/x MiB |
+|---|---:|---:|---:|---:|---:|:---:|---:|
+| nz 7z:6 | 65359443 | 62.18% | 2.411 | 41.6 | 0.488 | yes | 707 / 194 |
+
+{
+  "tool": "nz",
+  "version": "0.1.0",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 7,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz 7z:6",
+      "tool": "nz",
+      "format": "7z",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 65359443,
+      "ratio_pct": 62.175954542216694,
+      "compress_s": 2.411374,
+      "compress_mbps": 41.57395999581048,
+      "compress_runs_s": [
+        2.411374,
+        2.7456369,
+        2.3141952,
+        2.56259,
+        2.4497402,
+        2.3360157,
+        2.3087351
+      ],
+      "extract_s": 0.4875812,
+      "extract_runs_s": [
+        0.4875812,
+        0.8922877,
+        0.4949743,
+        0.5017099,
+        0.4842648,
+        0.4648373,
+        0.4642204
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 707.0,
+      "compress_peak_commit_mib": 802.90234375,
+      "extract_peak_ws_mib": 194.2109375,
+      "extract_peak_commit_mib": 248.15625
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+nz median 0.0596 min 0.0561 max 0.0644 size 14637388
+kz median 0.0858 min 0.0802 max 0.0896 size 14796094
+kz/nz median 1.44, per-pair ratio median 1.44 (min 1.28 max 1.53)
+nz median 0.0603 min 0.0568 max 0.0726 size 14637388
+kz median 0.0946 min 0.0816 max 0.1172 size 14796094
+kz/nz median 1.57, per-pair ratio median 1.55 (min 1.37 max 2.04)
+nz median 0.0586 min 0.0549 max 0.0684 size 14637388
+kz median 0.0855 min 0.0810 max 0.0952 size 14796094
+kz/nz median 1.46, per-pair ratio median 1.44 (min 1.28 max 1.68)
+# after delay-load (build.rs)
+nz median 0.0547 min 0.0521 max 0.0615 size 14637388
+kz median 0.0871 min 0.0793 max 0.0964 size 14796094
+kz/nz median 1.59, per-pair ratio median 1.57 (min 1.42 max 1.72)
+nz median 0.0547 min 0.0516 max 0.1041 size 14637388
+kz median 0.0829 min 0.0791 max 0.1003 size 14796094
+kz/nz median 1.51, per-pair ratio median 1.48 (min 0.96 max 1.64)
+nz median 0.0538 min 0.0508 max 0.0598 size 14637388
+kz median 0.0820 min 0.0792 max 0.1023 size 14796094
+kz/nz median 1.52, per-pair ratio median 1.53 (min 1.42 max 1.98)

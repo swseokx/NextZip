@@ -1,0 +1,10 @@
+dataset <bench-data>\text_processors : 1211 files, 28712178 bytes; 7 runs + 1 warm-up, 12 threads
+nz zip:5                     compress........ extract........
+nz 7z:6                      compress........ extract........
+dataset: <bench-data>\text_processors (1211 files, 27.38 MiB), median of 7 runs, 12 threads
+
+| case | size (bytes) | ratio | compress s | MB/s | extract s | verified |
+|---|---:|---:|---:|---:|---:|:---:|
+| nz zip:5 | 14637388 | 50.98% | 0.055 | 501.2 | 0.522 | yes |
+| nz 7z:6 | 12965545 | 45.16% | 0.919 | 29.8 | 0.559 | yes |
+

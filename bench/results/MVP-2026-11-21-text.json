@@ -1,0 +1,83 @@
+{
+  "tool": "nz",
+  "version": "0.1.0",
+  "dataset": "<bench-data>\\text_processors",
+  "input_bytes": 28712178,
+  "input_files": 1211,
+  "runs": 7,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz zip:5",
+      "tool": "nz",
+      "format": "zip",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 14637388,
+      "ratio_pct": 50.979720173091714,
+      "compress_s": 0.0589313,
+      "compress_mbps": 464.64386033711406,
+      "compress_runs_s": [
+        0.058374,
+        0.0589313,
+        0.055267,
+        0.059133,
+        0.0593907,
+        0.0559797,
+        0.0603433
+      ],
+      "extract_s": 0.6880652,
+      "extract_runs_s": [
+        0.5832036,
+        0.5344485,
+        0.6807934,
+        0.7050166,
+        0.8080787,
+        0.7697887,
+        0.6880652
+      ],
+      "extract_verified": true
+    },
+    {
+      "case": "nz 7z:6",
+      "tool": "nz",
+      "format": "7z",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 28712178,
+      "input_files": 1211,
+      "archive_bytes": 12965545,
+      "ratio_pct": 45.156953958700036,
+      "compress_s": 0.9623423,
+      "compress_mbps": 28.453562445176285,
+      "compress_runs_s": [
+        1.2283941999999999,
+        1.1553308,
+        1.031479,
+        0.911763,
+        0.9623423,
+        0.9535064,
+        0.9105796
+      ],
+      "extract_s": 0.5441786,
+      "extract_runs_s": [
+        0.5495471,
+        0.5188723,
+        0.5441786,
+        0.570006,
+        0.5808814,
+        0.5394758,
+        0.534636
+      ],
+      "extract_verified": true
+    }
+  ]
+}

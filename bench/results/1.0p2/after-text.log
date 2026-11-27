@@ -1,0 +1,11 @@
+dataset <bench-data>\text_processors : 1211 files, 28712178 bytes; 7 runs + 1 warm-up, 12 threads
+nz zip:5                     compress........ extract........
+nz 7z:6                      compress........ extract........
+dataset: <bench-data>\text_processors (1211 files, 27.38 MiB), median of 7 runs, 12 threads
+
+| case | size (bytes) | ratio | compress s | MB/s | extract s | verified | peak WS c/x MiB |
+|---|---:|---:|---:|---:|---:|:---:|---:|
+| nz zip:5 | 14637388 | 50.98% | 0.061 | 448.1 | 0.234 | yes | 52 / 13 |
+| nz 7z:6 | 12990789 | 45.24% | 0.851 | 32.2 | 0.350 | yes | 295 / 42 |
+
+nz: error: cannot write /c/Users/swseokx/Documents/Development/nextzip-perf-2x/bench/results/1.0p2/after-text.md: 지정된 경로를 찾을 수 없습니다. (os error 3)

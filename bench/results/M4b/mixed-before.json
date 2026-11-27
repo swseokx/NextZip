@@ -1,0 +1,265 @@
+{
+  "tool": "nz",
+  "version": "0.1.0",
+  "dataset": "<bench-data>",
+  "input_bytes": 105120128,
+  "input_files": 1444,
+  "runs": 3,
+  "threads": 12,
+  "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "results": [
+    {
+      "case": "nz nz:1",
+      "tool": "nz",
+      "format": "nz",
+      "level": 1,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 81073566,
+      "ratio_pct": 77.12468348592574,
+      "compress_s": 0.7274015,
+      "compress_mbps": 137.81985081270454,
+      "compress_runs_s": [
+        0.7666942,
+        0.7274015,
+        0.5877592
+      ],
+      "extract_s": 0.9661904,
+      "extract_runs_s": [
+        0.776802,
+        0.9661904,
+        1.0615252
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 184.0625,
+      "compress_peak_commit_mib": 241.203125,
+      "extract_peak_ws_mib": 93.3046875,
+      "extract_peak_commit_mib": 93.75
+    },
+    {
+      "case": "nz nz:5",
+      "tool": "nz",
+      "format": "nz",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 72859311,
+      "ratio_pct": 69.31052348033671,
+      "compress_s": 0.4913618,
+      "compress_mbps": 204.025559599744,
+      "compress_runs_s": [
+        0.5285994,
+        0.4913618,
+        0.467905
+      ],
+      "extract_s": 0.7305411,
+      "extract_runs_s": [
+        0.7876534,
+        0.6999262,
+        0.7305411
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 195.08984375,
+      "compress_peak_commit_mib": 280.23046875,
+      "extract_peak_ws_mib": 85.234375,
+      "extract_peak_commit_mib": 89.265625
+    },
+    {
+      "case": "nz nz:5:rr=0",
+      "tool": "nz",
+      "format": "nz",
+      "level": 5,
+      "options": [
+        "-t:12",
+        "-rr:0"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 70462607,
+      "ratio_pct": 67.03055669795226,
+      "compress_s": 0.4716957,
+      "compress_mbps": 212.5318636802021,
+      "compress_runs_s": [
+        0.4720828,
+        0.4542206,
+        0.4716957
+      ],
+      "extract_s": 0.6493055,
+      "extract_runs_s": [
+        1.3277578,
+        0.6493055,
+        0.6171455
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 198.79296875,
+      "compress_peak_commit_mib": 279.83203125,
+      "extract_peak_ws_mib": 86.40625,
+      "extract_peak_commit_mib": 89.04296875
+    },
+    {
+      "case": "nz nz:6",
+      "tool": "nz",
+      "format": "nz",
+      "level": 6,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 72293734,
+      "ratio_pct": 68.77249426484717,
+      "compress_s": 0.5801714,
+      "compress_mbps": 172.79439526136156,
+      "compress_runs_s": [
+        0.5801714,
+        0.6459546,
+        0.5788702
+      ],
+      "extract_s": 0.6764271,
+      "extract_runs_s": [
+        0.6764271,
+        0.6529848,
+        0.8101239
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 281.74609375,
+      "compress_peak_commit_mib": 369.125,
+      "extract_peak_ws_mib": 88.5625,
+      "extract_peak_commit_mib": 92.484375
+    },
+    {
+      "case": "nz nz:6:rr=0",
+      "tool": "nz",
+      "format": "nz",
+      "level": 6,
+      "options": [
+        "-t:12",
+        "-rr:0"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 69915606,
+      "ratio_pct": 66.51019869382199,
+      "compress_s": 0.9850514,
+      "compress_mbps": 101.77171080710865,
+      "compress_runs_s": [
+        0.99869,
+        0.8614142,
+        0.9850514
+      ],
+      "extract_s": 1.0390678,
+      "extract_runs_s": [
+        1.0065648,
+        1.2117772,
+        1.0390678
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 280.20703125,
+      "compress_peak_commit_mib": 367.99609375,
+      "extract_peak_ws_mib": 96.37109375,
+      "extract_peak_commit_mib": 97.80859375
+    },
+    {
+      "case": "nz nz:8:rr=0",
+      "tool": "nz",
+      "format": "nz",
+      "level": 8,
+      "options": [
+        "-t:12",
+        "-rr:0"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 66746464,
+      "ratio_pct": 63.495417357178255,
+      "compress_s": 12.6377004,
+      "compress_mbps": 7.932643047222222,
+      "compress_runs_s": [
+        12.6377004,
+        14.7639038,
+        11.0309862
+      ],
+      "extract_s": 0.9442778,
+      "extract_runs_s": [
+        0.9505763,
+        0.9442778,
+        0.8437091
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 661.3515625,
+      "compress_peak_commit_mib": 769.94921875,
+      "extract_peak_ws_mib": 130.484375,
+      "extract_peak_commit_mib": 146.62109375
+    },
+    {
+      "case": "nz nz:9:rr=0",
+      "tool": "nz",
+      "format": "nz",
+      "level": 9,
+      "options": [
+        "-t:12",
+        "-rr:0"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 65782510,
+      "ratio_pct": 62.57841504911409,
+      "compress_s": 9.7246266,
+      "compress_mbps": 10.308916767142247,
+      "compress_runs_s": [
+        11.5404152,
+        8.5940436,
+        9.7246266
+      ],
+      "extract_s": 2.8336508,
+      "extract_runs_s": [
+        2.8452319,
+        2.8336508,
+        2.7179466
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 1606.33984375,
+      "compress_peak_commit_mib": 1994.23046875,
+      "extract_peak_ws_mib": 164.63671875,
+      "extract_peak_commit_mib": 201.24609375
+    },
+    {
+      "case": "nz 7z:5",
+      "tool": "nz",
+      "format": "7z",
+      "level": 5,
+      "options": [
+        "-t:12"
+      ],
+      "input_bytes": 105120128,
+      "input_files": 1444,
+      "archive_bytes": 65654779,
+      "ratio_pct": 62.45690549387459,
+      "compress_s": 3.856713,
+      "compress_mbps": 25.993732541399243,
+      "compress_runs_s": [
+        3.7664894,
+        3.856713,
+        5.2290034
+      ],
+      "extract_s": 0.9855528,
+      "extract_runs_s": [
+        1.192028,
+        0.9855528,
+        0.954412
+      ],
+      "extract_verified": true,
+      "compress_peak_ws_mib": 523.734375,
+      "compress_peak_commit_mib": 734.25390625,
+      "extract_peak_ws_mib": 195.2421875,
+      "extract_peak_commit_mib": 244.91796875
+    }
+  ]
+}
