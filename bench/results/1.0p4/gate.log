@@ -1,0 +1,34 @@
+# interleaved runs, 7 per case, 2 rounds; base = main f9012fd, perf4 = 8070e07; reference rows removed
+# round 1
+load: AMDRSServ 0.51; chrome 0.24; chrome 0.22; chrome 0.11; chrome 0.09
+total 1.43 max 0.51
+== K1 text compress
+base   size   14637388 med 0.0516 min 0.0489 all 0.058 0.051 0.049 0.052 0.053 0.049 0.052
+perf4  size   14637388 med 0.0527 min 0.0523 all 0.055 0.053 0.053 0.052 0.054 0.052 0.052
+== K1b mixed compress
+base   size   72391199 med 0.1230 min 0.1205 all 0.123 0.123 0.123 0.131 0.120 0.123 0.124
+perf4  size   72391199 med 0.1238 min 0.1143 all 0.120 0.121 0.125 0.145 0.124 0.114 0.125
+== K5 extract, excluded folder
+base   size          0 med 0.2195 min 0.1936 all 0.546 0.194 0.598 0.203 0.231 0.196 0.220
+perf4  size          0 med 0.2037 min 0.1833 all 0.229 0.183 0.204 0.192 0.201 0.338 0.212
+== K5 extract, Defender on
+base   size          0 med 0.1813 min 0.1725 all 0.181 0.406 0.176 0.263 0.172 0.429 0.173
+perf4  size          0 med 0.1724 min 0.1624 all 0.169 0.178 0.162 0.177 0.180 0.166 0.172
+# round 2
+load: AMDRSServ 0.30; chrome 0.12; chrome 0.11; chrome 0.08; chrome 0.04
+total 0.79 max 0.30
+== K1 text compress
+base   size   14637388 med 0.0571 min 0.0535 all 0.058 0.053 0.057 0.060 0.056 0.060 0.056
+perf4  size   14637388 med 0.0574 min 0.0547 all 0.056 0.062 0.055 0.057 0.061 0.058 0.055
+== K1b mixed compress
+base   size   72391199 med 0.1313 min 0.1237 all 0.135 0.131 0.133 0.142 0.124 0.131 0.129
+perf4  size   72391199 med 0.1288 min 0.1232 all 0.131 0.123 0.129 0.132 0.127 0.125 0.129
+== K5 extract, excluded folder
+base   size          0 med 0.1959 min 0.1921 all 0.201 0.233 0.192 0.195 0.193 0.196 0.354
+perf4  size          0 med 0.1851 min 0.1796 all 0.184 0.185 0.181 0.180 0.408 0.193 0.313
+== K5 extract, Defender on
+base   size          0 med 0.1694 min 0.1607 all 0.194 0.166 0.161 0.169 0.180 0.186 0.168
+perf4  size          0 med 0.1805 min 0.1596 all 0.181 0.160 0.160 0.198 0.246 0.162 0.275
+DONE
+
+
