@@ -127,6 +127,20 @@ struct Prepared {
 
 /// Create a ZIP archive at `out` from `entries`.
 pub fn write_zip(entries: &[Entry], out: &Path, opt: &ZipOptions) -> Result<WriteStats> {
+    let total = walk::total_bytes(entries);
+    if nz_sys::MAPPING_SUPPORTED
+        && (MAPPED_MIN..=MAPPED_MAX).contains(&total)
+        && entries
+            .iter()
+            .all(|e| e.kind != Kind::File || e.size <= BIG_FILE)
+    {
+        return write_zip_mapped(entries, out, opt);
+    }
+    write_zip_streamed(entries, out, opt)
+}
+
+/// [`write_zip`] through a buffered file and an in-order writer thread.
+fn write_zip_streamed(entries: &[Entry], out: &Path, opt: &ZipOptions) -> Result<WriteStats> {
     let file = File::create(out).with_context(|| format!("cannot create {}", out.display()))?;
     let mut w = CountingWriter {
         inner: BufWriter::with_capacity(1 << 20, file),
@@ -245,20 +259,15 @@ pub fn write_zip(entries: &[Entry], out: &Path, opt: &ZipOptions) -> Result<Writ
     Ok(stats)
 }
 
-/// Write one prepared entry (local header + data) and record it.
-fn write_prepared<W: Write>(
-    w: &mut CountingWriter<W>,
-    e: &Entry,
-    p: Result<Option<Prepared>>,
-    central: &mut Vec<Central>,
-    stats: &mut WriteStats,
-) -> Result<()> {
+/// Local header of one entry placed at `offset`, and its central record.
+/// `p` is None for a directory.
+fn local_record(e: &Entry, p: Option<&Prepared>, offset: u64) -> io::Result<(Vec<u8>, Central)> {
     let (t, d) = dos_datetime(e.mtime);
-    let offset = w.pos;
-    let Some(p) = p? else {
+    let mut h = Vec::with_capacity(64 + e.name.len());
+    let Some(p) = p else {
         let name = format!("{}/", e.name).into_bytes();
-        write_local(w, &name, 0, 0, 0, 0, t, d, unix_time(e.mtime), false)?;
-        central.push(Central {
+        write_local(&mut h, &name, 0, 0, 0, 0, t, d, unix_time(e.mtime), false)?;
+        let c = Central {
             name,
             is_dir: true,
             method: 0,
@@ -269,15 +278,14 @@ fn write_prepared<W: Write>(
             dos_time: t,
             dos_date: d,
             unix_mtime: unix_time(e.mtime),
-        });
-        stats.dirs += 1;
-        return Ok(());
+        };
+        return Ok((h, c));
     };
     let name = e.name.clone().into_bytes();
     let csize = p.data.len() as u64;
     let z64 = p.usize >= MAX32 || csize >= MAX32;
     write_local(
-        w,
+        &mut h,
         &name,
         p.method,
         p.crc,
@@ -288,11 +296,7 @@ fn write_prepared<W: Write>(
         unix_time(e.mtime),
         z64,
     )?;
-    w.write_all(&p.data)?;
-    stats.files += 1;
-    stats.input_bytes += p.usize;
-    stats.stored_by_planner += usize::from(p.planner_store);
-    central.push(Central {
+    let c = Central {
         name,
         is_dir: false,
         method: p.method,
@@ -303,8 +307,201 @@ fn write_prepared<W: Write>(
         dos_time: t,
         dos_date: d,
         unix_mtime: unix_time(e.mtime),
-    });
+    };
+    Ok((h, c))
+}
+
+fn count_entry(stats: &mut WriteStats, p: Option<&Prepared>) {
+    match p {
+        None => stats.dirs += 1,
+        Some(p) => {
+            stats.files += 1;
+            stats.input_bytes += p.usize;
+            stats.stored_by_planner += usize::from(p.planner_store);
+        }
+    }
+}
+
+/// Write one prepared entry (local header + data) and record it.
+fn write_prepared<W: Write>(
+    w: &mut CountingWriter<W>,
+    e: &Entry,
+    p: Result<Option<Prepared>>,
+    central: &mut Vec<Central>,
+    stats: &mut WriteStats,
+) -> Result<()> {
+    let p = p?;
+    let (h, c) = local_record(e, p.as_ref(), w.pos)?;
+    w.write_all(&h)?;
+    if let Some(p) = &p {
+        w.write_all(&p.data)?;
+    }
+    count_entry(stats, p.as_ref());
+    central.push(c);
     Ok(())
+}
+
+/// Inputs up to this size are written through a file mapping.
+const MAPPED_MAX: u64 = 1 << 30;
+/// Below this the streaming writer is as fast (27 MiB text set: the mapped
+/// writer was 0.5-2 ms slower; 100 MiB mixed set: 3-9 ms faster).
+const MAPPED_MIN: u64 = 64 << 20;
+
+/// Byte budget that every archive of `entries` fits in: compressed data is
+/// never larger than the input (larger results are stored), plus local and
+/// central headers with every optional extra field, plus the end records.
+fn archive_bound(entries: &[Entry]) -> u64 {
+    entries
+        .iter()
+        .map(|e| e.size + 2 * (e.name.len() as u64 + 1) + 160)
+        .sum::<u64>()
+        + 256
+}
+
+/// In-order placement state of [`write_zip_mapped`].
+struct Placer<'a> {
+    next: usize,
+    pos: u64,
+    rest: &'a mut [u8],
+    central: Vec<Central>,
+    stats: WriteStats,
+    err: Option<anyhow::Error>,
+}
+
+/// One placed entry: its region of the mapping, header and data.
+type Placed<'a> = (&'a mut [u8], Vec<u8>, Option<Prepared>);
+
+/// [`write_zip`] for inputs without big files: the output file is mapped at
+/// an upper bound of its size. Entries are compressed in parallel (largest
+/// first) and placed in input order as soon as every earlier entry is
+/// ready; the thread that completes a run of placements copies it into the
+/// mapping with the pool's help. The file is cut to its real length at the
+/// end. Same bytes as the streaming writer: offsets follow input order.
+///
+/// 1.0 profile: the streaming writer thread finished 7 ms (text set) and
+/// 22-25 ms (mixed set) after the last entry was compressed, because one
+/// thread copied most of the archive into the cache at the end.
+fn write_zip_mapped(entries: &[Entry], out: &Path, opt: &ZipOptions) -> Result<WriteStats> {
+    let file = std::fs::OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .truncate(true)
+        .open(out)
+        .with_context(|| format!("cannot create {}", out.display()))?;
+    let bound = archive_bound(entries);
+    let map = nz_sys::FileMapping::new(&file, bound)
+        .with_context(|| format!("cannot map {}", out.display()))?;
+    let mut view = map
+        .view(
+            0,
+            usize::try_from(bound).context("archive too large to map")?,
+        )
+        .with_context(|| format!("cannot map {}", out.display()))?;
+    let t_batch = std::time::Instant::now();
+    let batch_bytes = walk::total_bytes(entries);
+    let whole = usize::try_from(batch_bytes / WHOLE_SPLIT).unwrap_or(usize::MAX);
+    let slots: Vec<std::sync::Mutex<Option<Result<Option<Prepared>>>>> = entries
+        .iter()
+        .map(|_| std::sync::Mutex::new(None))
+        .collect();
+    let placer = std::sync::Mutex::new(Placer {
+        next: 0,
+        pos: 0,
+        rest: view.as_mut_slice(),
+        central: Vec::with_capacity(entries.len()),
+        stats: WriteStats::default(),
+        err: None,
+    });
+    let mut order: Vec<usize> = (0..entries.len()).collect();
+    order.sort_by_key(|&i| std::cmp::Reverse(entries[i].size));
+    order.par_iter().with_max_len(1).for_each(|&i| {
+        let e = &entries[i];
+        let p = if e.kind == Kind::Dir {
+            Ok(None)
+        } else {
+            prepare(e, opt, whole).map(Some)
+        };
+        *slots[i].lock().expect("slot lock") = Some(p);
+        let mut placed: Vec<Placed<'_>> = Vec::new();
+        {
+            let mut g = placer.lock().expect("placer lock");
+            let pl = &mut *g;
+            while pl.err.is_none() && pl.next < entries.len() {
+                let Some(p) = slots[pl.next].lock().expect("slot lock").take() else {
+                    break;
+                };
+                let e = &entries[pl.next];
+                pl.next += 1;
+                match place(pl, e, p) {
+                    Ok(x) => placed.push(x),
+                    Err(e) => pl.err = Some(e),
+                }
+            }
+        }
+        // Copy outside the lock; idle pool threads help with large runs.
+        let pieces: Vec<(&mut [u8], &[u8])> = placed
+            .iter_mut()
+            .flat_map(|(region, h, p)| {
+                let (hr, dr) = region.split_at_mut(h.len());
+                let data: &[u8] = p.as_ref().map_or(&[], |p| &p.data);
+                std::iter::once((hr, &h[..]))
+                    .chain(dr.chunks_mut(1 << 20).zip(data.chunks(1 << 20)))
+            })
+            .collect();
+        pieces
+            .into_par_iter()
+            .with_max_len(1)
+            .for_each(|(d, s)| d.copy_from_slice(s));
+    });
+    crate::trace(&format!(
+        "batch {} entries compressed and placed at {:.1} ms",
+        entries.len(),
+        t_batch.elapsed().as_secs_f64() * 1e3
+    ));
+    let pl = placer.into_inner().expect("placer lock");
+    if let Some(e) = pl.err {
+        return Err(e);
+    }
+    let mut cd = CountingWriter {
+        inner: Vec::new(),
+        pos: pl.pos,
+    };
+    write_central(&mut cd, &pl.central)?;
+    if cd.inner.len() > pl.rest.len() {
+        bail!("ZIP output bound exceeded");
+    }
+    pl.rest[..cd.inner.len()].copy_from_slice(&cd.inner);
+    let total = cd.pos;
+    let mut stats = pl.stats;
+    stats.output_bytes = total;
+    view.finish()
+        .with_context(|| format!("cannot write {}", out.display()))?;
+    drop(map);
+    file.set_len(total)
+        .with_context(|| format!("cannot write {}", out.display()))?;
+    crate::trace(&format!(
+        "central+unmap at {:.1} ms",
+        t_batch.elapsed().as_secs_f64() * 1e3
+    ));
+    Ok(stats)
+}
+
+/// Place the next entry at the placer's position: take its region of the
+/// mapping and record it.
+fn place<'a>(pl: &mut Placer<'a>, e: &Entry, p: Result<Option<Prepared>>) -> Result<Placed<'a>> {
+    let p = p?;
+    let (h, c) = local_record(e, p.as_ref(), pl.pos)?;
+    let n = h.len() + p.as_ref().map_or(0, |p| p.data.len());
+    if n > pl.rest.len() {
+        bail!("ZIP output bound exceeded");
+    }
+    let (region, tail) = std::mem::take(&mut pl.rest).split_at_mut(n);
+    pl.rest = tail;
+    pl.pos += n as u64;
+    count_entry(&mut pl.stats, p.as_ref());
+    pl.central.push(c);
+    Ok((region, h, p))
 }
 
 /// Non-text data: x86 executables, or a head sample that fails the text test.
@@ -994,6 +1191,62 @@ mod tests {
         std::fs::write(&p, &z).unwrap();
         let err = read_central(&File::open(&p).unwrap()).unwrap_err();
         assert!(err.to_string().contains("outside the file"), "{err}");
+    }
+
+    /// The mapped writer and the streaming writer produce the same bytes,
+    /// for any thread count, and the archive reads back.
+    #[test]
+    fn mapped_writer_matches_streamed_writer() {
+        let tmp = tempfile::tempdir().unwrap();
+        let src = tmp.path().join("src");
+        std::fs::create_dir_all(src.join("sub/deeper")).unwrap();
+        std::fs::create_dir_all(src.join("empty")).unwrap();
+        let text: Vec<u8> = (0..200_000u32)
+            .flat_map(|i| format!("line {} {}\n", i % 313, i / 7).into_bytes())
+            .collect();
+        let mut x = 0x2545_f491_4f6c_dd1du64;
+        let noise: Vec<u8> = (0..700_000)
+            .map(|_| {
+                x ^= x << 13;
+                x ^= x >> 7;
+                x ^= x << 17;
+                x as u8
+            })
+            .collect();
+        std::fs::write(src.join("a.txt"), &text).unwrap();
+        std::fs::write(src.join("sub/noise.bin"), &noise).unwrap();
+        std::fs::write(src.join("sub/deeper/small.txt"), b"hello").unwrap();
+        std::fs::write(src.join("sub/zero"), b"").unwrap();
+        let entries = walk::collect(std::slice::from_ref(&src)).unwrap();
+        let opt = ZipOptions::default();
+        let run = |threads: usize, mapped: bool| {
+            let p = tmp.path().join(format!("o{threads}{mapped}.zip"));
+            let pool = crate::cpu::pool(threads).unwrap();
+            let st = pool
+                .install(|| {
+                    if mapped {
+                        write_zip_mapped(&entries, &p, &opt)
+                    } else {
+                        write_zip_streamed(&entries, &p, &opt)
+                    }
+                })
+                .unwrap();
+            let bytes = std::fs::read(&p).unwrap();
+            assert_eq!(st.output_bytes, bytes.len() as u64);
+            bytes
+        };
+        let want = run(4, false);
+        if nz_sys::MAPPING_SUPPORTED {
+            for t in [1, 3, 8] {
+                assert!(run(t, true) == want, "mapped writer, {t} threads");
+            }
+        }
+        let p = tmp.path().join("o4false.zip");
+        let out = tmp.path().join("x");
+        extract_zip(&p, &out).unwrap();
+        assert_eq!(std::fs::read(out.join("a.txt")).unwrap(), text);
+        assert_eq!(std::fs::read(out.join("sub/noise.bin")).unwrap(), noise);
+        assert!(out.join("empty").is_dir());
     }
 
     #[test]

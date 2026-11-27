@@ -625,14 +625,23 @@ pub(crate) fn dos_to_system(time: u16, date: u16) -> Option<SystemTime> {
     Some(dt.into())
 }
 
-/// Write one member below `out_dir` (name already sanitised by the caller).
-fn write_member(out_dir: &Path, rel: &Path, data: &[u8], mtime: Option<SystemTime>) -> Result<()> {
-    let dest = out_dir.join(rel);
-    if let Some(parent) = dest.parent() {
-        std::fs::create_dir_all(parent)
-            .with_context(|| format!("cannot create {}", parent.display()))?;
+/// Write one member below the output folder (name already sanitised by the
+/// caller), creating its parent folder first if no member did yet. A parent
+/// missing anyway (removed meanwhile) is created again.
+fn write_member(dirs: &Dirs, rel: &Path, data: &[u8], mtime: Option<SystemTime>) -> Result<()> {
+    dirs.ensure_parent(rel)?;
+    let dest = dirs.out_dir.join(rel);
+    let mut f = match File::create(&dest) {
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
+            if let Some(parent) = dest.parent() {
+                std::fs::create_dir_all(parent)
+                    .with_context(|| format!("cannot create {}", parent.display()))?;
+            }
+            File::create(&dest)
+        }
+        r => r,
     }
-    let mut f = File::create(&dest).with_context(|| format!("cannot create {}", dest.display()))?;
+    .with_context(|| format!("cannot create {}", dest.display()))?;
     f.write_all(data)?;
     if let Some(t) = mtime {
         let _ = f.set_modified(t);
@@ -714,7 +723,7 @@ fn extract_kind(
                 entries.iter().fold(0u64, |a, e| a.saturating_add(e.usize)),
                 Ordering::Relaxed,
             );
-            let jobs = plan(
+            let (jobs, dirs) = plan(
                 &names,
                 entries.iter().map(|e| e.is_dir),
                 &mut stats,
@@ -731,12 +740,13 @@ fn extract_kind(
                         if !guard.clean(&names[*i], &data)? {
                             return Ok(None);
                         }
-                        write_member(out_dir, rel, &data, e.mtime)?;
+                        write_member(&dirs, rel, &data, e.mtime)?;
                         prog.file_done(&names[*i], data.len() as u64);
                         Ok(Some(data.len() as u64))
                     })
                     .collect::<Result<_>>()
             })?;
+            dirs.finish()?;
             stats.files = bytes.iter().flatten().count();
             stats.bytes = bytes.iter().flatten().sum();
         }
@@ -751,7 +761,7 @@ fn extract_kind(
             );
             prog.total
                 .store(a.members.iter().map(|m| m.usize).sum(), Ordering::Relaxed);
-            let jobs = plan(
+            let (jobs, dirs) = plan(
                 &names,
                 a.members.iter().map(|m| m.is_dir()),
                 &mut stats,
@@ -768,12 +778,13 @@ fn extract_kind(
                         if !guard.clean(&names[*i], &data)? {
                             return Ok(None);
                         }
-                        write_member(out_dir, rel, &data, m.mtime())?;
+                        write_member(&dirs, rel, &data, m.mtime())?;
                         prog.file_done(&names[*i], data.len() as u64);
                         Ok(Some(data.len() as u64))
                     })
                     .collect::<Result<_>>()
             })?;
+            dirs.finish()?;
             stats.files = bytes.iter().flatten().count();
             stats.bytes = bytes.iter().flatten().sum();
         }
@@ -784,7 +795,7 @@ fn extract_kind(
             let names: Vec<String> = e.members.iter().map(|m| m.name.clone()).collect();
             prog.total
                 .store(e.members.iter().map(|m| m.size).sum(), Ordering::Relaxed);
-            let jobs = plan(
+            let (jobs, dirs) = plan(
                 &names,
                 e.members.iter().map(|m| m.is_dir),
                 &mut stats,
@@ -799,7 +810,7 @@ fn extract_kind(
                     if let Some(rel) = want.get(&i)
                         && guard.clean(&names[i], &data)?
                     {
-                        write_member(out_dir, rel, &data, e.members[i].mtime)?;
+                        write_member(&dirs, rel, &data, e.members[i].mtime)?;
                         prog.file_done(&names[i], data.len() as u64);
                         stats.files += 1;
                         stats.bytes += data.len() as u64;
@@ -817,7 +828,7 @@ fn extract_kind(
                             if !guard.clean(&names[*i], &data)? {
                                 return Ok(None);
                             }
-                            write_member(out_dir, rel, &data, m.mtime)?;
+                            write_member(&dirs, rel, &data, m.mtime)?;
                             prog.file_done(&names[*i], data.len() as u64);
                             Ok(Some(data.len() as u64))
                         })
@@ -826,6 +837,7 @@ fn extract_kind(
                 stats.files = bytes.iter().flatten().count();
                 stats.bytes = bytes.iter().flatten().sum();
             }
+            dirs.finish()?;
         }
         Kind::Nz => {
             stats = nzf::extract(archive, out_dir, opt, prog, guard)?;
@@ -1026,13 +1038,15 @@ fn extract_isolated(
         l.members.iter().fold(0u64, |a, m| a.saturating_add(m.size)),
         Ordering::Relaxed,
     );
-    let mut jobs = plan(
+    let (mut jobs, dirs) = plan(
         &names,
         l.members.iter().map(|m| m.is_dir),
         &mut stats,
         out_dir,
         prog,
     )?;
+    // The isolated decoder writes the files itself: every folder first.
+    dirs.create_all()?;
     // Links (spec 9): written as small text files holding the target, and
     // only when the target stays inside the output folder. The decoder is
     // not asked for them.
@@ -1071,7 +1085,55 @@ fn extract_isolated(
     Ok(stats)
 }
 
-/// Sanitise every name, create directories, and return the file jobs.
+/// Output folders of one extraction. Each file's parent folder is created
+/// by the first member that needs it, while other members are already being
+/// written (creating the 249 folders of the benchmark set up front took
+/// 20-35 ms of a ~200 ms extraction); explicit folder entries are created by
+/// [`Dirs::finish`].
+struct Dirs {
+    out_dir: PathBuf,
+    parents: std::collections::HashMap<PathBuf, std::sync::OnceLock<Result<(), String>>>,
+    explicit: Vec<PathBuf>,
+}
+
+impl Dirs {
+    /// Make sure the parent folder of `rel` exists.
+    fn ensure_parent(&self, rel: &Path) -> Result<()> {
+        let Some(cell) = rel.parent().and_then(|p| self.parents.get(p)) else {
+            return Ok(());
+        };
+        cell.get_or_init(|| {
+            let p = self.out_dir.join(rel.parent().unwrap_or(rel));
+            std::fs::create_dir_all(&p).map_err(|e| format!("cannot create {}: {e}", p.display()))
+        })
+        .clone()
+        .map_err(|e| anyhow::anyhow!(e))
+    }
+
+    /// Create every folder now (explicit entries and file parents).
+    fn create_all(&self) -> Result<()> {
+        self.parents
+            .keys()
+            .collect::<Vec<_>>()
+            .par_iter()
+            .try_for_each(|d| -> Result<()> {
+                let p = self.out_dir.join(d);
+                std::fs::create_dir_all(&p)
+                    .with_context(|| format!("cannot create {}", p.display()))
+            })?;
+        self.finish()
+    }
+
+    /// Create the folders that the archive lists as entries.
+    fn finish(&self) -> Result<()> {
+        self.explicit.par_iter().try_for_each(|d| -> Result<()> {
+            let p = self.out_dir.join(d);
+            std::fs::create_dir_all(&p).with_context(|| format!("cannot create {}", p.display()))
+        })
+    }
+}
+
+/// Sanitise every name and return the file jobs and the folders to create.
 /// Names changed to fit Windows are reported in `prog.notes`.
 fn plan(
     names: &[String],
@@ -1079,21 +1141,29 @@ fn plan(
     stats: &mut ExtractStats,
     out_dir: &Path,
     prog: &Progress,
-) -> Result<Vec<(usize, PathBuf)>> {
+) -> Result<(Vec<(usize, PathBuf)>, Dirs)> {
     if let Some(n) = safepath::rename_notice(names.iter().map(String::as_str)) {
         prog.note(n);
     }
     let mut jobs = Vec::new();
+    let mut dirs = Dirs {
+        out_dir: out_dir.to_path_buf(),
+        parents: std::collections::HashMap::new(),
+        explicit: Vec::new(),
+    };
     for (i, d) in is_dir.enumerate() {
         let rel = sanitized(&names[i])?;
         if d {
-            std::fs::create_dir_all(out_dir.join(&rel))?;
+            dirs.explicit.push(rel);
             stats.dirs += 1;
         } else {
+            if let Some(p) = rel.parent().filter(|p| !p.as_os_str().is_empty()) {
+                dirs.parents.entry(p.to_path_buf()).or_default();
+            }
             jobs.push((i, rel));
         }
     }
-    Ok(jobs)
+    Ok((jobs, dirs))
 }
 
 /// Read a ZIP member, decrypting traditional PKWARE encryption if needed.

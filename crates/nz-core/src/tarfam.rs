@@ -1006,8 +1006,10 @@ const ASYNC_WRITE_LIMIT: u64 = 256 << 20;
 const PIECE: u64 = 8 << 20;
 
 /// Window of a large member mapped at a time (a multiple of
-/// [`nz_sys::VIEW_ALIGN`]); bounds the pages the process keeps resident.
-const MAP_WINDOW: u64 = 256 << 20;
+/// [`nz_sys::VIEW_ALIGN`]). At most two windows are mapped at once (one
+/// filling, one being unmapped), which bounds the file pages counted in the
+/// process working set (K9).
+const MAP_WINDOW: u64 = 128 << 20;
 
 /// Write a large member of `size` bytes read from `src` to a new file at
 /// `dest`: through a file mapping filled by the Rayon pool when the system
@@ -1037,8 +1039,8 @@ fn write_large<R: Read>(src: &mut R, dest: &Path, size: u64) -> Result<File> {
 
 /// K6 (2.1 GB member): one writer thread spent ~96% of the run in
 /// `WriteFile`. Here the file is mapped window by window; each window is
-/// filled by [`fill_prefault`] and unmapped on a helper thread (~20 ms per
-/// 256 MiB window) while the next one fills.
+/// filled by [`fill_prefault`] and unmapped on a helper thread (~10 ms per
+/// 128 MiB window) while the next one fills.
 fn write_mapped<R: Read>(
     src: &mut R,
     map: &nz_sys::FileMapping,
@@ -1048,20 +1050,26 @@ fn write_mapped<R: Read>(
 ) -> Result<()> {
     let t0 = std::time::Instant::now();
     let mut off = 0u64;
-    let mut unmaps = Vec::new();
+    let join = |h: std::thread::JoinHandle<io::Result<()>>| -> Result<()> {
+        h.join()
+            .map_err(|_| anyhow!("unmap thread panicked"))?
+            .with_context(|| format!("cannot write {}", dest.display()))
+    };
+    let mut unmapping: Option<std::thread::JoinHandle<io::Result<()>>> = None;
     while off < size {
         let wlen = (size - off).min(window) as usize;
         let mut view = map
             .view(off, wlen)
             .with_context(|| format!("cannot map {}", dest.display()))?;
         fill_prefault(src, view.as_mut_slice(), dest)?;
-        unmaps.push(std::thread::spawn(move || view.finish()));
+        if let Some(h) = unmapping.take() {
+            join(h)?;
+        }
+        unmapping = Some(std::thread::spawn(move || view.finish()));
         off += wlen as u64;
     }
-    for h in unmaps {
-        h.join()
-            .map_err(|_| anyhow!("unmap thread panicked"))?
-            .with_context(|| format!("cannot write {}", dest.display()))?;
+    if let Some(h) = unmapping {
+        join(h)?;
     }
     crate::trace(&format!(
         "mapped write {} bytes {:.0} ms",

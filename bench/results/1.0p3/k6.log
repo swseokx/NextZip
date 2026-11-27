@@ -1,0 +1,13 @@
+# K6: 2,102,402,560 B single-file tar.zst (64 MiB frames) into the Defender-excluded folder, 7 runs; base = main build, final = perf-3 build
+AMDRSServ 0.4; webwallpaper64 0.16; webwallpaper64 0.09; ezViewX 0.05
+total 0.70 max 0.40
+base/nz.exe: runs 0.912 0.842 0.812 0.801 0.806 0.813 0.804 median 0.812 s = 2.59 GB/s
+final/nz.exe: runs 0.607 0.581 0.581 0.578 0.568 0.573 0.555 median 0.578 s = 3.64 GB/s
+AMDRSServ 0.32; webwallpaper64 0.15; webwallpaper64 0.09
+total 0.56 max 0.32
+base/nz.exe: runs 0.796 0.817 0.855 0.783 0.797 0.812 0.799 median 0.799 s = 2.63 GB/s
+final/nz.exe: runs 0.553 0.559 0.543 0.565 0.564 0.566 0.570 median 0.564 s = 3.73 GB/s
+# after the 128 MiB window change (f2 = committed build)
+final/nz.exe (256 MiB window): median 0.560 s = 3.75 GB/s
+f2/nz.exe: runs 0.547 0.556 0.547 0.567 0.554 0.585 0.529 median 0.554 s = 3.79 GB/s
+peak memory f2: WS 713-717 MiB, commit 579-646 MiB; main build: WS 586 MiB, commit 762 MiB

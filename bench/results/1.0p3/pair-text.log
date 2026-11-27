@@ -1,0 +1,9 @@
+# interleaved runs, 7 per round, 2 rounds; new = perf-3 build, base = main build (1.0.0)
+load: AMDRSServ 0.44; webwallpaper64 0.15; webwallpaper64 0.09; audiodg 0.07; ezViewX 0.06
+total 0.81 max 0.44
+new    size   14637388  c med 0.0579
+base   size   14637388  c med 0.0562
+load: AMDRSServ 0.34; webwallpaper64 0.17; webwallpaper64 0.08; chrome 0.06; chrome 0.06
+total 0.71 max 0.34
+new    size   14637388  c med 0.0553
+base   size   14637388  c med 0.0560
