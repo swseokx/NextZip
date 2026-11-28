@@ -219,6 +219,7 @@ table { border-collapse: collapse; width: 100%; font-size: var(--fs-small); }
 th, td { text-align: left; padding: var(--sp-2) var(--sp-4); border-bottom: 1px solid var(--divider); vertical-align: top; }
 tr:last-child td { border-bottom: 0; }
 th { background: var(--surface-2); font-weight: 600; white-space: nowrap; }
+th:first-child, td:first-child { min-width: 11em; }
 td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .foot { color: var(--text-muted); font-size: var(--fs-small); margin: var(--sp-3) 0 0; }
 
